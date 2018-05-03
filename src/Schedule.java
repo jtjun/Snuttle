@@ -4,7 +4,7 @@ public class Schedule{
 }
 
 
-public class sched{
+class sched{
     private double time;
     private String place;
 
@@ -12,6 +12,6 @@ public class sched{
         return time;
     }
     public String getName(){
-        return name;
+        return place;
     }
 }

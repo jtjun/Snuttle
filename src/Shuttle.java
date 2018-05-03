@@ -3,8 +3,7 @@ public class Shuttle {
     private double y;
 
     public double[] getPosition(){
-        return {x, y};
+        double[] position = {x, y};
+        return position;
     }
-
-    private void
 }
