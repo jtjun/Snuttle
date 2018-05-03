@@ -7,6 +7,6 @@ public class Simulator {
         int userN = 1000;
 
         Map map = new Map();
-        Generator generator = new Generator(userN, map);
+        Generator generator = new Generator(userN, map); // Generate userN guests for this map
     }
 }
