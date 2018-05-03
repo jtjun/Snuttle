@@ -1,4 +1,4 @@
-public class Map{
+public class Map {
     private Station[] stations;
 
 
