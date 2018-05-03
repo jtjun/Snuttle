@@ -4,6 +4,10 @@ public class Schedule{
     private sched[] Schedules; // {from, to, next, next, next, ...}
     // Schedules[0] is where shuttle from
 
+    public Schedule(){
+        Schedules = new sched[0];
+    }
+
     public void removeAfterT(int time){
         int dt = whatTimeS(time) -1;
         sched[] nSched = new sched[Schedules.length - dt];
@@ -41,6 +45,14 @@ public class Schedule{
     public void removeSchedule(sched s){
         int ind = whatTimeS(s.getTime());
     }
+
+    public String toString(){
+        String ret = "[";
+        for(int i = 0; i < Schedules.length; i++){
+            ret += Schedules[i].toString()+",";
+        }
+        return ret+"]";
+    }
 }
 
 class sched {
@@ -57,5 +69,9 @@ class sched {
     sched(int t, Station p){
         time = t;
         place = p;
+    }
+
+    public String toString(){
+        return "time("+time+"), place("+place.getName()+")";
     }
 }
