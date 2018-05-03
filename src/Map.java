@@ -65,6 +65,7 @@ public class Map {
         } throw new NoSuchElementException();
     }
 
+    // if you want time  -> getDistatnce() * speed = time
     public int getDistance(int idx1, int idx2) { // Get distance between two stations by idx
         if (idx1 < 0) throw new IndexOutOfBoundsException();
         if (idx1 >= stations.size()) throw new IndexOutOfBoundsException();
@@ -78,7 +79,6 @@ public class Map {
         int idx2 = getIndex(name2);
         return getDistance(idx1, idx2); // it equals to time
     }
-    // if you want time  -> getDistatnce() * speed = time
 
     public int getNumStations() {
         return stations.size();
