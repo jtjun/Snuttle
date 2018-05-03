@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 public class Map {
+=======
+import java.util.NoSuchElementException;
+
+public class Map{
+>>>>>>> b12d98effb0c2f0b652ededb60dfc65f1221a5f3
     private Station[] stations;
 
 
     public Station getStation(String name){
         for(int i=0; i<stations.length; i++ ){
             if(name.equals(stations[i].getName())) return stations[i];
-        } return error; // error
+        }
+        throw new NoSuchElementException();
+    }
 
     public Map(){
         stations = new Station[Simulator.MAX_STATION];
