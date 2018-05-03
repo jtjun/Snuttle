@@ -16,12 +16,27 @@ public class Schedule{
         int l = Schedules.length;
         for(int i=0; i<l; i++){
             if(Schedules[i].getTime() > time) return i;
-        } return l+1; // if there are no destination (no schedule after current time)
+        } return l+1; // if there are no schedule after current time
     } // return current time destination's index
 
     public Station whatIthStation(int i){
         sched next = Schedules[i];
         return next.getStation();
+    }
+
+    Schedule(int t, Station p){
+        sched s =  new sched(t, p);
+        int l = Schedules.length;
+        Schedules = Arrays.copyOf(Schedules,  l+1);
+        Schedules[l] = s;
+        Arrays.sort(Schedules, new Comparator<sched>() {
+            @Override
+            public int compare(sched o1, sched o2) {
+                final int t1 = o1.getTime();
+                final int t2 = o2.getTime();
+                return Integer.compare(t1, t2);
+            }
+        });
     }
 }
 
@@ -29,10 +44,15 @@ class sched {
     private int time;
     private Station place;
 
-    public double getTime(){
+    public int getTime(){
         return time;
     }
     public Station getStation(){
         return place;
+    }
+
+    sched(int t, Station p){
+        time = t;
+        place = p;
     }
 }

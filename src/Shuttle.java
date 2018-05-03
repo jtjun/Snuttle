@@ -18,18 +18,22 @@ public class Shuttle {
         to = S.whatIthStation(1);
     }
 
-    public Edge whereNow(time){
-
-    }
-
     public int[] getXY(){
         int[] xy = {x,y};
         return xy;
     }
-}
 
+    public Schedule getSchedule(){
+        return S;
+    }
+    /*
+    public Edge whereNow(time){
+
+    }*/
+}
+/*
 class Edge{
     private Station from;
     private Station to;
 
-}
+}*/
