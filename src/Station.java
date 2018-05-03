@@ -1,7 +1,6 @@
 public class Station {
     private String name;
-    private int x;
-    private int y;
+    private int x, y;
 
     Station(String namei, int xi, int yi){
         name = namei;
@@ -20,5 +19,5 @@ public class Station {
     public int getY(){
         return y;
     }
-    //public Station nearestStation(double x, double y){}
+    //public Station nearestStation(int x, int y){}
 }

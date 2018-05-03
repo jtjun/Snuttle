@@ -44,7 +44,10 @@ public class Schedule{
         Schedules = Arrays.copyOf(Schedules,  l+1);
         Schedules[l] = s;
         sortSchedule();
-        // add new schedule(t,p) in Schedule
+        if(l==0) { // if i==0 then initialize
+            sched[] sar = {s};
+            Schedules = sar;
+        } // add new schedule(t,p) in Schedule
     }
 
     public void removeSchedule(sched s){
@@ -72,16 +75,16 @@ class sched {
     private int time;
     private Station place;
 
+    sched(int t, Station p){
+        time = t;
+        place = p;
+    }
+
     public int getTime(){
         return time;
     }
     public Station getStation(){
         return place;
-    }
-
-    sched(int t, Station p){
-        time = t;
-        place = p;
     }
 
     public String toString(){

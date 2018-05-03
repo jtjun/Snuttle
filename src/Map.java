@@ -70,14 +70,15 @@ public class Map {
         if (idx1 >= stations.size()) throw new IndexOutOfBoundsException();
         if (idx2 < 0) throw new IndexOutOfBoundsException();
         if (idx2 >= stations.size()) throw new IndexOutOfBoundsException();
-        return dist[idx1][idx2];
+        return dist[idx1][idx2]; // it equals to time
     }
 
     public int getDistance(String name1, String name2) { // Get distance between two stations by name
         int idx1 = getIndex(name1);
         int idx2 = getIndex(name2);
-        return getDistance(idx1, idx2);
+        return getDistance(idx1, idx2); // it equals to time
     }
+    // if you want time  -> getDistatnce() * speed = time
 
     public int getNumStations() {
         return stations.size();
