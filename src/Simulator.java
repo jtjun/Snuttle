@@ -6,7 +6,7 @@ public class Simulator {
     public Simulator(){
         int userN = 1000;
 
-        Map map = new Map("stations.txt");
+        Map map = new Map("stations.csv", "distance.csv");
         Generator generator = new Generator(userN, map); // Generate userN guests for this map
     }
 }

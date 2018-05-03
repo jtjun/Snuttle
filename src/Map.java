@@ -4,16 +4,44 @@ import java.util.Scanner;
 
 public class Map{
     private ArrayList<Station> stations;
+    private int[][] dist;
 
-    public Map(String filename) throws FileNotFoundException{ // Load stations from file
+    public Map(String stationfile, String distancefile) throws FileNotFoundException{
+        // Load stations from file
         stations = new ArrayList<>();
-        Scanner scanner = new Scanner(new File(filename));
+        Scanner scanner = new Scanner(new File(stationfile));
         while(scanner.hasNextLine()){
             String[] parsed = scanner.nextLine().split(",");
             if(parsed.length!=3) continue;
             stations.add(new Station(parsed[0],Double.parseDouble(parsed[1]),Double.parseDouble(parsed[2])));
         }
         scanner.close();
+        int n = stations.size();
+
+        // Load distances from file
+        dist = new int[n][n];
+        int idx = 0;
+        scanner = new Scanner(new File(distancefile));
+        while(scanner.hasNextLine()){
+            String[] parsed = scanner.nextLine().split(",");
+            if(parsed.length!=n) continue;
+            for(int j = 0; j < n; j++){
+                dist[idx][j] = Integer.parseInt(parsed[j]);
+            }
+            idx++;
+        }
+        scanner.close();
+
+        // Find shortest distance using Floyd
+        for(int k = 0; k < n; k++){
+            for(int i = 0; i < n; i++){
+                for(int j = 0; j < n; j++){
+                    if(dist[i][j] > dist[i][k] + dist[k][j]){
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
     }
     
     public Station getStation(String name){ // Get station by name
