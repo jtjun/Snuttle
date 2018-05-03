@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 import java.util.Random;
 
+>>>>>>> a7a914a20f1150a1605c2442798e9fcf1d7cb64c
 public class Generator {
     private ArrayList<Guest> guests;
 
