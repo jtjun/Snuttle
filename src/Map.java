@@ -55,6 +55,7 @@ public class Map{
         if(idx >= stations.size()) throw new IndexOutOfBoundsException();
         return stations.get(idx);
     }
+<<<<<<< HEAD
 }
 
 class Edge {
@@ -62,4 +63,18 @@ class Edge {
     private Station to;
     int remain;
     int
+=======
+
+    public int getDistance(int idx1,int idx2){ // Get distance between two stations by idx
+        if(idx1 < 0) throw new IndexOutOfBoundsException();
+        if(idx1 >= stations.size()) throw new IndexOutOfBoundsException();
+        if(idx2 < 0) throw new IndexOutOfBoundsException();
+        if(idx2 >= stations.size()) throw new IndexOutOfBoundsException();
+        return dist[idx1][idx2];
+    }
+
+    public int getNumStations(){
+        return stations.size();
+    }
+>>>>>>> 3051cc32f53ae1878af3249a5afef173b51018e5
 }
