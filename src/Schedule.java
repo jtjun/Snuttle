@@ -3,8 +3,6 @@ import java.util.*;
 public class Schedule{
     private sched[] Schedules;
 
-    public S
-
     public void removeAfterT(double time){
         int dt = whatNextD(time) -1; // {from, to, next, next, next, ...}
         sched[] nSched = new sched[Schedules.length - dt];
