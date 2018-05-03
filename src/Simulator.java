@@ -13,7 +13,7 @@ public class Simulator {
         Shuttle[] shuttles = new Shuttle[10];
         MainSystem.setCircularSchedule(shuttles,map);
         for(int i = 0; i < shuttles.length; i++){
-            System.out.println(shuttles[i].getSchedule());
+            System.out.println((shuttles[i].getSchedule().toString()));
         }
     }
 

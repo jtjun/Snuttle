@@ -38,16 +38,15 @@ public class Schedule{
         }); // sort schedule by compare time
     }
 
-    public void addSchedule(int t, Station p){
-        sched s =  new sched(t, p);
+    public void addSchedule(int t, Station p, int n){
+        sched s =  new sched(t, p, n);
+        addSchedule(s);
+    }
+    public void addSchedule(sched s){
         int l = Schedules.length;
-        Schedules = Arrays.copyOf(Schedules,  l+1);
+        Schedules = Arrays.copyOf(Schedules, l+1);
         Schedules[l] = s;
-        sortSchedule();
-        if(l==0) { // if i==0 then initialize
-            sched[] sar = {s};
-            Schedules = sar;
-        } // add new schedule(t,p) in Schedule
+        sortSchedule(); // add new schedule s
     }
 
     public void removeSchedule(sched s){
@@ -74,20 +73,23 @@ public class Schedule{
 class sched {
     private int time;
     private Station place;
+    private int nums = 1;
 
-    sched(int t, Station p){
+    sched(int t, Station p, int n){
         time = t;
         place = p;
+        nums = n;
     }
 
-    public int getTime(){
-        return time;
-    }
-    public Station getStation(){
-        return place;
-    }
+    public void setTime(int t){ time = t; }
+    public void setStation(Station p){ place = p; }
+    public void setNums(int n){ nums = n; }
+
+    public int getTime(){ return time; }
+    public Station getStation(){ return place; }
+    public int getNums() { return nums; }
 
     public String toString(){
-        return "time("+time+"), place("+place.getName()+")";
+        return "time("+time+"), place("+place.getName()+"), nums("+nums+")";
     }
 }

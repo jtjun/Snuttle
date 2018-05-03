@@ -15,10 +15,10 @@ public class MainSystem {
             // Make new schedule
             Schedule schedule = new Schedule();
             int startStation = n/shuttles.length * i; // Start at different positions
-            schedule.addSchedule(t,map.getStation(stationorder[startStation]));
+            schedule.addSchedule(t,map.getStation(stationorder[startStation]), 1);
             for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
-                schedule.addSchedule(t, map.getStation(stationorder[j%n]));
+                schedule.addSchedule(t, map.getStation(stationorder[j%n]), 1);
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(), map.getStation(stationorder[startStation]).getY(), 0, schedule);
         }

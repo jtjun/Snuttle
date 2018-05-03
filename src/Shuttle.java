@@ -1,9 +1,10 @@
 public class Shuttle {
     private int x, y;
-    private int time;
     private int max = 6;
     private int nums = 0;
+
     private Schedule S;
+    private int time;
 
     Shuttle(int xi, int yi, int timei, Schedule Si) {
         x = xi;
@@ -12,7 +13,6 @@ public class Shuttle {
         Si.removeAfterT(time);
         S = Si;
     }
-
     Shuttle(int timei, Schedule Si) {
         time = timei;
         Si.removeAfterT(time);
@@ -25,9 +25,6 @@ public class Shuttle {
         sched[] ft = {fromi, toi};
         return ft; // := {from schedule, to schedule}
     }
-    public sched[] whatDoNow() {
-        return whatDoAt(time);
-    }
 
     public int[] whereAtT(int timei, Map map) {
         sched[] ft = whatDoAt(timei);
@@ -38,20 +35,23 @@ public class Shuttle {
         return dn; // := {passed time, remain time, from-to require time}
     } // pass + remain = schedule time from-to
 
-    public int[] whereNowT(Map map){
-        return whereAtT(time, map);
-    }
+    public void driveDo(int timei, Map map){
+        int[] dn = whereAtT(timei, map);
+        sched[] Do = whatDoAt(timei);
+        int empty = getEmpty();
+        int num = Do[1].getNums();
 
-    public Station[] whereAtP(int timei) {
-        sched[] fti = whatDoAt(timei);
-        sched fromi = fti[0];
-        sched toi = fti[1];
-        Station[] ft = {fromi.getStation(), toi.getStation()};
-        return ft; // := {fromP, toP}
-    }
-
-    public Station[] whereNowP(){
-        return whereAtP(time);
+        if(dn[0]>=dn[2]) {
+            if(empty >= num){ // contain num<0 (drop off)
+                nums += num;
+                Do[1].getStation().rideDrop(num);
+                Do[1].setNums(0);
+            } else if(empty > 0 && num > 0){
+                nums += empty;
+                Do[1].setNums(num-empty);
+                Do[1].getStation().rideDrop(empty);
+            } // do at timei
+        } setTime(timei);
     }
 
     public void setXY(int xi, int yi) {
@@ -69,16 +69,6 @@ public class Shuttle {
         S.removeAfterT(time);
     } // update time
     public void setMax(int n){ max = n; }
-
-    public void ride(){ nums++; }
-    public void riden(int n){
-        nums += n;
-    }
-
-    public void drop(){ nums--; }
-    public void dropn(int n){
-        nums -= n;
-    }
 
     public int getX() { return x; }
     public int getY() { return y; }

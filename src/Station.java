@@ -10,18 +10,11 @@ public class Station {
     }
 
     public void setNums(int n){ nums = n; }
-
-    public void ride(){ nums--; }
-    public void riden(int n){
-        nums -= n;
+    public void rideDrop(int n){
+        if(n>0) nums -= n;
     }
+    public void newGuest(int n){ nums += n; }
 
-    public void newGuest(){ nums++; }
-    public void newGuestn(int n){
-        nums += n;
-    }
-
-    public void getoff_for_transfer(){ nums++; }
     public void getoff_for_transfer(int n){
         nums += n;
     } // if we have to consider transfer use this
