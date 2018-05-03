@@ -4,10 +4,11 @@ public class Shuttle {
     private Schedule S;
 
     public Station getFrom(double time){
+        return S.whatFromStation(time);
     }
 
     public Station getTo(double time){
-
+        return S.whatNextStation(time);
     }
 
     public void getSchedule(Schedule schedule, double time){
