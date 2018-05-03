@@ -11,16 +11,21 @@ public class Shuttle {
         Si.removeAfterT(time);
         S = Si;
     }
-
     Shuttle(int timei, Schedule Si){
         time = timei;
         Si.removeAfterT(time);
         S = Si;
     }
-
-    public int[] getXY(){
-        int[] xy = {x,y};
-        return xy;
+    public void setXY(int xi, int yi){
+        x = xi;
+        y = yi;
+    }
+    public void setSchedule(Schedule Si){
+        S = Si;
+    }
+    public void setTime(int timei){
+        time = timei;
+        S.removeAfterT(time);
     }
 
     public int getX(){
@@ -29,7 +34,9 @@ public class Shuttle {
     public int getY(){
         return y;
     }
-
+    public int getTime(){
+        return time;
+    }
     public Schedule getSchedule(){
         return S;
     }

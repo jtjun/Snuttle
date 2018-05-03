@@ -68,10 +68,3 @@ public class Map {
         return stations.size();
     }
 }
-
-class Edge {
-    private Station from;
-    private Station to;
-    private int already;
-    private int remain;
-}
