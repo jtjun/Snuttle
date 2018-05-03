@@ -46,8 +46,13 @@ public class Map {
     public Station getStation(String name) { // Get station by name
         for (Station station : stations) {
             if (name.equals(station.getName())) return station;
-        }
-        throw new NoSuchElementException();
+        } throw new NoSuchElementException();
+    }
+
+    public int getIndex(String name){
+        for (int i=0; i < stations.size(); i++) {
+            if (name.equals(stations.get(i).getName())) return i;
+        } throw new NoSuchElementException();
     }
 
     public Station getStation(int idx) { // Get station by index

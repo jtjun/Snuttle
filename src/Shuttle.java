@@ -15,18 +15,21 @@ public class Shuttle {
         time = timei;
         Si.removeAfterT(time);
         S = Si;
-    }
+    } // when don't know shuttle's xy
+
+    
+
     public void setXY(int xi, int yi){
         x = xi;
         y = yi;
     }
     public void setSchedule(Schedule Si){
         S = Si;
-    }
+    } // when update schedule
     public void setTime(int timei){
         time = timei;
         S.removeAfterT(time);
-    }
+    } // when update time
 
     public int getX(){
         return x;
