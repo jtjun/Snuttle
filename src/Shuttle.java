@@ -1,18 +1,35 @@
 public class Shuttle {
-    private double x;
-    private double y;
+    private int x;
+    private int y;
+    private int time;
     private Schedule S;
 
-    public Station getFrom(double time){
-        return S.whatFromStation(time);
+    private Station from;
+    private Station to;
+
+    Shuttle(int xi, int yi, int timei, Schedule Si){
+        x = xi;
+        y = yi;
+        time = timei;
+        Si.removeAfterT(time);
+        S = Si;
+
+        from = S.whatIthStation(0);
+        to = S.whatIthStation(1);
     }
 
-    public Station getTo(double time){
-        return S.whatNextStation(time);
+    public Edge whereNow(time){
+
     }
 
-    public void getSchedule(Schedule schedule, double time){
-        schedule.removeAfterT(time);
-        S = schedule;
+    public int[] getXY(){
+        int[] xy = {x,y};
+        return xy;
     }
+}
+
+class Edge{
+    private Station from;
+    private Station to;
+
 }

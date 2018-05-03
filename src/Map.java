@@ -1,6 +1,5 @@
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Map{
     private ArrayList<Station> stations;
