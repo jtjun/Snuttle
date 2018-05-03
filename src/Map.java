@@ -6,6 +6,8 @@ public class Map{
     }
     
     public Station getStation(int idx){
+        if(idx < 0) throw new IndexOutOfBoundsException();
+        if(idx >= Simulator.MAX_STATION) throw new IndexOutOfBoundsException();
         return stations[idx];
     }
 }
