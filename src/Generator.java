@@ -35,8 +35,8 @@ public class Generator {
         int k = Simulator.MAX_STATION/3; // It can be set with other value
 
         // Make array for random sampling
-        int[] ss = new int[Simulator.MAX_STATION];
-        for(int i = 0; i < Simulator.MAX_STATION; i++) ss[i] = i;
+        ArrayList<Integer> ss = new ArrayList<>();
+        for(int i = 0; i < Simulator.MAX_STATION; i++) ss.add(i);
         Collections.shuffle(ss);
         
         for(int i = 0; i < n; i++){
@@ -56,8 +56,8 @@ public class Generator {
                 d = getRandomStation(Simulator.K_RATIO, k, Simulator.MAX_STATION);
             }
 
-            Station placeS = map.getStation(ss[s]);
-            Station placeD = map.getStation(ss[d]);
+            Station placeS = map.getStation(ss.get(s));
+            Station placeD = map.getStation(ss.get(d));
 
             guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
