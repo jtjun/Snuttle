@@ -17,7 +17,7 @@ public class Shuttle {
         S = Si;
     } // when don't know shuttle's xy
 
-    
+
 
     public void setXY(int xi, int yi){
         x = xi;
