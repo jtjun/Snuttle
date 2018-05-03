@@ -17,6 +17,5 @@ public class Station {
         double[] position = {x, y};
         return position;
     }
-
     //public Station nearestStation(double x, double y){}
 }
