@@ -12,7 +12,7 @@ public class Map{
         while(scanner.hasNextLine()){
             String[] parsed = scanner.nextLine().split(",");
             if(parsed.length!=3) continue;
-            stations.add(new Station(parsed[0],Double.parseDouble(parsed[1]),Double.parseDouble(parsed[2])));
+            stations.add(new Station(parsed[0],Integer.parseInt(parsed[1]),Integer.parseInt(parsed[2])));
         }
         scanner.close();
         int n = stations.size();
@@ -55,4 +55,11 @@ public class Map{
         if(idx >= stations.size()) throw new IndexOutOfBoundsException();
         return stations.get(idx);
     }
+}
+
+class Edge {
+    private Station from;
+    private Station to;
+    int remain;
+    int
 }

@@ -32,8 +32,6 @@ public class Shuttle {
     }*/
 }
 /*
-class Edge{
-    private Station from;
-    private Station to;
+
 
 }*/

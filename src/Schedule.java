@@ -35,8 +35,8 @@ public class Schedule{
                 final int t2 = o2.getTime();
                 return Integer.compare(t1, t2);
             }
-        });
-    } // add new schedule(t,p) in Schedule
+        }); // add new schedule(t,p) in Schedule
+    }
 
     public void removeSchedule(sched s){
         int ind = whatTimeS(s.getTime());
