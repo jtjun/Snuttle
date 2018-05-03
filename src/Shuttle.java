@@ -1,6 +1,8 @@
 public class Shuttle {
     private int x, y;
     private int time;
+    private int max = 6;
+    private int nums = 0;
     private Schedule S;
 
     Shuttle(int xi, int yi, int timei, Schedule Si) {
@@ -40,7 +42,7 @@ public class Shuttle {
         return whereAtT(time, map);
     }
 
-    public Station[] whereAtP(int timei, Map map) {
+    public Station[] whereAtP(int timei) {
         sched[] fti = whatDoAt(timei);
         sched fromi = fti[0];
         sched toi = fti[1];
@@ -48,8 +50,8 @@ public class Shuttle {
         return ft; // := {fromP, toP}
     }
 
-    public Station[] whereNowP(Map map){
-        return whereAtP(time, map);
+    public Station[] whereNowP(){
+        return whereAtP(time);
     }
 
     public void setXY(int xi, int yi) {
@@ -66,9 +68,23 @@ public class Shuttle {
         time = timei;
         S.removeAfterT(time);
     } // update time
+    public void setMax(int n){ max = n; }
+
+    public void ride(){ nums++; }
+    public void riden(int n){
+        nums += n;
+    }
+
+    public void drop(){ nums--; }
+    public void dropn(int n){
+        nums -= n;
+    }
 
     public int getX() { return x; }
     public int getY() { return y; }
     public int getTime() { return time; }
+    public int getMax() { return max; }
+    public int getNums() {return nums; }
+    public int getEmpty() {return max-nums; }
     public Schedule getSchedule() { return S; }
 }

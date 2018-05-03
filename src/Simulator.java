@@ -18,8 +18,7 @@ public class Simulator {
     }
 
     public static void main(String[] args){
-        try{
-            Simulator simulator = new Simulator();
+        try{ Simulator simulator = new Simulator();
         }catch(FileNotFoundException e){
             System.out.println(e);
         }

@@ -35,7 +35,7 @@ public class Schedule{
                 final int t2 = o2.getTime();
                 return Integer.compare(t1, t2);
             }
-        });
+        }); // sort schedule by compare time
     }
 
     public void addSchedule(int t, Station p){
