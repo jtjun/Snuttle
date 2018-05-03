@@ -1,18 +1,18 @@
 import java.io.*;
 import java.util.*;
 
-public class Map{
+public class Map {
     private ArrayList<Station> stations;
     private int[][] dist;
 
-    public Map(String stationfile, String distancefile) throws FileNotFoundException{
+    public Map(String stationfile, String distancefile) throws FileNotFoundException {
         // Load stations from file
         stations = new ArrayList<>();
         Scanner scanner = new Scanner(new File(stationfile));
-        while(scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String[] parsed = scanner.nextLine().split(",");
-            if(parsed.length!=3) continue;
-            stations.add(new Station(parsed[0],Integer.parseInt(parsed[1]),Integer.parseInt(parsed[2])));
+            if (parsed.length != 3) continue;
+            stations.add(new Station(parsed[0], Integer.parseInt(parsed[1]), Integer.parseInt(parsed[2])));
         }
         scanner.close();
         int n = stations.size();
@@ -21,10 +21,10 @@ public class Map{
         dist = new int[n][n];
         int idx = 0;
         scanner = new Scanner(new File(distancefile));
-        while(scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String[] parsed = scanner.nextLine().split(",");
-            if(parsed.length!=n) continue;
-            for(int j = 0; j < n; j++){
+            if (parsed.length != n) continue;
+            for (int j = 0; j < n; j++) {
                 dist[idx][j] = Integer.parseInt(parsed[j]);
             }
             idx++;
@@ -32,49 +32,45 @@ public class Map{
         scanner.close();
 
         // Find shortest distance using Floyd
-        for(int k = 0; k < n; k++){
-            for(int i = 0; i < n; i++){
-                for(int j = 0; j < n; j++){
-                    if(dist[i][j] > dist[i][k] + dist[k][j]){
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (dist[i][j] > dist[i][k] + dist[k][j]) {
                         dist[i][j] = dist[i][k] + dist[k][j];
                     }
                 }
             }
         }
     }
-    
-    public Station getStation(String name){ // Get station by name
-        for(Station station : stations){
-            if(name.equals(station.getName())) return station;
+
+    public Station getStation(String name) { // Get station by name
+        for (Station station : stations) {
+            if (name.equals(station.getName())) return station;
         }
         throw new NoSuchElementException();
     }
 
-    public Station getStation(int idx){ // Get station by index
-        if(idx < 0) throw new IndexOutOfBoundsException();
-        if(idx >= stations.size()) throw new IndexOutOfBoundsException();
+    public Station getStation(int idx) { // Get station by index
+        if (idx < 0) throw new IndexOutOfBoundsException();
+        if (idx >= stations.size()) throw new IndexOutOfBoundsException();
         return stations.get(idx);
     }
-<<<<<<< HEAD
+
+    public int getDistance(int idx1, int idx2) { // Get distance between two stations by idx
+        if (idx1 < 0) throw new IndexOutOfBoundsException();
+        if (idx1 >= stations.size()) throw new IndexOutOfBoundsException();
+        if (idx2 < 0) throw new IndexOutOfBoundsException();
+        if (idx2 >= stations.size()) throw new IndexOutOfBoundsException();
+        return dist[idx1][idx2];
+    }
+
+    public int getNumStations() {
+        return stations.size();
+    }
 }
 
 class Edge {
     private Station from;
     private Station to;
     int remain;
-    int
-=======
-
-    public int getDistance(int idx1,int idx2){ // Get distance between two stations by idx
-        if(idx1 < 0) throw new IndexOutOfBoundsException();
-        if(idx1 >= stations.size()) throw new IndexOutOfBoundsException();
-        if(idx2 < 0) throw new IndexOutOfBoundsException();
-        if(idx2 >= stations.size()) throw new IndexOutOfBoundsException();
-        return dist[idx1][idx2];
-    }
-
-    public int getNumStations(){
-        return stations.size();
-    }
->>>>>>> 3051cc32f53ae1878af3249a5afef173b51018e5
 }

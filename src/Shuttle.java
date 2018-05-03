@@ -26,12 +26,4 @@ public class Shuttle {
     public Schedule getSchedule(){
         return S;
     }
-    /*
-    public Edge whereNow(time){
-
-    }*/
 }
-/*
-
-
-}*/
