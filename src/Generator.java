@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 public class Generator {
     private ArrayList<Guest> guests;

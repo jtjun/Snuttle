@@ -4,8 +4,6 @@ public class Shuttle {
     private Schedule S;
 
     public Station getFrom(double time){
-
-        return S[0];
     }
 
     public Station getTo(double time){
