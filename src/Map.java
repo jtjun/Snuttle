@@ -72,5 +72,6 @@ public class Map {
 class Edge {
     private Station from;
     private Station to;
-    int remain;
+    private int already;
+    private int remain;
 }
