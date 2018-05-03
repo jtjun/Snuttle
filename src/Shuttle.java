@@ -2,7 +2,9 @@ public class Shuttle {
     private double x;
     private double y;
 
-    private getPosition(){
+    public double[] getPosition(){
         return {x, y};
     }
+
+    private void
 }

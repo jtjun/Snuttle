@@ -1,4 +1,10 @@
 public class Station {
+    public static void main(String[] ar){
+        a();
+    }
+    public static int a(){
+        return "abc";
+    }
 
     private String name;
     private double x;
@@ -10,7 +16,7 @@ public class Station {
         y = yi;
     }
 
-    public int getName(){
+    public String getName(){
         return name;
     }
 

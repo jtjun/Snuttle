@@ -3,11 +3,9 @@ import java.util.Random;
 public class Generator {
     private ArrayList<Guest> guests;
 
-    public Generator(int n, Map map){
+    public Generator(int n){
         Random generator = new Random();
         guests = new ArrayList<>();
-
-        // Case 1: All Random
         for(int i = 0; i < n; i++){
             int timeS = generator.nextInt(Simulator.MAX_TIME);
             int timeD = generator.nextInt(Simulator.MAX_TIME);
@@ -16,17 +14,8 @@ public class Generator {
                 timeS = timeD;
                 timeD = tmp;
             }
-
-            int s = generator.nextInt(Simulator.MAX_STATION), d = generator.nextInt(Simulator.MAX_STATION);
-            while(s == d){
-                d = generator.nextInt(Simulator.MAX_STATION);
-            }
-
-            Station placeS = map.getStation(s);
-            Station placeD = map.getStation(d);
             
-            
-            guests.add(new Guest(timeS,placeS,timeD,placeD));
+            guests.add(new Guest(timeS,null,timeD,null));
         }
     }
 }
