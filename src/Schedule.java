@@ -27,11 +27,7 @@ public class Schedule{
         return Schedules[i];
     }
 
-    public void addSchedule(int t, Station p){
-        sched s =  new sched(t, p);
-        int l = Schedules.length;
-        Schedules = Arrays.copyOf(Schedules,  l+1);
-        Schedules[l] = s;
+    public void sortSchedule(){
         Arrays.sort(Schedules, new Comparator<sched>() {
             @Override
             public int compare(sched o1, sched o2) {
@@ -39,19 +35,36 @@ public class Schedule{
                 final int t2 = o2.getTime();
                 return Integer.compare(t1, t2);
             }
-        }); // add new schedule(t,p) in Schedule
+        });
+    }
+
+    public void addSchedule(int t, Station p){
+        sched s =  new sched(t, p);
+        int l = Schedules.length;
+        Schedules = Arrays.copyOf(Schedules,  l+1);
+        Schedules[l] = s;
+        sortSchedule();
+        // add new schedule(t,p) in Schedule
     }
 
     public void removeSchedule(sched s){
+        int l = Schedules.length;
         int ind = whatTimeS(s.getTime());
+        Schedules[ind] = Schedules[l-1];
+        Schedules = Arrays.copyOf(Schedules, l-1);
+        sortSchedule();
+    } // remove schedule
+
+    public void replaceSchedule(sched pres, sched news){
+        int ind = whatTimeS(pres.getTime());
+        Schedules[ind] = news;
     }
 
     public String toString(){
         String ret = "[";
         for(int i = 0; i < Schedules.length; i++){
             ret += Schedules[i].toString()+",";
-        }
-        return ret+"]";
+        } return ret+"]";
     }
 }
 

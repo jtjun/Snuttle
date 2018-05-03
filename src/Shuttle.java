@@ -4,43 +4,48 @@ public class Shuttle {
     private int time;
     private Schedule S;
 
-    Shuttle(int xi, int yi, int timei, Schedule Si){
+    Shuttle(int xi, int yi, int timei, Schedule Si) {
         x = xi;
         y = yi;
         time = timei;
         Si.removeAfterT(time);
         S = Si;
     }
-    Shuttle(int timei, Schedule Si){
+
+    Shuttle(int timei, Schedule Si) {
         time = timei;
         Si.removeAfterT(time);
         S = Si;
     } // when don't know shuttle's xy
 
 
-
-    public void setXY(int xi, int yi){
+    public void setXY(int xi, int yi) {
         x = xi;
         y = yi;
     }
-    public void setSchedule(Schedule Si){
+
+    public void setSchedule(Schedule Si) {
         S = Si;
     } // when update schedule
-    public void setTime(int timei){
+
+    public void setTime(int timei) {
         time = timei;
         S.removeAfterT(time);
     } // when update time
 
-    public int getX(){
+    public int getX() {
         return x;
     }
-    public int getY(){
+
+    public int getY() {
         return y;
     }
-    public int getTime(){
+
+    public int getTime() {
         return time;
     }
-    public Schedule getSchedule(){
+
+    public Schedule getSchedule() {
         return S;
     }
 }

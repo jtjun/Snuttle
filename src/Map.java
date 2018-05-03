@@ -53,16 +53,16 @@ public class Map {
         } throw new NoSuchElementException();
     }
 
-    public int getIndex(String name){
-        for (int i=0; i < stations.size(); i++) {
-            if (name.equals(stations.get(i).getName())) return i;
-        } throw new NoSuchElementException();
-    }
-
     public Station getStation(int idx) { // Get station by index
         if (idx < 0) throw new IndexOutOfBoundsException();
         if (idx >= stations.size()) throw new IndexOutOfBoundsException();
         return stations.get(idx);
+    }
+
+    public int getIndex(String name){ // Get index by name
+        for (int i=0; i < stations.size(); i++) {
+            if (name.equals(stations.get(i).getName())) return i;
+        } throw new NoSuchElementException();
     }
 
     public int getDistance(int idx1, int idx2) { // Get distance between two stations by idx
@@ -71,6 +71,12 @@ public class Map {
         if (idx2 < 0) throw new IndexOutOfBoundsException();
         if (idx2 >= stations.size()) throw new IndexOutOfBoundsException();
         return dist[idx1][idx2];
+    }
+
+    public int getDistance(String name1, String name2) { // Get distance between two stations by name
+        int idx1 = getIndex(name1);
+        int idx2 = getIndex(name2);
+        return getDistance(idx1, idx2);
     }
 
     public int getNumStations() {
