@@ -14,8 +14,8 @@ public class Shuttle {
         Si.removeAfterT(time);
         S = Si;
 
-        from = S.whatIthStation(0);
-        to = S.whatIthStation(1);
+        from = S.whatIthSched(0).getStation();
+        to = S.whatIthSched(1).getStation();
     }
 
     public int[] getXY(){

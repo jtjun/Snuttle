@@ -5,26 +5,25 @@ public class Schedule{
     // Schedules[0] is where shuttle from
 
     public void removeAfterT(int time){
-        int dt = whatAfter(time) -1;
+        int dt = whatTimeS(time) -1;
         sched[] nSched = new sched[Schedules.length - dt];
         for(int i=0; i<Schedules.length - dt; i++){
             nSched[i] = Schedules[dt+i];
         } Schedules = Arrays.copyOf(nSched, Schedules.length - dt);
     }
 
-    public int whatAfter(int time){
+    public int whatTimeS(int time){
         int l = Schedules.length;
         for(int i=0; i<l; i++){
             if(Schedules[i].getTime() > time) return i;
-        } return l+1; // if there are no schedule after current time
-    } // return current time destination's index
+        } return l+1; // if there are no schedule after time
+    } // return after time first destination's index
 
-    public Station whatIthStation(int i){
-        sched next = Schedules[i];
-        return next.getStation();
+    public sched whatIthSched(int i){
+        return Schedules[i];
     }
 
-    Schedule(int t, Station p){
+    public void addSchedule(int t, Station p){
         sched s =  new sched(t, p);
         int l = Schedules.length;
         Schedules = Arrays.copyOf(Schedules,  l+1);
@@ -37,6 +36,10 @@ public class Schedule{
                 return Integer.compare(t1, t2);
             }
         });
+    } // add new schedule(t,p) in Schedule
+
+    public void removeSchedule(sched s){
+        int ind = whatTimeS(s.getTime());
     }
 }
 
