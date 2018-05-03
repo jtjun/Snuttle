@@ -8,5 +8,7 @@ public class Simulator {
 
         Map map = new Map("stations.csv", "distance.csv");
         Generator generator = new Generator(userN, map); // Generate userN guests for this map
+        Shuttle[] shuttles = new Shuttle[10];
+        
     }
 }

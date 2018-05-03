@@ -12,7 +12,7 @@ public class Map{
         while(scanner.hasNextLine()){
             String[] parsed = scanner.nextLine().split(",");
             if(parsed.length!=3) continue;
-            stations.add(new Station(parsed[0],Double.parseDouble(parsed[1]),Double.parseDouble(parsed[2])));
+            stations.add(new Station(parsed[0],Integer.parseInt(parsed[1]),Integer.parseInt(parsed[2])));
         }
         scanner.close();
         int n = stations.size();
@@ -54,5 +54,17 @@ public class Map{
         if(idx < 0) throw new IndexOutOfBoundsException();
         if(idx >= stations.size()) throw new IndexOutOfBoundsException();
         return stations.get(idx);
+    }
+
+    public int getDistance(int idx1,int idx2){ // Get distance between two stations by idx
+        if(idx1 < 0) throw new IndexOutOfBoundsException();
+        if(idx1 >= stations.size()) throw new IndexOutOfBoundsException();
+        if(idx2 < 0) throw new IndexOutOfBoundsException();
+        if(idx2 >= stations.size()) throw new IndexOutOfBoundsException();
+        return dist[idx1][idx2];
+    }
+
+    public int getNumStations(){
+        return stations.size();
     }
 }

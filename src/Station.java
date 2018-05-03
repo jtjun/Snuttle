@@ -1,9 +1,9 @@
 public class Station {
     private String name;
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
-    Station(String namei, double xi, double yi){
+    Station(String namei, int xi, int yi){
         name = namei;
         x = xi;
         y = yi;
@@ -13,9 +13,12 @@ public class Station {
         return name;
     }
 
-    public double[] getPosition(){
-        double[] position = {x, y};
-        return position;
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
     }
     //public Station nearestStation(double x, double y){}
 }
