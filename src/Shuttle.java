@@ -15,12 +15,6 @@ public class Shuttle {
         Si.removeAfterT(time);
         S = Si;
     }
-    Shuttle(int timei, Schedule Si, int namei) {
-        name = namei;
-        time = timei;
-        Si.removeAfterT(time);
-        S = Si;
-    } // when don't know shuttle's xy
 
     public void driving(int t, Map map){
         int toidx =  S.whatSchedAtI(t);

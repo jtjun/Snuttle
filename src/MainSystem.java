@@ -28,6 +28,10 @@ public class MainSystem {
                                      0, schedule, i);
         } // set all Shuttle's circular route
 
+        //
+    }
+
+    public static void setAlgorithm(Shuttle[] shuttles, Map map, ArrayList<Guest> guests){
 
     }
 }
