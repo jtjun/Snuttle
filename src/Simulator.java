@@ -15,10 +15,10 @@ public class Simulator {
         MainSystem.setCircularSchedule(shuttles,map);
 
         for(int i = 0; i < shuttles.length; i++){
-            System.out.println((shuttles[i].getSchedule().toString()));
+            System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
         for(int i = 0; i < shutn; i++){
-            shuttles[i].driving(MAX_TIME, map);
+            shuttles[i].driving(5000, map);
             // have to add drawing graph method
         } // actual driving
     }

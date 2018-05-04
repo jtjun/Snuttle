@@ -22,7 +22,7 @@ public class MainSystem {
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),
-                                      0, schedule);
+                                     0, schedule, i);
         }
     }
 }

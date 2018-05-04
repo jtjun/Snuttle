@@ -1,19 +1,22 @@
 public class Shuttle {
+    private int name;
     private int x, y;
-    private int max = 6;
+    private int max = 50;
     private int nums = 0;
 
     private Schedule S;
     private int time; // Shuttle's current time
 
-    Shuttle(int xi, int yi, int timei, Schedule Si) {
+    Shuttle(int xi, int yi, int timei, Schedule Si, int namei) {
+        name = namei;
         x = xi;
         y = yi;
         time = timei;
         Si.removeAfterT(time);
         S = Si;
     }
-    Shuttle(int timei, Schedule Si) {
+    Shuttle(int timei, Schedule Si, int namei) {
+        name = namei;
         time = timei;
         Si.removeAfterT(time);
         S = Si;
@@ -32,23 +35,28 @@ public class Shuttle {
         int num = taski.getTo().getNums();
         int empty = getEmpty();
         sched To = taski.getTo();
+        int tim = To.getTime();
+
         if(num == 0) return ;
         if(taski.getPassed() >= taski.getRequire()) {
             if(empty >= num){ // contain num < 0 (drop off)
                 nums += num;
                 To.getStation().rideDrop(num);
                 To.setNums(0);
-                if(num > 0) System.out.println(num+"people ride");
-                if(num < 0) System.out.println(num+"people drop");
+                if(num > 0) System.out.println(name+", "+num+" people ride at "+ tim);
+                if(num < 0) System.out.println(name+", "+num+" people drop at "+ tim);
+                if(getEmpty()==0)  System.out.println(name+", full!\n");
             } else if(empty > 0 && num > 0){
                 nums += empty;
                 To.setNums(num-empty);
                 To.getStation().rideDrop(empty);
-                System.out.println((num-empty)+"people ride");
+                System.out.println(name+", "+(num-empty)+" people ride at "+ tim);
+                if(getEmpty()==0)  System.out.println(name+", full!\n");
             } // do at timei
         }
     }
 
+    public void setName(int n){ name = n; }
     public void setXY(int xi, int yi) {
         x = xi;
         y = yi;
@@ -65,6 +73,7 @@ public class Shuttle {
     } // update time
     public void setMax(int n){ max = n; }
 
+    public int getNamw() { return name; }
     public int getX() { return x; }
     public int getY() { return y; }
     public int getTime() { return time; }
