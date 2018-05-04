@@ -20,7 +20,9 @@ public class MainSystem {
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 1);
             }
-            shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(), map.getStation(stationorder[startStation]).getY(), 0, schedule);
+            shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
+                                      map.getStation(stationorder[startStation]).getY(),
+                                      0, schedule);
         }
     }
 }

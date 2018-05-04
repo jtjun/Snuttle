@@ -8,8 +8,9 @@ public class Schedule{
         Schedules = new sched[0];
     }
 
-    public void removeAfterT(int time){
+    public void removeAfterT(int time){ // remove Before T, remain After T
         int dt = whatSchedAtI(time) -1;
+        if(dt <= 1) return ;
         sched[] nSched = new sched[Schedules.length - dt];
         for(int i=0; i<Schedules.length - dt; i++){
             nSched[i] = Schedules[dt+i];
@@ -25,7 +26,7 @@ public class Schedule{
 
     public sched whatIthSched(int i){
         int l = Schedules.length;
-        if(i > l) {
+        if(i >= l) {
             sched lasts = Schedules[l-1];
             return (new sched(lasts.getTime(),lasts.getStation(),0));
         } return Schedules[i];
