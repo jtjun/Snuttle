@@ -12,9 +12,6 @@ public class Generator {
     public void GeneratorAR(int n, Map map) {
         Random generator = new Random();
         guests = new ArrayList<>();
-
-        
-
         ArrayList<StationGroup> edgelist = new ArrayList<>();
 
         for(int i = 0; i < map.getNumStations(); i++){
@@ -25,7 +22,6 @@ public class Generator {
                 }
             }
         }
-
         for (int i = 0; i < n; i++) {
             // Set time with random
             int timeS = generator.nextInt(Simulator.MAX_TIME);
@@ -51,19 +47,15 @@ public class Generator {
      public void GeneratorHS(int n, Map map) {
         Random generator = new Random();
         int k = Simulator.MAX_STATION*Simulator.MAX_STATION/2/8; // It can be set with other value
-
         // Make array for random sampling
         ArrayList<StationGroup> edgelist = new ArrayList<>();
 
-        for(int i = 0; i < map.getNumStations(); i++){
+        for(int i = 0; i < map.getNumStations(); i++) {
             Station s = map.getStation(i);
-            for(int j = 0; j < map.getNumStations(); j++){
-                if(i!=j){
-                    edgelist.add(new StationGroup(s,map.getStation(j)));
-                }
+            for (int j = 0; j < map.getNumStations(); j++) {
+                if (j != i) edgelist.add(new StationGroup(s, map.getStation(j)));
             }
-        }
-        Collections.shuffle(edgelist);
+        } Collections.shuffle(edgelist);
         
         for(int i = 0; i < n; i++){
             // Set time with random

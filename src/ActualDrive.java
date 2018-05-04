@@ -12,7 +12,7 @@ public class ActualDrive {
     private Map map;
 
     ActualDrive(Shuttle[] shuttlesi, ArrayList<Guest> guests, Map mapi){
-        shuttles = shuttlesi;
+        shuttles = shuttlesi; // scheduled shuttles
         shutn = shuttles.length;
 
         map = mapi;
@@ -20,11 +20,13 @@ public class ActualDrive {
         S = new Schedule[shutn];
         for(int i=0; i<shutn; i++){
             S[i] = shuttles[i].getSchedule();
-        }
+        } R = new Request(guests, map);
     }
 
-    public void syncRandS(Shuttle shut,sched sche){
-
+    public void syncRS(Shuttle shut,sched sche){
+        // sched 에 맞춰서 shut 의 sched의 num 을 변화시키고
+        // shut에 맞춰서 sche 를 변형시키고
+        // t 에 따라서 기다린 시간 갱신
     }
     public void Simulate(int time){
 
