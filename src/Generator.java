@@ -13,11 +13,13 @@ public class Generator {
         Random generator = new Random();
         guests = new ArrayList<>();
 
+        
+
         ArrayList<StationGroup> edgelist = new ArrayList<>();
 
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < map.getNumStations(); i++){
             Station s = map.getStation(i);
-            for(int j = 0; j < n; j++){
+            for(int j = 0; j < map.getNumStations(); j++){
                 if(i!=j){
                     edgelist.add(new StationGroup(s,map.getStation(j)));
                 }
@@ -53,9 +55,9 @@ public class Generator {
         // Make array for random sampling
         ArrayList<StationGroup> edgelist = new ArrayList<>();
 
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < map.getNumStations(); i++){
             Station s = map.getStation(i);
-            for(int j = 0; j < n; j++){
+            for(int j = 0; j < map.getNumStations(); j++){
                 if(i!=j){
                     edgelist.add(new StationGroup(s,map.getStation(j)));
                 }
@@ -74,7 +76,7 @@ public class Generator {
             }
 
             // Set stations with random excluding same station
-            StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, m));
+            StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, edgelist.size()));
 
             Station placeS = sd.start;
             Station placeD = sd.dest;

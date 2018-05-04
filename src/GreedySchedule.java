@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class GreedySchedule{
     public static void setGreedySchedule(Shuttle[] shuttles, Map map, ArrayList<Guest> guests, int fixedshuttle){
         int n = map.getNumStations();
@@ -42,6 +44,7 @@ public class GreedySchedule{
 
             for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
+                if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
@@ -58,10 +61,11 @@ public class GreedySchedule{
         }
         int k = 0;
         ArrayList<ArrayList<Station>> lists = new ArrayList<ArrayList<Station>>(shuttles.length-fixedshuttle);
-        for(int i = 0; i < lists.length; i++){
-            lists.set(i,new ArrayList<Station>());
+        for(int i = 0; i < shuttles.length-fixedshuttle; i++){
+            lists.add(new ArrayList<Station>());
         }
         for(StationGroupNum sgn : sgns){
+            if(lists.get(k).size()>map.getNumStations()/8) break;
             lists.get(k).add(sgn.sg.start);
             lists.get(k).add(sgn.sg.dest);
             k = (k+1)%(shuttles.length-fixedshuttle);
@@ -73,31 +77,33 @@ public class GreedySchedule{
             schedules[k].addSchedule(t, p, 0);
             for(int i = 1; i < n*10+1; i++){
                 t += map.getDistance(p.getName(), list.get(i%list.size()).getName());
+                if(t>Simulator.MAX_TIME) break;
                 schedules[k].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
             }
+            shuttles[k+fixedshuttle] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[k], k+fixedshuttle);
             k++;
         }
     }
 
-    class StationGroup{
-        public Station start,dest;
-        public StationGroup(Station start, Station dest){
-            this.start = start;
-            this.dest = dest;
-        }
-
-        public boolean equals(StationGroup sg){
-            return this.start == sg.start && this.dest == sg.dest;
-        }
+}
+class StationGroup{
+    public Station start,dest;
+    public StationGroup(Station start, Station dest){
+        this.start = start;
+        this.dest = dest;
     }
 
-    class StationGroupNum{
-        public StationGroup sg;
-        public int num;
-        public StationGroupNum(StationGroup sg, int num){
-            this.sg = sg;
-            this.num = num;
-        }
+    public boolean equals(StationGroup sg){
+        return this.start == sg.start && this.dest == sg.dest;
+    }
+}
+
+class StationGroupNum{
+    public StationGroup sg;
+    public int num;
+    public StationGroupNum(StationGroup sg, int num){
+        this.sg = sg;
+        this.num = num;
     }
 }
