@@ -16,15 +16,18 @@ public class Shuttle {
         S = Si;
     }
 
-    public void driving(int t, Map map){
+    public int Driving(int t, Map map, int par){
+        int temp = nums;
         int toidx =  S.whatSchedAtI(t);
         for(int i=0; i<toidx; i++){
             int ti = S.whatIthSched(i).getTime();
-            drive(ti, map);
-        } setTime(t);
+            drive(ti, map, par);
+        } if(par>0) setTime(t);
+        if(par<1) nums = temp;
+        return nums; // return at t's number
     }
 
-    public void drive(int timei, Map map){
+    public void drive(int timei, Map map, int par){
         Taski taski = new Taski(timei, S, map);
         int num = taski.getTo().getNums();
         int empty = getEmpty();
@@ -38,22 +41,24 @@ public class Shuttle {
                 nums += num;
                 To.getStation().rideDrop(num);
                 To.setNums(0);
-                if(num > 0) System.out.println(name+", "+num+" people ride at "+ tim);
-                if(num < 0) System.out.println(name+", "+num+" people drop at "+ tim);
-                if(getEmpty()==0)  System.out.println(name+", full!\n");
+                if(par>0) {
+                    if (num > 0) System.out.println(name + ", " + num + " people ride at " + tim);
+                    if (num < 0) System.out.println(name + ", " + num + " people drop at " + tim);
+                    if (getEmpty() == 0) System.out.println(name + ", full!\n");
+                }
             } else if(empty > 0 && num > 0){
                 nums += empty;
                 To.setNums(num-empty);
                 To.getStation().rideDrop(empty);
                 System.out.println(name+", "+(num-empty)+" people ride at "+ tim);
-                if(getEmpty()==0)  System.out.println(name+", full!\n");
+                if(getEmpty()==0 && par>0)  System.out.println(name+", full!\n");
             } // do at timei
         }
         if(From.equals(To)) S.removeSchedule(From);
     }
 
-    public int getEmptyT(int t){
-
+    public int getEmptyT(int t, Map map){
+        return Driving(t, map, 0);
     }
 
     public void setName(int n){ name = n; }
