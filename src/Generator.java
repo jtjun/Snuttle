@@ -13,6 +13,17 @@ public class Generator {
         Random generator = new Random();
         guests = new ArrayList<>();
 
+        ArrayList<StationGroup> edgelist = new ArrayList<>();
+
+        for(int i = 0; i < n; i++){
+            Station s = map.getStation(i);
+            for(int j = 0; j < n; j++){
+                if(i!=j){
+                    edgelist.add(new StationGroup(s,map.getStation(j)));
+                }
+            }
+        }
+
         for (int i = 0; i < n; i++) {
             // Set time with random
             int timeS = generator.nextInt(Simulator.MAX_TIME);
@@ -24,14 +35,10 @@ public class Generator {
             }
 
             // Set stations with random excluding same station
-            int s = getRandomStation(0.0, 0, Simulator.MAX_STATION);
-            int d = getRandomStation(0.0, 0, Simulator.MAX_STATION);
-            while (s == d) {
-                d = getRandomStation(0.0, 0, Simulator.MAX_STATION);
-            }
+            StationGroup sd = edgelist.get(generator.nextInt(edgelist.size()));
 
-            Station placeS = map.getStation(s);
-            Station placeD = map.getStation(d);
+            Station placeS = sd.start;
+            Station placeD = sd.dest;
 
             guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
@@ -40,12 +47,20 @@ public class Generator {
     // Case 2: K hotspots
      public void GeneratorHS(int n, Map map) {
         Random generator = new Random();
-        int k = Simulator.MAX_STATION/3; // It can be set with other value
+        int k = Simulator.MAX_STATION*Simulator.MAX_STATION/2/8; // It can be set with other value
 
         // Make array for random sampling
-        ArrayList<Integer> ss = new ArrayList<>();
-        for(int i = 0; i < Simulator.MAX_STATION; i++) ss.add(i);
-        Collections.shuffle(ss);
+        ArrayList<StationGroup> edgelist = new ArrayList<>();
+
+        for(int i = 0; i < n; i++){
+            Station s = map.getStation(i);
+            for(int j = 0; j < n; j++){
+                if(i!=j){
+                    edgelist.add(new StationGroup(s,map.getStation(j)));
+                }
+            }
+        }
+        Collections.shuffle(edgelist);
         
         for(int i = 0; i < n; i++){
             // Set time with random
@@ -58,14 +73,10 @@ public class Generator {
             }
 
             // Set stations with random excluding same station
-            int s = getRandomStation(Simulator.K_RATIO, k, Simulator.MAX_STATION);
-            int d = getRandomStation(Simulator.K_RATIO, k, Simulator.MAX_STATION);
-            while(s == d){
-                d = getRandomStation(Simulator.K_RATIO, k, Simulator.MAX_STATION);
-            }
+            StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, m));
 
-            Station placeS = map.getStation(ss.get(s));
-            Station placeD = map.getStation(ss.get(d));
+            Station placeS = sd.start;
+            Station placeD = sd.dest;
 
             guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
@@ -95,5 +106,13 @@ public class Generator {
                 return Integer.compare(t1, t2);
             }
         }); // sort guests by compare timeS
+    }
+
+    class StationGroup{
+        public Station start,dest;
+        public StationGroup(Station start, Station dest){
+            this.start = start;
+            this.dest = dest;
+        }
     }
 }
