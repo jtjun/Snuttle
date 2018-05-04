@@ -9,7 +9,7 @@ public class Schedule{
     }
 
     public void removeAfterT(int time){ // remove Before T, remain After T
-        int dt = whatSchedAtI(time) -1;
+        int dt = whatSchedIdx(time) -1;
         if(dt <= 1) return ;
         sched[] nSched = new sched[Schedules.length - dt];
         for(int i=0; i<Schedules.length - dt; i++){
@@ -17,14 +17,14 @@ public class Schedule{
         } Schedules = Arrays.copyOf(nSched, Schedules.length - dt);
     }
 
-    public int whatSchedAtI(int time){
+    public int whatSchedIdx(int time){
         int l = Schedules.length;
         for(int i=0; i<l; i++){
             if(Schedules[i].getTime() >= time) return i;
         } return l+1; // if there are no schedule after time
     } // return after (or at) time's destination index
 
-    public int whatSchedAtI(sched s){
+    public int whatSchedIdx(sched s){
         int l = Schedules.length;
         for(int i=0; i<l; i++){
             if(s.equals(Schedules[i])) return i;
@@ -61,9 +61,30 @@ public class Schedule{
         sortSchedule(); // add new schedule s
     }
 
+    public void mergeSched(sched s){
+        int idx = whatSchedIdx(s);
+        for(int i=idx+1; i<Schedules.length; i++){
+            if(s.equals(Schedules[i])){
+                int nidx = Schedules[idx].getNums();
+                int ni = Schedules[i].getNums();
+                Schedules[idx].setNums(nidx + ni);
+                removeSchedule(i);
+                i--;
+            }
+        }
+    }
+
     public void removeSchedule(sched s){
         int l = Schedules.length;
-        int idx = whatSchedAtI(s);
+        int idx = whatSchedIdx(s);
+        if(idx >= l) return;
+        Schedules[idx] = Schedules[l-1];
+        Schedules = Arrays.copyOf(Schedules, l-1);
+        sortSchedule();
+    } // remove schedule
+
+    public void removeSchedule(int idx){
+        int l = Schedules.length;
         if(idx >= l) return;
         Schedules[idx] = Schedules[l-1];
         Schedules = Arrays.copyOf(Schedules, l-1);
@@ -71,7 +92,7 @@ public class Schedule{
     } // remove schedule
 
     public void replaceSchedule(sched pres, sched news){
-        int ind = whatSchedAtI(pres.getTime());
+        int ind = whatSchedIdx(pres);
         Schedules[ind] = news;
     }
 
@@ -107,6 +128,9 @@ class sched {
         if(this.time == s.getTime() && this. place.equals(s.getStation())) return true;
         else return false;
     } // same time and same station
+    public sched copyS(){
+        return new sched(this.getTime(), this.getStation(), this.getNums());
+    }
 
     public boolean similar(sched s, int dt){
         if(this.place.equals(s.getStation())) {

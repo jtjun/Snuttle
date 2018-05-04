@@ -27,8 +27,8 @@ public class Guest {
     public int getRideT(){ return rideT; }
     public int getWaitT(){ return rideT - timeS; }
 
-    public void counterTS(int t){ request[0].setTime(t);} // counter request
-    public void counterTD(int t){ request[1].setTime(t);} // counter request
+    public void setTS(int t){ request[0].setTime(t);} // counter request
+    public void setTD(int t){ request[1].setTime(t);} // counter request
 
     public sched getRide(){return request[0];}
     public sched getDrop(){return request[1];}
@@ -44,9 +44,11 @@ class Request{
     private int runT = Simulator.MAX_TIME;
     private int stan;
     private Schedule[][] R;
+    private ArrayList<Guest> guests;
     Map map;
 
-    Request(ArrayList<Guest> guests, Map mapi){
+    Request(ArrayList<Guest> guestsi, Map mapi){
+        guests = guestsi;
         stan = map.getNumStations();
         R = new Schedule[runT][stan];
         map = mapi;

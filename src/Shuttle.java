@@ -6,31 +6,38 @@ public class Shuttle {
 
     private Schedule S;
     private int time; // Shuttle's current time
+    Map map;
 
-    Shuttle(int xi, int yi, int timei, Schedule Si, int namei) {
+    private sched To;
+    private sched From;
+
+    Shuttle(int xi, int yi, int timei, Schedule Si, int namei, Map mapi) {
         name = namei;
         x = xi;
         y = yi;
         time = timei;
+        map = mapi;
         Si.removeAfterT(time);
-        S = Si;
+        S = Si; // we don't care sched's nums now
+        To = S.whatIthSched(0);
+        From =S.whatIthSched(1);
     }
 
-    public int Driving(int t, Map map, int par){
-        int tempn = nums;
+    public int Driving(int t, int par){
+        int tempn = nums; // use this method after update sched's nums
         Schedule temps = S.copyS();
-        int toidx =  S.whatSchedAtI(t);
+        int toidx =  S.whatSchedIdx(t);
         for(int i=0; i<toidx; i++){
             int ti = S.whatIthSched(i).getTime();
-            drive(ti, map, par);
+            drive(ti, par);
         } if(par>0) setTime(t);
         if(par<1) {
             nums = tempn;
-            S = temps;
+            S = temps.copyS();
         } return nums; // return at t's number
     }
 
-    public void drive(int timei, Map map, int par){
+    public void drive(int timei, int par){ // call after sync with request
         Taski taski = new Taski(timei, S, map);
         int num = taski.getTo().getNums();
         int empty = getEmpty();
@@ -45,24 +52,42 @@ public class Shuttle {
                 To.getStation().rideDrop(num);
                 To.setNums(0);
                 if(par>0) {
-                    if (num > 0) System.out.println(name + ", " + num + " people ride at " + tim);
-                    if (num < 0) System.out.println(name + ", " + num + " people drop at " + tim);
+                    if (num > 0) System.out.println(tim+": "+name + ", " + num
+                            + " people ride at " + getEmpty());
+                    if (num < 0) System.out.println(tim+": "+name + ", "
+                            + num + " people drop at " + getEmpty());
                     if (getEmpty() == 0) System.out.println(name + ", full!\n");
                 }
             } else if(empty > 0 && num > 0){
                 nums += empty;
                 To.setNums(num-empty);
                 To.getStation().rideDrop(empty);
-                System.out.println(name+", "+(num-empty)+" people ride at "+ tim);
-                if(getEmpty()==0 && par>0)  System.out.println(name+", full!\n");
+                if(par>0) System.out.println(tim+": "+name + ", " + (num-empty)
+                        + " people ride at " + getEmpty());
+                if(getEmpty()==0 && par>0)  System.out.println(tim+": "+name+", full!\n");
             } // do at timei
-        } if(From.equals(To)) S.removeSchedule(From);
+        }
     }
+    public int goBefore(sched s){
+        int leftT = S.getNumSched();
+        for(int i=1; i<leftT; i++){
+            sched si = S.whatIthSched(i);
+            if(si.getTime() > s.getTime()) return -1;
+            if(si.getStation().equals(s.getStation())) return i;
+        } return -1;
+    }// when call this method, shuttle's To equals to guest's source
 
-    public int getEmptyT(int t, Map map){
-        return Driving(t, map, 0);
+    public sched whereTo(int timei, Map map) {
+        Taski taski = new Taski(timei, S, map);
+        return taski.getTo();
     }
-
+    public sched whereFrom(int timei, Map map) {
+        Taski taski = new Taski(timei, S, map);
+        return taski.getFrom();
+    }
+    public int getEmptyAtT(int t, Map map){
+        return Driving(t, 0);
+    }
     public void setName(int n){ name = n; }
     public void setXY(int xi, int yi) {
         x = xi;
@@ -92,18 +117,17 @@ public class Shuttle {
 
 class Taski {
     private int time; // current time
-    private sched from;
-    private sched to;
-    private int passed;
-    private int remain;
-    private int require;
+    private sched from, to;
+    private int passed, remain, require;
 
     Taski(int timei, Schedule S, Map map) {
         time = timei;
-        int idx = S.whatSchedAtI(time);
+        int idx = S.whatSchedIdx(time);
         to = S.whatIthSched(idx);
+
         if(idx>0) from = S.whatIthSched(idx - 1);
-        if(idx==0) from = to;
+        if(idx==0) from = to.copyS();
+
         passed = time -from.getTime();
         remain = to.getTime() -time;
         require = map.getDistance(from.getStation().getName(), to.getStation().getName());
