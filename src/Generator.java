@@ -28,7 +28,7 @@ public class Generator {
             Station placeS = map.getStation(s);
             Station placeD = map.getStation(d);
             
-            guests.add(new Guest(timeS, placeS, timeD, placeD, map, 1));
+            guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
 
         // Case 2: K hotspots
@@ -59,7 +59,7 @@ public class Generator {
             Station placeS = map.getStation(ss.get(s));
             Station placeD = map.getStation(ss.get(d));
 
-            guests.add(new Guest(timeS, placeS, timeD, placeD, map, 1));
+            guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
     }
 
