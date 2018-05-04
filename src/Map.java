@@ -10,7 +10,9 @@ public class Map {
         stations = new ArrayList<>();
         Scanner scanner = new Scanner(new File(stationfile));
         while (scanner.hasNextLine()) {
-            String[] parsed = scanner.nextLine().split(",");
+            String line = scanner.nextLine();
+            System.out.println(line);
+            String[] parsed = line.split(",");
             if (parsed.length != 3) continue;
             stations.add(new Station(parsed[0], Integer.parseInt(parsed[1]), Integer.parseInt(parsed[2])));
         }

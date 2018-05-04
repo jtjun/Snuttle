@@ -44,6 +44,7 @@ public class GreedySchedule{
 
             for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
+                if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
@@ -76,6 +77,7 @@ public class GreedySchedule{
             schedules[k].addSchedule(t, p, 0);
             for(int i = 1; i < n*10+1; i++){
                 t += map.getDistance(p.getName(), list.get(i%list.size()).getName());
+                if(t>Simulator.MAX_TIME) break;
                 schedules[k].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
             }
