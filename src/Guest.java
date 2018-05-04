@@ -10,7 +10,7 @@ public class Guest {
         timeD = timed;
         placeD = placed;
         nums = n;
-        setRequest(); // input type station is different
+        setRequest(); // input type station
     }
     public Guest(int times, String places, int timed, String placed, Map map, int n){
         timeS = times;
@@ -18,15 +18,15 @@ public class Guest {
         timeD = timed;
         placeD = map.getStation(placed);
         nums = n;
-        setRequest();
+        setRequest(); // input type string
     }
 
-    public void setRequest(){ // counter request
+    public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
     }
-    public void counterTS(int t){ request[0].setTime(t);}
-    public void counterTD(int t){ request[1].setTime(t);}
+    public void counterTS(int t){ request[0].setTime(t);} // counter request
+    public void counterTD(int t){ request[1].setTime(t);} // counter request
 
     public sched getRide(){return request[0];}
     public sched getDrop(){return request[1];}
