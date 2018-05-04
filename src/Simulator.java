@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Simulator {
     public static int MAX_TIME = 100;
@@ -11,13 +12,17 @@ public class Simulator {
         Map map = new Map("stations.csv", "distance.csv");
 
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
+        ArrayList<Guest> guests = generator.getGuests();
+
         Shuttle[] shuttles = new Shuttle[shutn];
-        SetCircularSchedule.setCircularSchedule(shuttles,map, generator.getGuests()); // making "shuttle - schedule"
+        SetCircularSchedule.setCircularSchedule(shuttles,map); // making "shuttle - schedule"
 
         for(int i = 0; i < shuttles.length; i++){
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
 
+        ActualDrive AD = new ActualDrive(shuttles, guests);
+        AD.Simulate(MAX_TIME);
     }
 
     public static void main(String[] args){

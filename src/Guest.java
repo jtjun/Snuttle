@@ -1,5 +1,5 @@
 public class Guest {
-    private int timeS, timeD;
+    private int timeS, timeD, rideT;
     private Station placeS, placeD;
     private sched[] request = new sched[2];
     private int nums = 1;
@@ -13,6 +13,7 @@ public class Guest {
         setRequest(); // input type station
     }
 
+    public void setRideT(int t){ rideT = t; }
     public void setNums(int n){ nums = n; }
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
@@ -21,6 +22,8 @@ public class Guest {
 
     private void setShuttleName(int n ){ shuttleName = n;}
     private int getShuttleName(){return shuttleName;}
+    public int getRideT(){ return rideT; }
+    public int getWaitT(){ return rideT - timeS; }
 
     public void counterTS(int t){ request[0].setTime(t);} // counter request
     public void counterTD(int t){ request[1].setTime(t);} // counter request
