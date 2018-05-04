@@ -4,7 +4,7 @@ public class Shuttle {
     private int nums = 0;
 
     private Schedule S;
-    private int time;
+    private int time; // Shuttle's current time
 
     Shuttle(int xi, int yi, int timei, Schedule Si) {
         x = xi;
@@ -35,21 +35,24 @@ public class Shuttle {
         return dn; // := {passed time, remain time, from-to require time}
     } // pass + remain = schedule time from-to
 
-    public void driveDo(int timei, Map map){
+    public void drive(int timei, Map map){
         int[] dn = whereAtT(timei, map);
-        sched[] Do = whatDoAt(timei);
+        sched Do = (whatDoAt(timei))[1];
         int empty = getEmpty();
-        int num = Do[1].getNums();
+        int num = Do.getNums();
 
         if(dn[0]>=dn[2]) {
-            if(empty >= num){ // contain num<0 (drop off)
+            if(empty >= num && empty*num !=0){ // contain num < 0 (drop off)
                 nums += num;
-                Do[1].getStation().rideDrop(num);
-                Do[1].setNums(0);
+                Do.getStation().rideDrop(num);
+                Do.setNums(0);
+                if(num > 0) System.out.println(num+"people ride");
+                if(num < 0) System.out.println(num+"people drop");
             } else if(empty > 0 && num > 0){
                 nums += empty;
-                Do[1].setNums(num-empty);
-                Do[1].getStation().rideDrop(empty);
+                Do.setNums(num-empty);
+                Do.getStation().rideDrop(empty);
+                System.out.println((num-empty)+"people ride");
             } // do at timei
         } setTime(timei);
     }
