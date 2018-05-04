@@ -3,6 +3,7 @@ public class Guest {
     private Station placeS, placeD;
     private sched[] request = new sched[2];
     private int nums = 1;
+    private int shuttleName;
 
     public Guest(int times, Station places, int timed, Station placed){
         timeS = times;
@@ -17,6 +18,10 @@ public class Guest {
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
     }
+
+    private void setShuttleName(int n ){ shuttleName = n;}
+    private int getShuttleName(){return shuttleName;}
+
     public void counterTS(int t){ request[0].setTime(t);} // counter request
     public void counterTD(int t){ request[1].setTime(t);} // counter request
 
