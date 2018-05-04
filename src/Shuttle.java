@@ -73,7 +73,7 @@ public class Shuttle {
     } // update time
     public void setMax(int n){ max = n; }
 
-    public int getNamw() { return name; }
+    public int getName() { return name; }
     public int getX() { return x; }
     public int getY() { return y; }
     public int getTime() { return time; }
@@ -102,12 +102,9 @@ class Taski {
         require = map.getDistance(from.getStation().getName(), to.getStation().getName());
     } // pass + remain = schedule time from-to
 
-    public sched getFrom(){return from;}
-    public sched getTo(){return to;}
+    public sched getFrom(){return from;} //getStartT(){return time-passed;}
+    public sched getTo(){return to;} //getArriveT(){return time + (require - passed);}
     public int getPassed(){return passed;}
     public int getRemain(){return remain;}
     public int getRequire(){return require;}
-
-    public int getStartT(){return time-passed;}
-    public int getArriveT(){return time + (require - passed);}
 }

@@ -24,6 +24,13 @@ public class Schedule{
         } return l+1; // if there are no schedule after time
     } // return after (or at) time's destination index
 
+    public int whatSchedAtI(sched s){
+        int l = Schedules.length;
+        for(int i=0; i<l; i++){
+            if(s.equals(Schedules[i])) return i;
+        } return l+1; // if there are no schedule after time
+    } // return after (or at) time's destination index
+
     public sched whatIthSched(int i){
         int l = Schedules.length;
         if(i >= l) {
@@ -48,6 +55,7 @@ public class Schedule{
         addSchedule(s);
     }
     public void addSchedule(sched s){
+        int idx = whatSchedAtI(s);
         int l = Schedules.length;
         Schedules = Arrays.copyOf(Schedules, l+1);
         Schedules[l] = s;
@@ -84,6 +92,18 @@ class sched {
         time = t;
         place = p;
         nums = n;
+    }
+
+    public boolean equals(sched s){
+        if(this.time == s.getTime() && this. place.equals(s.getStation())) return true;
+        else return false;
+    } // same time and same station
+
+    public boolean similar(sched s, int dt){
+        if(this.place.equals(s.getStation())) {
+            if ((this.getTime() - dt) <= s.getTime()
+                    && s.getTime() <= (this.getTime()+dt)) return true;
+        } return false;
     }
 
     public void setTime(int t){ time = t; }

@@ -10,9 +10,9 @@ public class Simulator {
         int userN = 1000;
         Map map = new Map("stations.csv", "distance.csv");
 
-        Generator generator = new Generator(userN, map); // Generate userN guests for this map
+        Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
         Shuttle[] shuttles = new Shuttle[shutn];
-        MainSystem.setCircularSchedule(shuttles,map);
+        MainSystem.setCircularSchedule(shuttles,map, generator.getGuests()); // making "shuttle - schedule"
 
         for(int i = 0; i < shuttles.length; i++){
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
