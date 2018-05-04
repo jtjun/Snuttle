@@ -19,42 +19,34 @@ public class Shuttle {
         S = Si;
     } // when don't know shuttle's xy
 
-    public sched[] whatDoAt(int timei) {
-        sched toi = S.whatIthSched(S.whatTimeS(timei));
-        sched fromi = S.whatIthSched(S.whatTimeS(timei) - 1);
-        sched[] ft = {fromi, toi};
-        return ft; // := {from schedule, to schedule}
+    public void driving(int t, Map map){
+        int toidx =  S.whatSchedAtI(t);
+        for(int i=0; i<toidx; i++){
+            int ti = S.whatIthSched(i).getTime();
+            drive(ti, map);
+        } setTime(t);
     }
 
-    public int[] whereAtT(int timei, Map map) {
-        sched[] ft = whatDoAt(timei);
-        sched fromi = ft[0];
-        sched toi = ft[1];
-        int needt = map.getDistance(fromi.getStation().getName(), toi.getStation().getName());
-        int[] dn = {timei-fromi.getTime(), toi.getTime()-timei, needt};
-        return dn; // := {passed time, remain time, from-to require time}
-    } // pass + remain = schedule time from-to
-
     public void drive(int timei, Map map){
-        int[] dn = whereAtT(timei, map);
-        sched Do = (whatDoAt(timei))[1];
+        Taski taski = new Taski(timei, S, map);
+        int num = taski.getTo().getNums();
         int empty = getEmpty();
-        int num = Do.getNums();
-
-        if(dn[0]>=dn[2]) {
-            if(empty >= num && empty*num !=0){ // contain num < 0 (drop off)
+        sched To = taski.getTo();
+        if(num == 0) return ;
+        if(taski.getPassed() >= taski.getRequire()) {
+            if(empty >= num){ // contain num < 0 (drop off)
                 nums += num;
-                Do.getStation().rideDrop(num);
-                Do.setNums(0);
+                To.getStation().rideDrop(num);
+                To.setNums(0);
                 if(num > 0) System.out.println(num+"people ride");
                 if(num < 0) System.out.println(num+"people drop");
             } else if(empty > 0 && num > 0){
                 nums += empty;
-                Do.setNums(num-empty);
-                Do.getStation().rideDrop(empty);
+                To.setNums(num-empty);
+                To.getStation().rideDrop(empty);
                 System.out.println((num-empty)+"people ride");
             } // do at timei
-        } setTime(timei);
+        }
     }
 
     public void setXY(int xi, int yi) {
@@ -80,4 +72,33 @@ public class Shuttle {
     public int getNums() {return nums; }
     public int getEmpty() {return max-nums; }
     public Schedule getSchedule() { return S; }
+}
+
+class Taski {
+    private int time; // current time
+    private sched from;
+    private sched to;
+    private int passed;
+    private int remain;
+    private int require;
+
+    Taski(int timei, Schedule S, Map map) {
+        time = timei;
+        int idx = S.whatSchedAtI(time);
+        to = S.whatIthSched(idx);
+        if(idx>0) from = S.whatIthSched(idx - 1);
+        if(idx==0) from = to;
+        passed = time -from.getTime();
+        remain = to.getTime() -time;
+        require = map.getDistance(from.getStation().getName(), to.getStation().getName());
+    } // pass + remain = schedule time from-to
+
+    public sched getFrom(){return from;}
+    public sched getTo(){return to;}
+    public int getPassed(){return passed;}
+    public int getRemain(){return remain;}
+    public int getRequire(){return require;}
+
+    public int getStartT(){return time-passed;}
+    public int getArriveT(){return time + (require - passed);}
 }
