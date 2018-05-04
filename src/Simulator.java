@@ -15,7 +15,8 @@ public class Simulator {
         ArrayList<Guest> guests = generator.getGuests();
 
         Shuttle[] shuttles = new Shuttle[shutn];
-        SetCircularSchedule.setCircularSchedule(shuttles,map); // making "shuttle - schedule"
+        // SetCircularSchedule.setCircularSchedule(shuttles,map); // making "shuttle - schedule"
+        GreedySchedule.setGreedySchedule(shuttles, map, guests, 5);
 
         for(int i = 0; i < shuttles.length; i++){
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
