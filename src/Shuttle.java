@@ -17,14 +17,17 @@ public class Shuttle {
     }
 
     public int Driving(int t, Map map, int par){
-        int temp = nums;
+        int tempn = nums;
+        Schedule temps = S.copyS();
         int toidx =  S.whatSchedAtI(t);
         for(int i=0; i<toidx; i++){
             int ti = S.whatIthSched(i).getTime();
             drive(ti, map, par);
         } if(par>0) setTime(t);
-        if(par<1) nums = temp;
-        return nums; // return at t's number
+        if(par<1) {
+            nums = tempn;
+            S = temps;
+        } return nums; // return at t's number
     }
 
     public void drive(int timei, Map map, int par){
@@ -53,8 +56,7 @@ public class Shuttle {
                 System.out.println(name+", "+(num-empty)+" people ride at "+ tim);
                 if(getEmpty()==0 && par>0)  System.out.println(name+", full!\n");
             } // do at timei
-        }
-        if(From.equals(To)) S.removeSchedule(From);
+        } if(From.equals(To)) S.removeSchedule(From);
     }
 
     public int getEmptyT(int t, Map map){

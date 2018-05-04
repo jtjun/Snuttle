@@ -44,6 +44,7 @@ public class Generator {
 
             guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
+        sortGuests();
     }
 
     // Case 2: K hotspots
