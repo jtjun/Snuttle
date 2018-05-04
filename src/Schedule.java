@@ -64,8 +64,9 @@ public class Schedule{
 
     public void removeSchedule(sched s){
         int l = Schedules.length;
-        int ind = whatSchedAtI(s.getTime());
-        Schedules[ind] = Schedules[l-1];
+        int idx = whatSchedAtI(s);
+        if(idx >= l) return;
+        Schedules[idx] = Schedules[l-1];
         Schedules = Arrays.copyOf(Schedules, l-1);
         sortSchedule();
     } // remove schedule

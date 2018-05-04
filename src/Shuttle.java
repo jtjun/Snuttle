@@ -28,6 +28,7 @@ public class Shuttle {
         Taski taski = new Taski(timei, S, map);
         int num = taski.getTo().getNums();
         int empty = getEmpty();
+        sched From = taski.getFrom();
         sched To = taski.getTo();
         int tim = To.getTime();
 
@@ -48,6 +49,11 @@ public class Shuttle {
                 if(getEmpty()==0)  System.out.println(name+", full!\n");
             } // do at timei
         }
+        if(From.equals(To)) S.removeSchedule(From);
+    }
+
+    public int getEmptyT(int t){
+
     }
 
     public void setName(int n){ name = n; }

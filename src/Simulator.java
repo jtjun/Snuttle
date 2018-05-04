@@ -12,15 +12,12 @@ public class Simulator {
 
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
         Shuttle[] shuttles = new Shuttle[shutn];
-        MainSystem.setCircularSchedule(shuttles,map, generator.getGuests()); // making "shuttle - schedule"
+        SetCircularSchedule.setCircularSchedule(shuttles,map, generator.getGuests()); // making "shuttle - schedule"
 
         for(int i = 0; i < shuttles.length; i++){
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
-        for(int i = 0; i < shutn; i++){
-            shuttles[i].driving(5000, map);
-            // have to add drawing graph method
-        } // actual driving
+
     }
 
     public static void main(String[] args){
