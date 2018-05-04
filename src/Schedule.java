@@ -55,7 +55,6 @@ public class Schedule{
         addSchedule(s);
     }
     public void addSchedule(sched s){
-        int idx = whatSchedAtI(s);
         int l = Schedules.length;
         Schedules = Arrays.copyOf(Schedules, l+1);
         Schedules[l] = s;
@@ -82,6 +81,15 @@ public class Schedule{
             ret += Schedules[i].toString()+",";
         } return ret+"]";
     }
+
+    public Schedule copyS(){
+        Schedule copy = new Schedule();
+        for(int i=0; i<Schedules.length; i++){
+            copy.addSchedule(Schedules[i]);
+        } return copy;
+    }
+
+    public int getNumSched(){ return Schedules.length; }
 }
 
 class sched {

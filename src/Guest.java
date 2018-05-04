@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Guest {
     private int timeS, timeD, rideT;
     private Station placeS, placeD;
@@ -36,4 +38,40 @@ public class Guest {
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
     public int getNums(){ return nums; }
+}
+
+class Request{
+    private int runT = Simulator.MAX_TIME;
+    private int stan;
+    private Schedule[][] R;
+    Map map;
+
+    Request(ArrayList<Guest> guests, Map mapi){
+        stan = map.getNumStations();
+        R = new Schedule[runT][stan];
+        map = mapi;
+
+        for(int i=0; i<guests.size(); i++){
+            Guest g = guests.get(i);
+            Schedule s = R[g.getTimeS()][map.getIndex(g.getPlaceS().getName())];
+            s.addSchedule(g.getDrop());
+        }
+    }
+
+    private int howMany(int ti, Station sta){
+        Schedule s = R[ti][map.getIndex(sta.getName())];
+        return s.getNumSched();
+    }
+    public Schedule scheduleTS(int ti, Station sta){
+        return R[ti][map.getIndex(sta.getName())];
+    }
+    public Schedule[] scheduleT(int ti){
+        return R[ti];
+    }
+    public Schedule[] scheduleS(Station sta){
+        Schedule[] timel = new Schedule[runT];
+        for(int i=0; i< runT; i++){
+            timel[i] = R[i][map.getIndex(sta.getName())];
+        } return timel;
+    }
 }
