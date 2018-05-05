@@ -48,16 +48,13 @@ public class ActualDrive {
         Station toSta = schedTo.getStation();
         Schedule rNextSta = R.scheduleTS(toTime, toSta);
 
-        int nOfP = rNextSta.getNumSched();
-
-        for (int a = 0; a < nOfP; a++) {
-            if(shuti.getEmpty() <=0) break;
+        for (int a = 0; a < rNextSta.getNumSched() && shuti.getEmpty()>0; a++) {
             sched guR = rNextSta.whatIthSched(a); //guest's Request
             int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
             if (idx > 0) {
-                shuti.whereTo(time).setNums(schedTo.getNums() + 1); // take a person
+                schedTo.setNums(schedTo.getNums() + 1); // take a person
                 int dt = allocate(shuti, guR, idx);
-                R.scheduleTS(toTime, toSta).removeSchedule(guR);
+                rNextSta.removeSchedule(guR); // after allocate it should remove
                 early.add(dt);
             }
         } // before arrive toStation it decide schedule

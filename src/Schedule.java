@@ -74,11 +74,8 @@ public class Schedule{
     }
 
     public void removeSchedule(sched s){
-        int l = Schedules.length;
         int idx = whatSchedIdx(s);
-        if(idx >= l) return;
-        Schedules[idx] = Schedules[l-1];
-        Schedules = Arrays.copyOf(Schedules, l-1);
+        removeSchedule(idx);
         sortSchedule();
     } // remove schedule
 
@@ -112,6 +109,7 @@ public class Schedule{
     public int getNumSched(){ return Schedules.length; }
 
     public String printing(){
+        sortSchedule();
         String str = "[";
         for(int i=0; i<Schedules.length; i++){
             sched s = whatIthSched(i);

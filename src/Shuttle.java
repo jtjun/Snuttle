@@ -24,6 +24,11 @@ public class Shuttle {
             String str = ("At "+t +"\n");
             str += ("Shuttle"+name+" is arrived at "+ To.getStation().getName()) + "\n";
             int dnum = To.getNums();
+            if(dnum+nums > max) {
+                str += "error we can't take people more\n";
+                System.out.println(str);
+                return getNums();
+            }
             nums += dnum;
             str += ("It's current number of people : "+getNums())+"\n";
             str += ("Empty seat : "+getEmpty()+"\n")+"\n";
