@@ -32,6 +32,11 @@ public class ActualDrive {
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
             } // doing time's situation
+
+            // Getting data for wait time
+            for(Shuttle shuttle : shuttles){
+
+            }
             R.makeUp(time+1);
         }
         PrintStream outr = new PrintStream(new File("Request Change.txt"));

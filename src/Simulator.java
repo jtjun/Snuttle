@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.io.*;
 
 public class Simulator {
     public static int MAX_TIME = 1000;
