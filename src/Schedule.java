@@ -73,6 +73,13 @@ public class Schedule{
             }
         }
     }
+    public void mergeWith(Schedule s){
+        sched[] sc = s.getScheds();
+        sched[] ms = new sched[sc.length+Schedules.length];
+        System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
+        System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
+        Schedules = sc;
+    }
 
     public void removeSchedule(sched s){
         int l = Schedules.length;
@@ -109,7 +116,7 @@ public class Schedule{
             copy.addSchedule(Schedules[i]);
         } return copy;
     }
-
+    public sched[] getScheds(){ return Schedules; }
     public int getNumSched(){ return Schedules.length; }
 }
 

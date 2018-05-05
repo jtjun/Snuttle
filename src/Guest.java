@@ -41,16 +41,17 @@ public class Guest {
 }
 
 class Request{
+    private int time=0;
     private int runT = Simulator.MAX_TIME;
-    private int stan;
+    private int staN;
     private Schedule[][] R;
     private ArrayList<Guest> guests;
     Map map;
 
     Request(ArrayList<Guest> guestsi, Map mapi){
         guests = guestsi;
-        stan = map.getNumStations();
-        R = new Schedule[runT][stan];
+        staN = map.getNumStations();
+        R = new Schedule[runT][staN];
         map = mapi;
 
         for(int i=0; i<guests.size(); i++){
@@ -60,20 +61,28 @@ class Request{
         }
     }
 
-    private int howMany(int ti, Station sta){
+    public void makeUp(int after){
+        for(int i=0; i<staN; i++){
+            Schedule beforeS = R[after-1][i];
+            Schedule afterS = R[after][i];
+            int l = beforeS.getNumSched();
+            afterS.mergeWith(beforeS);
+        }
+    }
+    public int howMany(int ti, Station sta){
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();
-    }
+    } // ti, sta's number of guest
     public Schedule scheduleTS(int ti, Station sta){
         return R[ti][map.getIndex(sta.getName())];
-    }
+    } // ti, sta's schedule
     public Schedule[] scheduleT(int ti){
         return R[ti];
-    }
+    } // ti's whole sta's guest
     public Schedule[] scheduleS(Station sta){
         Schedule[] timel = new Schedule[runT];
         for(int i=0; i< runT; i++){
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
-    }
+    } // sta's guest
 }
