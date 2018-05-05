@@ -31,7 +31,7 @@ public class ActualDrive {
                 shutsPN[time][i] = shutiDriveT(i, time);
             } // doing time's situation
             R.makeUp(time+1);
-            if(time<10) R.printing();
+            if(time<10) System.out.print(R.printing());
         }
     }
 
@@ -48,17 +48,17 @@ public class ActualDrive {
         int nOfP = rNextSta.getNumSched();
         int emptyN = shuti.getEmpty();
 
-        for(int a=0; a<emptyN; a++) {
-            for (int b = 0; b < nOfP; b++) {
-                sched guR = rNextSta.whatIthSched(b); //guest's Request
-                int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
-                if (idx > 0) {
-                    shuti.whereTo(time).setNums(schedTo.getNums() + 1); // take a person
-                    int dt = allocate(shuti, guR, idx);
-                    early.add(dt);
-                }
-            } // before arrive toStation it decide schedule
-        } return shuti.Driving(time); // arrive at station
+        for (int a = 0; a < nOfP; a++) {
+            if(shuti.getEmpty() ==0) break;
+            sched guR = rNextSta.whatIthSched(a); //guest's Request
+            int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
+            if (idx > 0) {
+                shuti.whereTo(time).setNums(schedTo.getNums() + 1); // take a person
+                int dt = allocate(shuti, guR, idx);
+                early.add(dt);
+            }
+        } // before arrive toStation it decide schedule
+        return shuti.Driving(time); // arrive at station
     }
 
     public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)

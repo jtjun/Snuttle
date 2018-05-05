@@ -78,7 +78,7 @@ public class Schedule{
         sched[] ms = new sched[sc.length+Schedules.length];
         System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
         System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
-        Schedules = sc;
+        Schedules = ms;
         sortSchedule();
     }
 
@@ -120,13 +120,13 @@ public class Schedule{
     public sched[] getScheds(){ return Schedules; }
     public int getNumSched(){ return Schedules.length; }
 
-    public void printing(){
-        System.out.print("[");
+    public String printing(){
+        String str = "[";
         for(int i=0; i<Schedules.length; i++){
             sched s = whatIthSched(i);
-            s.printing();
-            System.out.print(" ");
-        } System.out.print("]");
+            str += s.printing() + " ";
+        } str += "]";
+        return str;
     }
 }
 
@@ -164,8 +164,8 @@ class sched {
     public Station getStation(){ return place; }
     public int getNums() { return nums; }
 
-    public void printing(){
-        System.out.print("("+time+", "+place.getName()+","+nums+")");
+    public String printing(){
+        return ("("+time+", "+place.getName()+","+nums+")");
     }
 
     public String toString(){

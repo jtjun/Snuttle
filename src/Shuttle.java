@@ -25,7 +25,8 @@ public class Shuttle {
             System.out.println("Shuttle"+name+" is arrived at "+ To.getStation().getName());
             int dnum = To.getNums();
             nums += dnum;
-            System.out.println("It's current number of people : "+getNums()+"\n");
+            System.out.println("It's current number of people : "+getNums());
+            System.out.println("Empty seat : "+getEmpty()+"\n");
             return getNums();
         } else return getNums();
     } // don't how many ride or drop, just it's number of people

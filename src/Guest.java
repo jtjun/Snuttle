@@ -70,9 +70,8 @@ class Request{
         if(after == runT) return ;
         for(int i=0; i<staN; i++){
             Schedule beforeS = R[after-1][i];
-            Schedule afterS = R[after][i];
             int l = beforeS.getNumSched();
-            afterS.mergeWith(beforeS);
+            R[after][i].mergeWith(beforeS);
         }
     }
     public int howMany(int ti, Station sta){
@@ -92,13 +91,14 @@ class Request{
         } return timel;
     } // sta's guest
 
-    public void printing(){
+    public String printing(){
+        String str = "";
         for(int i =0; i< 10; i++){
-            System.out.println(i+" : ");
+            str += (i+" : ");
             for(int j=0; j< staN; j++){
                 Schedule s = R[i][j];
-                s.printing();
-            } System.out.println();
-        } System.out.println();
+                str += s.printing();
+            } str += "\n";
+        } return str + "\n";
     }
 }
