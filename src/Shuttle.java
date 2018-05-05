@@ -21,8 +21,11 @@ public class Shuttle {
         int idxTo =  S.whatSchedIdx(t);
         sched To = S.whatIthSched(idxTo);
         if(t == To.getTime()) { // arrive at station
+            System.out.println("At "+t);
+            System.out.println("Shuttle"+name+" is arrived at "+ To.getStation().getName());
             int dnum = To.getNums();
             nums += dnum;
+            System.out.println("It's current number of people : "+getNums()+"\n");
             return getNums();
         } else return getNums();
     } // don't how many ride or drop, just it's number of people
