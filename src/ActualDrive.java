@@ -35,11 +35,13 @@ public class ActualDrive {
             } // doing time's situation
             R.makeUp(time+1);
         }
-        PrintStream outr = new PrintStream(new File("Request Change.txt"));
+        PrintStream outr = new PrintStream(
+                new File("Request Change.txt"));
         outr.print(strR + R.printing());
         outr.close();
 
-        PrintStream outs = new PrintStream(new File("Shuttle Change.txt"));
+        PrintStream outs = new PrintStream(
+                new File("Shuttle Change.txt"));
         String strS = "";
         for(int i=0; i<shutN; i++){
             strS += "Shuttle"+i+"'s : ";
@@ -83,6 +85,4 @@ public class ActualDrive {
         shut.rideGuest(guR, idx);
         return timeD - DropT;
     }
-
-
 }
