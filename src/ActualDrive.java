@@ -31,6 +31,7 @@ public class ActualDrive {
                 shutsPN[time][i] = shutiDriveT(i, time);
             } // doing time's situation
             R.makeUp(time+1);
+            if(time<10) R.printing();
         }
     }
 
@@ -52,7 +53,7 @@ public class ActualDrive {
                 sched guR = rNextSta.whatIthSched(b); //guest's Request
                 int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
                 if (idx > 0) {
-                    schedTo.setNums(schedTo.getNums() + 1); // take a person
+                    shuti.whereTo(time).setNums(schedTo.getNums() + 1); // take a person
                     int dt = allocate(shuti, guR, idx);
                     early.add(dt);
                 }

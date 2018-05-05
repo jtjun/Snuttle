@@ -119,6 +119,15 @@ public class Schedule{
     }
     public sched[] getScheds(){ return Schedules; }
     public int getNumSched(){ return Schedules.length; }
+
+    public void printing(){
+        System.out.print("[");
+        for(int i=0; i<Schedules.length; i++){
+            sched s = whatIthSched(i);
+            s.printing();
+            System.out.print(" ");
+        } System.out.print("]");
+    }
 }
 
 class sched {
@@ -154,6 +163,10 @@ class sched {
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
     public int getNums() { return nums; }
+
+    public void printing(){
+        System.out.print("("+time+", "+place.getName()+","+nums+")");
+    }
 
     public String toString(){
         return "time("+time+"), place("+place.getName()+"), nums("+nums+")";

@@ -91,4 +91,14 @@ class Request{
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
     } // sta's guest
+
+    public void printing(){
+        for(int i =0; i< 10; i++){
+            System.out.println(i+" : ");
+            for(int j=0; j< staN; j++){
+                Schedule s = R[i][j];
+                s.printing();
+            } System.out.println();
+        } System.out.println();
+    }
 }
