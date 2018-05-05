@@ -23,7 +23,7 @@ public class Simulator {
         }
 
         ActualDrive AD = new ActualDrive(shuttles, guests, map);
-        AD.Simulate(MAX_TIME);
+        AD.Simulate();
     }
 
     public static void main(String[] args){
