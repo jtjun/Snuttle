@@ -21,12 +21,13 @@ public class Shuttle {
         int idxTo =  S.whatSchedIdx(t);
         sched To = S.whatIthSched(idxTo);
         if(t == To.getTime()) { // arrive at station
-            System.out.println("At "+t);
-            System.out.println("Shuttle"+name+" is arrived at "+ To.getStation().getName());
+            String str = ("At "+t +"\n");
+            str += ("Shuttle"+name+" is arrived at "+ To.getStation().getName()) + "\n";
             int dnum = To.getNums();
             nums += dnum;
-            System.out.println("It's current number of people : "+getNums());
-            System.out.println("Empty seat : "+getEmpty()+"\n");
+            str += ("It's current number of people : "+getNums())+"\n";
+            str += ("Empty seat : "+getEmpty()+"\n")+"\n";
+            System.out.print(str);
             return getNums();
         } else return getNums();
     } // don't how many ride or drop, just it's number of people

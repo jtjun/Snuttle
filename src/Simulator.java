@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Simulator {
-    public static int MAX_TIME = 2000;
+    public static int MAX_TIME = 1000;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
     public static int shutn = 10;

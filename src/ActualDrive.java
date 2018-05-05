@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class ActualDrive {
     private int runT = Simulator.MAX_TIME;
@@ -24,15 +25,17 @@ public class ActualDrive {
         shutsPN = new int[runT][shutN];
     }
 
-    public void Simulate(){
+    public void Simulate() throws FileNotFoundException {
         int time=0;
         for(time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[time][i] = shutiDriveT(i, time);
             } // doing time's situation
             R.makeUp(time+1);
-            if(time<10) System.out.print(R.printing());
         }
+        PrintStream out = new PrintStream(new File("out.txt"));
+        out.print(R.printing());
+        out.close();
     }
 
     public int shutiDriveT(int i, int time){
@@ -46,15 +49,15 @@ public class ActualDrive {
         Schedule rNextSta = R.scheduleTS(toTime, toSta);
 
         int nOfP = rNextSta.getNumSched();
-        int emptyN = shuti.getEmpty();
 
         for (int a = 0; a < nOfP; a++) {
-            if(shuti.getEmpty() ==0) break;
+            if(shuti.getEmpty() <=0) break;
             sched guR = rNextSta.whatIthSched(a); //guest's Request
             int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
             if (idx > 0) {
                 shuti.whereTo(time).setNums(schedTo.getNums() + 1); // take a person
                 int dt = allocate(shuti, guR, idx);
+                R.scheduleTS(toTime, toSta).removeSchedule(guR);
                 early.add(dt);
             }
         } // before arrive toStation it decide schedule

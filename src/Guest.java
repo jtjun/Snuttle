@@ -93,7 +93,7 @@ class Request{
 
     public String printing(){
         String str = "";
-        for(int i =0; i< 10; i++){
+        for(int i =0; i<runT; i++){
             str += (i+" : ");
             for(int j=0; j< staN; j++){
                 Schedule s = R[i][j];
