@@ -20,7 +20,7 @@ public class Shuttle {
     public int Driving(int t){
         int idxTo =  S.whatSchedIdx(t);
         sched To = S.whatIthSched(idxTo);
-        if(t == To.getTime()) {
+        if(t == To.getTime()) { // arrive at station
             int dnum = To.getNums();
             nums += dnum;
             return getNums();

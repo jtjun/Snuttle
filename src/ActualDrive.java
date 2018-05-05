@@ -56,9 +56,8 @@ public class ActualDrive {
                     int dt = allocate(shuti, guR, idx);
                     early.add(dt);
                 }
-            }
-        } return shuti.Driving(time);
-        // ㅅㅏ람 태워야 함(R의 상황 변경), driving call 해서 shut 상황도 변경
+            } // before arrive toStation it decide schedule
+        } return shuti.Driving(time); // arrive at station
     }
 
     public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)
