@@ -8,29 +8,24 @@ public class Shuttle {
     private int time; // Shuttle's current time
     Map map;
 
-    private sched To;
-    private sched From;
-
     Shuttle(int xi, int yi, int timei, Schedule Si, int namei, Map mapi) {
         name = namei;
         x = xi;
         y = yi;
         time = timei;
         map = mapi;
-        Si.removeAfterT(time);
         S = Si; // we don't care sched's nums now
-        To = S.whatIthSched(0);
-        From =S.whatIthSched(1);
     }
 
-    public int Driving(int t, int par){
+    public int Driving(int t){
         int idxTo =  S.whatSchedIdx(t);
-        sched to = S.whatIthSched(idxTo);
-        if(t == to.getTime()) {
-
-        }
-        else return getNums();
-    }
+        sched To = S.whatIthSched(idxTo);
+        if(t == To.getTime()) {
+            int dnum = To.getNums();
+            nums += dnum;
+            return getNums();
+        } else return getNums();
+    } // don't how many ride or drop, just it's number of people
 
     public int goBefore(int timeS, sched s){
         int leftT = S.getNumSched(); // timeS = shuttle's arrive time at source
@@ -42,7 +37,7 @@ public class Shuttle {
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
-    public void takeSched(sched s, int idx){
+    public void rideGuest(sched s, int idx){
         int numa = s.getNums();
         int numb = S.whatIthSched(idx).getNums();
         S.whatIthSched(idx).setNums(numa+numb);
@@ -57,24 +52,13 @@ public class Shuttle {
         if(idx==0) return S.whatIthSched(0);
         return S.whatIthSched(idx);
     }
-    public int getEmptyAtT(int t, Map map){
-        return Driving(t, 0);
-    }
     public void setName(int n){ name = n; }
     public void setXY(int xi, int yi) {
         x = xi;
         y = yi;
     } // update location
 
-    public void setSchedule(Schedule Si) {
-        Si.removeAfterT(time);
-        S = Si;
-    } // update schedule
-
-    public void setTime(int timei) {
-        time = timei;
-        S.removeAfterT(time);
-    } // update time
+    public void setTime(int timei) { time = timei;}
     public void setMax(int n){ max = n; }
 
     public int getName() { return name; }
@@ -86,7 +70,7 @@ public class Shuttle {
     public int getEmpty() {return max-nums; }
     public Schedule getSchedule() { return S; }
 }
-
+/*
 class Taski {
     private int time; // current time
     private sched from, to;
@@ -110,4 +94,5 @@ class Taski {
     public int getPassed(){return passed;} //getStartT(){return time-passed;}
     public int getRemain(){return remain;} //getArriveT(){return time + (require - passed);}
     public int getRequire(){return require;}
-}
+} for later schedule method will use it
+*/

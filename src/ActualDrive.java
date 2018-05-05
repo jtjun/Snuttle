@@ -28,37 +28,37 @@ public class ActualDrive {
         int time=0;
         for(time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
-
-
+                shutsPN[time][i] = shutiDriveT(i, time);
             } // doing time's situation
             R.makeUp(time+1);
         }
     }
 
-    public void shutiDriveT(int i, int time){
+    public int shutiDriveT(int i, int time){
         Shuttle shuti = shuttles[i];
         sched schedTo = shuti.whereTo(time);
 
         int toTime = schedTo.getTime();
+        if(toTime > time) return shuti.getNums(); // shuttle is on road
+        // below run when shuttle is on station
         Station toSta = schedTo.getStation();
-
         Schedule rNextSta = R.scheduleTS(toTime, toSta);
 
         int nOfP = rNextSta.getNumSched();
         int emptyN = shuti.getEmpty();
 
-        for(int a=0; a<emptyN; a++){
-            for(int b=0; b<nOfP; b++){
+        for(int a=0; a<emptyN; a++) {
+            for (int b = 0; b < nOfP; b++) {
                 sched guR = rNextSta.whatIthSched(b); //guest's Request
                 int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
-                if(idx > 0) {
+                if (idx > 0) {
+                    schedTo.setNums(schedTo.getNums() + 1); // take a person
                     int dt = allocate(shuti, guR, idx);
                     early.add(dt);
                 }
             }
-        }
-        if(toTime == time) shuti.Driving(time,1);
-            // ㅅㅏ람 태워야 함(R의 상황 변경), driving call 해서 shut 상황도 변경
+        } return shuti.Driving(time);
+        // ㅅㅏ람 태워야 함(R의 상황 변경), driving call 해서 shut 상황도 변경
     }
 
     public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)
@@ -66,7 +66,7 @@ public class ActualDrive {
         sched shutsc = shut.getSchedule().whatIthSched(idx);
         guR.setTime(shutsc.getTime()); // guest's request is modified
         int DropT = guR.getTime();
-        shut.takeSched(guR, idx);
+        shut.rideGuest(guR, idx);
         return timeD - DropT;
     }
 }
