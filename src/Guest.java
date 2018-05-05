@@ -15,24 +15,21 @@ public class Guest {
         setRequest(); // input type station
     }
 
-    public void setRideT(int t){ rideT = t; }
-    public void setNums(int n){ nums = n; }
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
     }
-
+    public void setNums(int n){ nums = n; }
+    public void setRideT(int t){ rideT = t; }
     private void setShuttleName(int n ){ shuttleName = n;}
     private int getShuttleName(){return shuttleName;}
-    public int getRideT(){ return rideT; }
-    public int getWaitT(){ return rideT - timeS; }
-
     public void setTS(int t){ request[0].setTime(t);} // counter request
     public void setTD(int t){ request[1].setTime(t);} // counter request
 
+    public int getRideT(){ return rideT; }
+    public int getWaitT(){ return rideT - timeS; }
     public sched getRide(){return request[0];}
     public sched getDrop(){return request[1];}
-
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
     public Station getPlaceS(){ return placeS; }
@@ -74,10 +71,10 @@ class Request{
             R[after][i].mergeWith(beforeS);
         }
     }
-    public int howMany(int ti, Station sta){
+    public int howMany(int ti, Station sta){ // ti, sta's number of guest
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();
-    } // ti, sta's number of guest
+    }
     public Schedule scheduleTS(int ti, Station sta){
         return R[ti][map.getIndex(sta.getName())];
     } // ti, sta's schedule
@@ -99,6 +96,25 @@ class Request{
                 Schedule s = R[i][j];
                 str += s.printing();
             } str += "\n";
+        } return str + "\n";
+    }
+
+    public String printingAtT(int t){
+        Schedule[] st = scheduleT(t);
+        String str = "At "+t+" : ";
+        for(int i =0; i<staN; i++){
+            str += (i+"Station : ");
+            Schedule s = st[i];
+            str += s.printing()+"\n";
+        } return str + "\n";
+    }
+    public String printingAtS(Station sta){
+        Schedule[] st = scheduleS(sta);
+        String str = "At "+sta.getName()+" : ";
+        for(int i =0; i<runT; i++){
+            str += ("When "+i+" : ");
+            Schedule s = st[i];
+            str += s.printing()+"\n";
         } return str + "\n";
     }
 }
