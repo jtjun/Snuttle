@@ -5,6 +5,7 @@ public class ActualDrive {
     private Shuttle[] shuttles;
     private Schedule[] S;
     private Request R;
+    private ArrayList<Integer> early = new ArrayList<>();
 
     private int[][] shutsPN;
     private int shutN;
@@ -36,19 +37,36 @@ public class ActualDrive {
 
     public void shutiDriveT(int i, int time){
         Shuttle shuti = shuttles[i];
-        sched schedt = shuti.whereTo(time);
-        int toTime =schedt.getTime();
-        Station toSta = schedt.getStation();
-        Schedule nextSta = R.scheduleTS(toTime, toSta);
+        sched schedTo = shuti.whereTo(time);
 
-        int numOfPeop = nextSta.getNumSched();
+        int toTime = schedTo.getTime();
+        Station toSta = schedTo.getStation();
 
-        if(toTime == time) // ㅅㅏ람 태워야 함(R의 상황 변경)
+        Schedule rNextSta = R.scheduleTS(toTime, toSta);
+
+        int nOfP = rNextSta.getNumSched();
+        int emptyN = shuti.getEmpty();
+
+        for(int a=0; a<emptyN; a++){
+            for(int b=0; b<nOfP; b++){
+                sched guR = rNextSta.whatIthSched(b); //guest's Request
+                int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
+                if(idx > 0) {
+                    int dt = allocate(shuti, guR, idx);
+                    early.add(dt);
+                }
+            }
+        }
+        if(toTime == time) shuti.Driving(time,1);
+            // ㅅㅏ람 태워야 함(R의 상황 변경), driving call 해서 shut 상황도 변경
     }
 
-    public void allocate(Shuttle shut,sched sche, int idx){ // goBefore is true(>0)
+    public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)
+        int timeD = guR.getTime();
         sched shutsc = shut.getSchedule().whatIthSched(idx);
-        sche.setTime(shutsc.getTime());
-        shut.takeSched(sche);
+        guR.setTime(shutsc.getTime()); // guest's request is modified
+        int DropT = guR.getTime();
+        shut.takeSched(guR, idx);
+        return timeD - DropT;
     }
 }

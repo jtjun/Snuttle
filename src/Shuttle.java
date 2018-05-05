@@ -24,49 +24,14 @@ public class Shuttle {
     }
 
     public int Driving(int t, int par){
-        int tempn = nums; // use this method after update sched's nums
-        Schedule temps = S.copyS();
-        int toidx =  S.whatSchedIdx(t);
-        for(int i=0; i<toidx; i++){
-            int ti = S.whatIthSched(i).getTime();
-            drive(ti, par);
-        } if(par>0) setTime(t);
-        if(par<1) {
-            nums = tempn;
-            S = temps.copyS();
-        } return nums; // return at t's number
-    }
+        int idxTo =  S.whatSchedIdx(t);
+        sched to = S.whatIthSched(idxTo);
+        if(t == to.getTime()) {
 
-    public void drive(int timei, int par){ // call after sync with request
-        Taski taski = new Taski(timei, S, map);
-        int num = taski.getTo().getNums();
-        int empty = getEmpty();
-        sched To = taski.getTo();
-        int tim = To.getTime();
-
-        if(num == 0) return ;
-        if(taski.getPassed() >= taski.getRequire()) {
-            if(empty >= num){ // contain num < 0 (drop off)
-                nums += num;
-                To.getStation().rideDrop(num);
-                To.setNums(0);
-                if(par>0) {
-                    if (num > 0) System.out.println(tim+": "+name + ", " + num
-                            + " people ride at " + getEmpty());
-                    if (num < 0) System.out.println(tim+": "+name + ", "
-                            + num + " people drop at " + getEmpty());
-                    if (getEmpty() == 0) System.out.println(name + ", full!\n");
-                }
-            } else if(empty > 0 && num > 0){
-                nums += empty;
-                To.setNums(num-empty);
-                To.getStation().rideDrop(empty);
-                if(par>0) System.out.println(tim+": "+name + ", " + (num-empty)
-                        + " people ride at " + getEmpty());
-                if(getEmpty()==0 && par>0)  System.out.println(tim+": "+name+", full!\n");
-            } // do at timei
         }
+        else return getNums();
     }
+
     public int goBefore(int timeS, sched s){
         int leftT = S.getNumSched(); // timeS = shuttle's arrive time at source
         int idx = S.whatSchedIdx(timeS)+1;
@@ -77,8 +42,7 @@ public class Shuttle {
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
-    public void takeSched(sched s){
-        int idx = S.whatSchedIdx(s);
+    public void takeSched(sched s, int idx){
         int numa = s.getNums();
         int numb = S.whatIthSched(idx).getNums();
         S.whatIthSched(idx).setNums(numa+numb);
@@ -88,9 +52,10 @@ public class Shuttle {
         int idx = S.whatSchedIdx(timei);
         return S.whatIthSched(idx);
     }
-    public sched whereFrom(int timei, Map map) {
-        Taski taski = new Taski(timei, S, map);
-        return taski.getFrom();
+    public sched whereFrom(int timei) {
+        int idx = S.whatSchedIdx(timei);
+        if(idx==0) return S.whatIthSched(0);
+        return S.whatIthSched(idx);
     }
     public int getEmptyAtT(int t, Map map){
         return Driving(t, 0);

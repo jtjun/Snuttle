@@ -21,7 +21,7 @@ public class SetCircularSchedule {
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),
-                                     0, schedule, i);
+                                     0, schedule, i, map);
         } // set all Shuttle's circular route
     }
 }
