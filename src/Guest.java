@@ -50,9 +50,15 @@ class Request{
 
     Request(ArrayList<Guest> guestsi, Map mapi){
         guests = guestsi;
+        map = mapi;
         staN = map.getNumStations();
         R = new Schedule[runT][staN];
-        map = mapi;
+
+        for(int i=0; i<runT; i++){
+            for(int j=0; j<staN; j++){
+                R[i][j] = new Schedule();
+            }
+        }
 
         for(int i=0; i<guests.size(); i++){
             Guest g = guests.get(i);
@@ -61,6 +67,7 @@ class Request{
         }
     }
     public void makeUp(int after){
+        if(after == runT) return ;
         for(int i=0; i<staN; i++){
             Schedule beforeS = R[after-1][i];
             Schedule afterS = R[after][i];
