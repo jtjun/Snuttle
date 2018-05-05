@@ -22,20 +22,30 @@ public class ActualDrive {
         for(int i=0; i<shutN; i++){
             S[i] = shuttles[i].getSchedule();
         } R = new Request(guests, map);
-        shutsPN = new int[runT][shutN];
+        shutsPN = new int[shutN][runT];
     }
 
     public void Simulate() throws FileNotFoundException {
-        int time=0;
-        for(time=0; time<runT; time++){
+        String strR = "Initial Request's state :\n"+R.printing()+"\nAfter Request's state \n";
+        for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
-                shutsPN[time][i] = shutiDriveT(i, time);
+                shutsPN[i][time] = shutiDriveT(i, time);
             } // doing time's situation
             R.makeUp(time+1);
         }
-        PrintStream out = new PrintStream(new File("out.txt"));
-        out.print(R.printing());
-        out.close();
+        PrintStream outr = new PrintStream(new File("Request Change.txt"));
+        outr.print(strR + R.printing());
+        outr.close();
+
+        PrintStream outs = new PrintStream(new File("Shuttle Change.txt"));
+        String strS = "";
+        for(int i=0; i<shutN; i++){
+            strS += "Shuttle"+i+"'s : ";
+            for(int j=0; j<runT; j++){
+                strS += j+"["+ shutsPN[i][j] +"]\t";
+            } strS += "\n";
+        } outs.print(strS + early.toString());
+        outs.close();
     }
 
     public int shutiDriveT(int i, int time){
@@ -69,4 +79,6 @@ public class ActualDrive {
         shut.rideGuest(guR, idx);
         return timeD - DropT;
     }
+
+
 }
