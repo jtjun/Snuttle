@@ -7,13 +7,15 @@ public class ActualDrive {
     private Schedule[] S;
     private Request R;
     private ArrayList<Integer> early = new ArrayList<>();
+    private ArrayList<Integer> wait = new ArrayList<>();
 
     private int[][] shutsPN;
-    private int shutN, staN, userN;
+    private int shutN, staN;
+    private int userN = Simulator.userN;
     private int serviced=0;
     private Map map;
 
-    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi,int userNi){
+    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi){
         shuttles = shuttleS; // scheduled shuttles
         shutN = shuttles.length;
         map = mapi;
@@ -23,7 +25,6 @@ public class ActualDrive {
             S[i] = shuttles[i].getSchedule();
         } R = new Request(guests, map);
         shutsPN = new int[shutN][runT];
-        userN =userNi;
     }
 
     public void Simulate() throws FileNotFoundException {
@@ -32,11 +33,6 @@ public class ActualDrive {
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
             } // doing time's situation
-
-            // Getting data for wait time
-            for(Shuttle shuttle : shuttles){
-
-            }
             R.makeUp(time+1);
         }
         PrintStream outr = new PrintStream(new File("Request Change.txt"));
@@ -50,7 +46,7 @@ public class ActualDrive {
             for(int j=0; j<runT; j++){
                 strS += j+"["+ shutsPN[i][j] +"]\t";
             } strS += "\n";
-        } outs.println(strS + early.toString());
+        } outs.println(strS +"Earlier drop : "+early.toString());
         outs.println("We serviced "+serviced+" of people");
         outs.println("We can't take "+(userN-serviced)+" of people");
         outs.close();
@@ -75,9 +71,8 @@ public class ActualDrive {
                 rNextSta.removeSchedule(guR); // after allocate it should remove
                 early.add(dt);
                 serviced++;
-            }
-        } // before arrive toStation it decide schedule
-        return shuti.Driving(time); // arrive at station
+            } // before arrive toStation it decide schedule
+        } return shuti.Driving(time); // arrive at station
     }
 
     public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)

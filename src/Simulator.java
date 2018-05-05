@@ -7,9 +7,10 @@ public class Simulator {
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
     public static int shutn = 10;
+    public static int userN;
 
     public Simulator() throws FileNotFoundException{
-        int userN = 1000;
+        userN = 1000;
         Map map = new Map("stations.csv", "distance.csv");
 
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
@@ -23,7 +24,7 @@ public class Simulator {
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
 
-        ActualDrive AD = new ActualDrive(shuttles, guests, map, userN);
+        ActualDrive AD = new ActualDrive(shuttles, guests, map);
         AD.Simulate();
     }
 
