@@ -49,7 +49,7 @@ public class GreedySchedule{
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),
-                                     0, schedule, i);
+                                     0, schedule, i, map);
         } // set all Shuttle's circular route
 
         int[] ts = new int[shuttles.length-fixedshuttle];
@@ -81,7 +81,7 @@ public class GreedySchedule{
                 schedules[k].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
             }
-            shuttles[k+fixedshuttle] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[k], k+fixedshuttle);
+            shuttles[k+fixedshuttle] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[k], k+fixedshuttle, map);
             k++;
         }
     }

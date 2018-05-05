@@ -31,7 +31,6 @@ public class Generator {
                 timeS = timeD;
                 timeD = tmp;
             }
-
             // Set stations with random excluding same station
             StationGroup sd = edgelist.get(generator.nextInt(edgelist.size()));
 

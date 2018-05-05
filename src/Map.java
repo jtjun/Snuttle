@@ -11,7 +11,6 @@ public class Map {
         Scanner scanner = new Scanner(new File(stationfile));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            System.out.println(line);
             String[] parsed = line.split(",");
             if (parsed.length != 3) continue;
             stations.add(new Station(parsed[0], Integer.parseInt(parsed[1]), Integer.parseInt(parsed[2])));

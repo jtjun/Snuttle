@@ -8,15 +8,6 @@ public class Schedule{
         Schedules = new sched[0];
     }
 
-    public void removeAfterT(int time){ // remove Before T, remain After T
-        int dt = whatSchedIdx(time) -1;
-        if(dt <= 1) return ;
-        sched[] nSched = new sched[Schedules.length - dt];
-        for(int i=0; i<Schedules.length - dt; i++){
-            nSched[i] = Schedules[dt+i];
-        } Schedules = Arrays.copyOf(nSched, Schedules.length - dt);
-    }
-
     public int whatSchedIdx(int time){
         int l = Schedules.length;
         for(int i=0; i<l; i++){
@@ -78,16 +69,13 @@ public class Schedule{
         sched[] ms = new sched[sc.length+Schedules.length];
         System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
         System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
-        Schedules = sc;
+        Schedules = ms;
         sortSchedule();
     }
 
     public void removeSchedule(sched s){
-        int l = Schedules.length;
         int idx = whatSchedIdx(s);
-        if(idx >= l) return;
-        Schedules[idx] = Schedules[l-1];
-        Schedules = Arrays.copyOf(Schedules, l-1);
+        removeSchedule(idx);
         sortSchedule();
     } // remove schedule
 
@@ -119,6 +107,16 @@ public class Schedule{
     }
     public sched[] getScheds(){ return Schedules; }
     public int getNumSched(){ return Schedules.length; }
+
+    public String printing(){
+        sortSchedule();
+        String str = "[";
+        for(int i=0; i<Schedules.length; i++){
+            sched s = whatIthSched(i);
+            str += s.printing() + " ";
+        } str += "]";
+        return str;
+    }
 }
 
 class sched {
@@ -154,6 +152,10 @@ class sched {
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
     public int getNums() { return nums; }
+
+    public String printing(){
+        return ("("+time+", "+place.getName()+","+nums+")");
+    }
 
     public String toString(){
         return "time("+time+"), place("+place.getName()+"), nums("+nums+")";

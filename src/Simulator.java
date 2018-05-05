@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 
 public class Simulator {
-    public static int MAX_TIME = 2000;
+    public static int MAX_TIME = 1000;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
     public static int shutn = 10;
@@ -24,11 +24,7 @@ public class Simulator {
         }
 
         ActualDrive AD = new ActualDrive(shuttles, guests, map);
-        
-        PrintStream printer_sd = new PrintStream(new File("shuttle density.txt"));
-        PrintStream printer_wt = new PrintStream(new File("guest wait time.txt"));
-        PrintStream printer_dl = new PrintStream(new File("deadline missed.txt"));
-        AD.Simulate(MAX_TIME, printer_sd, printer_wt, printer_dl);
+        AD.Simulate();
     }
 
     public static void main(String[] args){
