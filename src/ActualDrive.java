@@ -9,11 +9,11 @@ public class ActualDrive {
     private ArrayList<Integer> early = new ArrayList<>();
 
     private int[][] shutsPN;
-    private int shutN;
-    private int staN;
+    private int shutN, staN, userN;
+    private int serviced=0;
     private Map map;
 
-    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi){
+    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi,int userNi){
         shuttles = shuttleS; // scheduled shuttles
         shutN = shuttles.length;
         map = mapi;
@@ -23,6 +23,7 @@ public class ActualDrive {
             S[i] = shuttles[i].getSchedule();
         } R = new Request(guests, map);
         shutsPN = new int[shutN][runT];
+        userN =userNi;
     }
 
     public void Simulate() throws FileNotFoundException {
@@ -44,7 +45,9 @@ public class ActualDrive {
             for(int j=0; j<runT; j++){
                 strS += j+"["+ shutsPN[i][j] +"]\t";
             } strS += "\n";
-        } outs.print(strS + early.toString());
+        } outs.println(strS + early.toString());
+        outs.println("We serviced "+serviced+" of people");
+        outs.println("We can't take "+(userN-serviced)+" of people");
         outs.close();
     }
 
@@ -66,6 +69,7 @@ public class ActualDrive {
                 int dt = allocate(shuti, guR, idx);
                 rNextSta.removeSchedule(guR); // after allocate it should remove
                 early.add(dt);
+                serviced++;
             }
         } // before arrive toStation it decide schedule
         return shuti.Driving(time); // arrive at station

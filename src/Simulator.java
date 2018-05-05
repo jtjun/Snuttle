@@ -22,7 +22,7 @@ public class Simulator {
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
 
-        ActualDrive AD = new ActualDrive(shuttles, guests, map);
+        ActualDrive AD = new ActualDrive(shuttles, guests, map, userN);
         AD.Simulate();
     }
 
