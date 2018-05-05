@@ -6,29 +6,49 @@ public class ActualDrive {
     private Schedule[] S;
     private Request R;
 
-
-    private int shutn;
-    private int stan;
+    private int[][] shutsPN;
+    private int shutN;
+    private int staN;
     private Map map;
 
-    ActualDrive(Shuttle[] shuttlesi, ArrayList<Guest> guests, Map mapi){
-        shuttles = shuttlesi; // scheduled shuttles
-        shutn = shuttles.length;
-
+    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi){
+        shuttles = shuttleS; // scheduled shuttles
+        shutN = shuttles.length;
         map = mapi;
-        stan = map.getNumStations();
-        S = new Schedule[shutn];
-        for(int i=0; i<shutn; i++){
+        staN = map.getNumStations();
+        S = new Schedule[shutN];
+        for(int i=0; i<shutN; i++){
             S[i] = shuttles[i].getSchedule();
         } R = new Request(guests, map);
+        shutsPN = new int[runT][shutN];
     }
 
-    public void syncRS(Shuttle shut,sched sche){
-        // sched 에 맞춰서 shut 의 sched의 num 을 변화시키고
-        // shut에 맞춰서 sche 를 변형시키고
-        // t 에 따라서 기다린 시간 갱신
-    }
-    public void Simulate(int time){
+    public void Simulate(){
+        int time=0;
+        for(time=0; time<runT; time++){
+            for(int i=0; i<shutN; i++){
 
+
+            } // doing time's situation
+            R.makeUp(time+1);
+        }
+    }
+
+    public void shutiDriveT(int i, int time){
+        Shuttle shuti = shuttles[i];
+        sched schedt = shuti.whereTo(time);
+        int toTime =schedt.getTime();
+        Station toSta = schedt.getStation();
+        Schedule nextSta = R.scheduleTS(toTime, toSta);
+
+        int numOfPeop = nextSta.getNumSched();
+
+        if(toTime == time) // ㅅㅏ람 태워야 함(R의 상황 변경)
+    }
+
+    public void allocate(Shuttle shut,sched sche, int idx){ // goBefore is true(>0)
+        sched shutsc = shut.getSchedule().whatIthSched(idx);
+        sche.setTime(shutsc.getTime());
+        shut.takeSched(sche);
     }
 }

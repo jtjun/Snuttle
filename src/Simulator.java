@@ -22,8 +22,8 @@ public class Simulator {
             System.out.println(i +" th "+ (shuttles[i].getSchedule().toString()));
         }
 
-        // ActualDrive AD = new ActualDrive(shuttles, guests, map.getNumStations());
-        // AD.Simulate(MAX_TIME);
+        ActualDrive AD = new ActualDrive(shuttles, guests, map);
+        AD.Simulate(MAX_TIME);
     }
 
     public static void main(String[] args){

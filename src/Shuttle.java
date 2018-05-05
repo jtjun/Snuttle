@@ -41,7 +41,6 @@ public class Shuttle {
         Taski taski = new Taski(timei, S, map);
         int num = taski.getTo().getNums();
         int empty = getEmpty();
-        sched From = taski.getFrom();
         sched To = taski.getTo();
         int tim = To.getTime();
 
@@ -68,18 +67,26 @@ public class Shuttle {
             } // do at timei
         }
     }
-    public int goBefore(sched s){
-        int leftT = S.getNumSched();
-        for(int i=1; i<leftT; i++){
+    public int goBefore(int timeS, sched s){
+        int leftT = S.getNumSched(); // timeS = shuttle's arrive time at source
+        int idx = S.whatSchedIdx(timeS)+1;
+        for(int i=idx; i<leftT; i++){
             sched si = S.whatIthSched(i);
             if(si.getTime() > s.getTime()) return -1;
             if(si.getStation().equals(s.getStation())) return i;
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
-    public sched whereTo(int timei, Map map) {
-        Taski taski = new Taski(timei, S, map);
-        return taski.getTo();
+    public void takeSched(sched s){
+        int idx = S.whatSchedIdx(s);
+        int numa = s.getNums();
+        int numb = S.whatIthSched(idx).getNums();
+        S.whatIthSched(idx).setNums(numa+numb);
+    }
+
+    public sched whereTo(int timei) {
+        int idx = S.whatSchedIdx(timei);
+        return S.whatIthSched(idx);
     }
     public sched whereFrom(int timei, Map map) {
         Taski taski = new Taski(timei, S, map);
@@ -133,9 +140,9 @@ class Taski {
         require = map.getDistance(from.getStation().getName(), to.getStation().getName());
     } // pass + remain = schedule time from-to
 
-    public sched getFrom(){return from;} //getStartT(){return time-passed;}
-    public sched getTo(){return to;} //getArriveT(){return time + (require - passed);}
-    public int getPassed(){return passed;}
-    public int getRemain(){return remain;}
+    public sched getFrom(){return from;}
+    public sched getTo(){return to;}
+    public int getPassed(){return passed;} //getStartT(){return time-passed;}
+    public int getRemain(){return remain;} //getArriveT(){return time + (require - passed);}
     public int getRequire(){return require;}
 }

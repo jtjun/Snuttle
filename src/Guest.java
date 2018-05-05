@@ -60,7 +60,6 @@ class Request{
             s.addSchedule(g.getDrop());
         }
     }
-
     public void makeUp(int after){
         for(int i=0; i<staN; i++){
             Schedule beforeS = R[after-1][i];

@@ -79,6 +79,7 @@ public class Schedule{
         System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
         System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
         Schedules = sc;
+        sortSchedule();
     }
 
     public void removeSchedule(sched s){
