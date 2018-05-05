@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class ActualDrive {
     private int runT = Simulator.MAX_TIME;
@@ -23,14 +24,28 @@ public class ActualDrive {
         shutsPN = new int[runT][shutN];
     }
 
-    public void Simulate(){
+    public void Simulate(int runT, PrintStream printer_sd, PrintStream printer_wt, PrintStream printer_dl){
         int time=0;
+
         for(time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
 
 
             } // doing time's situation
+
+            // Getting data for wait time
+            for(Shuttle shuttle : shuttles){
+
+            }
             R.makeUp(time+1);
+        }
+        // Gettting data for number of people in shuttle
+        for(int i = 0; i < shutsPN.length; i++){
+            printer_sd.print(i);
+            for(int j = 0; j < shutsPN[i].length; j++){
+                printer_sd.print(","+shutsPN[i][j]);
+            }
+            printer_sd.println();
         }
     }
 

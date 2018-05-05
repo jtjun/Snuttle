@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.io.*;
 
 public class Simulator {
     public static int MAX_TIME = 2000;
@@ -23,7 +24,11 @@ public class Simulator {
         }
 
         ActualDrive AD = new ActualDrive(shuttles, guests, map);
-        AD.Simulate(MAX_TIME);
+        
+        PrintStream printer_sd = new PrintStream(new File("shuttle density.txt"));
+        PrintStream printer_wt = new PrintStream(new File("guest wait time.txt"));
+        PrintStream printer_dl = new PrintStream(new File("deadline missed.txt"));
+        AD.Simulate(MAX_TIME, printer_sd, printer_wt, printer_dl);
     }
 
     public static void main(String[] args){
