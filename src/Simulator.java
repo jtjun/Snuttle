@@ -49,21 +49,21 @@ public class Simulator {
         // type : Greedy
         System.out.println("\ntype : Greedy");
         Request RG = new Request(guests, map);
-        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type));
+        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), 1);
         Grd.Simulate();
         System.out.println("Greedy done");
 
         // type : Express
         System.out.println("\ntype : Express");
         Request RE = new Request(guests, map);
-        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type));
+        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type), 0);
         Exp.Simulate();
         System.out.println("Express done");
 
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
-        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type));
+        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type), 0);
         Cir.Simulate();
         System.out.println("Circular done");
     }

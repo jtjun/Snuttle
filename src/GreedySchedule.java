@@ -88,6 +88,10 @@ public class GreedySchedule{
         }
     }
 
+    public static void setGreedyScheduleForEach(Shuttle[] shuttles,int shuttlenum, int time){
+
+    }
+
 }
 class StationGroup{
     public Station start,dest;
