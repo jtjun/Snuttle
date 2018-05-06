@@ -17,7 +17,6 @@ public class Simulator {
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
         ArrayList<Guest> guests = new ArrayList<>();
         guests = generator.getGuests();
-        Request R = new Request(guests, map);
 
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express

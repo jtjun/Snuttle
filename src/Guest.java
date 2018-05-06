@@ -19,7 +19,6 @@ public class Guest {
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
     }
-    public void setNums(int n){ nums = n; }
     public void setRideT(int t){ rideT = t; }
     private void setShuttleName(int n ){ shuttleName = n;}
     private int getShuttleName(){return shuttleName;}

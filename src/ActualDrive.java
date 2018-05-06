@@ -53,36 +53,35 @@ public class ActualDrive {
         shuttlemax.close();
     }
 
-    public int shutiDriveT(int i, int time){
+    public int shutiDriveT(int i, int t){
         Shuttle shuti = shuttles[i];
-        sched schedTo = shuti.whereTo(time);
-
-        int toTime = schedTo.getTime();
-        if(toTime > time) return shuti.getNums(); // shuttle is on road
-        // below run when shuttle is on station
-        Station toSta = schedTo.getStation();
-        Schedule rNextSta = R.scheduleTS(toTime, toSta);
-        if(toTime == time){ // shuttle arrive at Station
-            for (int a = 0; (a < rNextSta.getNumSched()) && (shuti.getEmpty()>0); a++) {
-                sched guR = rNextSta.whatIthSched(a); //guest's Request
-                int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
-                if (idx > 0) {
-                    schedTo.setNums(schedTo.getNums() - guR.getNums()); // take a person
-                    int dt = allocate(shuti, guR, idx); // set drop schedule
-                    rNextSta.removeSchedule(guR); // after allocate it should remove
-                    early.add(dt);
-                    serviced++;
-                } // before arrive toStation it decide schedule
-            } return shuti.Driving(time); // arrive at station
+        int idxt = shuti.whereToIdx(t);
+        sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
+        if(schedTo.getTime() > t) return shuti.getNums();
+        if(schedTo.getTime() == t){ // shuti arrived at next station
+            shuti.dropS(idxt); // first, drop the people
+            if(shuti.getEmpty()==0) return shuti.getNums();
+            if(shuti.getEmpty()<=0) {
+                System.out.println("ERROR : At "+t+" Shuttle"+i+" has negative people "+shuti.getNums());
+                return shuti.getNums();
+            } else{ // shuti's empty > 0
+                Schedule guestsR =  R.scheduleTS(t, schedTo.getStation());
+                for(int a=0; (a<guestsR.getNumSched()) && (shuti.getEmpty()>0); a++) {
+                    shuti.errorCheck(t);
+                    sched dropR = guestsR.whatIthSched(a);
+                    int idx = shuti.goBefore(t, dropR); // guests' drop index
+                    if (idx > 0) { // shuti will go to guests's drop destination.
+                        shuti.rideS(); // second, take a person
+                        shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 );
+                        early.add(dropR.getTime()-shuti.whatIthS(idx).getTime());
+                        guestsR.removeSchedule(a);
+                        a--;
+                    } // A person ride a shuti
+                } // shuti is full or there are no guest who can ride this shuti
+            }
+        } else { // schedule to is past error
+            if(!schedTo.equals(shuti.whatIthS(idxt-1))) System.out.println("ERROR : Schedule To searching error! "+t);
+            return shuti.getNums();
         } return shuti.getNums();
-    }
-
-    public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)
-        int timeD = guR.getTime();
-        sched shutsc = shut.getSchedule().whatIthSched(idx);
-        guR.setTime(shutsc.getTime()); // guest's request is modified
-        int DropT = guR.getTime();
-        shut.rideGuest(guR, idx);
-        return timeD - DropT;
     }
 }

@@ -81,8 +81,10 @@ public class Schedule{
 
     public void removeSchedule(int idx){
         int l = Schedules.length;
-        if(idx >= l) return;
-        Schedules[idx] = Schedules[l-1];
+        if(idx >= l) {
+            System.out.println("ERROR : Remove schedule out of range");
+            return;
+        } Schedules[idx] = Schedules[l-1];
         Schedules = Arrays.copyOf(Schedules, l-1);
         sortSchedule();
     } // remove schedule

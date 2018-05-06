@@ -17,39 +17,33 @@ public class Shuttle {
         S = Si; // we don't care sched's nums now
     }
 
-    public int Driving(int t){
-        int idxTo =  S.whatSchedIdx(t);
-        sched To = S.whatIthSched(idxTo);
-        if(t == To.getTime()) { // arrive at station
-            String str = ("At "+t +"\n");
-            str += ("Shuttle"+name+" is arrived at "+ To.getStation().getName()) + "\n";
-            int dnum = To.getNums();
-            if(dnum+nums > max || getNums() > max) {
-                System.out.println("Shuttle"+name+" at "+t);
-                System.out.println("error we can't take people more\n");
-                return getNums();
-            }
-            if(dnum+nums < 0 || getNums() < 0) {
-                System.out.println("Shuttle"+name+" at "+t);
-                System.out.println("error negative number of people"+(dnum+nums)+", current :"+getNums()+"\n");
-            }
-            nums += dnum;
-            str += ("It's current number of people : "+getNums())+"\n";
-            str += ("Empty seat : "+getEmpty()+"\n")+"\n";
-            //System.out.print(str);
-            return getNums();
-        } else return getNums();
-    } // don't how many ride or drop, just it's number of people
-
     public int goBefore(int timeS, sched s){
-        int leftT = S.getNumSched(); // timeS = shuttle's arrive time at source
+        int schedn = S.getNumSched(); // timeS = shuttle's arrive time at source
         int idx = S.whatSchedIdx(timeS)+1;
-        for(int i=idx; i<leftT; i++){
+        for(int i=idx; i<schedn; i++){
             sched si = S.whatIthSched(i);
             if(si.getTime() > s.getTime()) return -1;
             if(si.getStation().equals(s.getStation())) return i;
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
+
+    public void dropS(int idx){ // sched's index
+        sched To = S.whatIthSched(idx);
+        if(To.getNums() > 0) {
+            System.out.println("ERROR : Shuttle schedule nums is positive");
+            return;
+        } else {
+            nums += To.getNums(); // drop the people
+            To.setNums(0); // change the schedule To's number
+        }
+    }
+    public void rideS(){
+        nums++;
+    }
+
+    public void errorCheck(int time){
+        if(nums<0) System.out.println("ERROR : At "+time+" Shuttle"+name+" has negative people.");
+    }
 
     public void rideGuest(sched s, int idx){
         int numa = s.getNums();
@@ -60,7 +54,10 @@ public class Shuttle {
     public sched whereTo(int timei) {
         int idx = S.whatSchedIdx(timei);
         return S.whatIthSched(idx);
-    }
+    } // can splited by below
+    public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
+    public sched whatIthS(int idx){ return S.whatIthSched(idx); }
+
     public sched whereFrom(int timei) {
         int idx = S.whatSchedIdx(timei);
         if(idx==0) return S.whatIthSched(0);

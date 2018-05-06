@@ -12,7 +12,6 @@ public class ExpressSchedule {
 
             // Make new schedule
             int startStation = n/fixed * i; // Start at different positions
-            System.out.println(startStation);
             Schedule schedule = new Schedule();
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
 
