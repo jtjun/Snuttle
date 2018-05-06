@@ -52,12 +52,12 @@ public class Simulator {
         ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
-        //Printing Shuttle's Schedule
+        /*Printing Shuttle's Schedule
         PrintShutSched(shuttleC, "Circular");
         PrintShutSched(shuttleE, "Express");
         PrintShutSched(shuttleP, "Proposed");
         PrintShutSched(shuttleG, "Greedy");
-        PrintShutSched(shuttleGd, "Greedy100");
+        PrintShutSched(shuttleGd, "Greedy100");*/
 
         // type : Cicular
         System.out.println("\ntype : Circular");
