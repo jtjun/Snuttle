@@ -51,8 +51,33 @@ public class Schedule{
         Schedules[l] = s;
         sortSchedule(); // add new schedule s
     }
+    public void mergeWith(Schedule s){
+        sched[] sc = s.getScheds();
+        sched[] ms = new sched[sc.length+Schedules.length];
+        System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
+        System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
+        Schedules = ms;
+        sortSchedule();
+    }
+    public void removeSchedule(int idx){
+        int l = Schedules.length;
+        if(idx >= l) {
+            System.out.println("ERROR : Remove schedule out of range");
+            return;
+        } Schedules[idx] = Schedules[l-1];
+        Schedules = Arrays.copyOf(Schedules, l-1);
+        sortSchedule();
+    } // remove schedule
+    public void removeSchedule(sched s){
+        int idx = whatSchedIdx(s);
+        removeSchedule(idx);
+        sortSchedule();
+    } // remove schedule
 
-    public void mergeSched(sched s){
+    public sched[] getScheds(){ return Schedules; }
+    public int getNumSched(){ return Schedules.length; }
+    /*
+    public void mergeScheds(sched s){
         int idx = whatSchedIdx(s);
         for(int i=idx+1; i<Schedules.length; i++){
             if(s.equals(Schedules[i])){
@@ -64,52 +89,17 @@ public class Schedule{
             }
         }
     }
-    public void mergeWith(Schedule s){
-        sched[] sc = s.getScheds();
-        sched[] ms = new sched[sc.length+Schedules.length];
-        System.arraycopy(Schedules, 0, ms, 0, Schedules.length);
-        System.arraycopy(sc, 0, ms, Schedules.length, sc.length);
-        Schedules = ms;
-        sortSchedule();
-    }
-
-    public void removeSchedule(sched s){
-        int idx = whatSchedIdx(s);
-        removeSchedule(idx);
-        sortSchedule();
-    } // remove schedule
-
-    public void removeSchedule(int idx){
-        int l = Schedules.length;
-        if(idx >= l) {
-            System.out.println("ERROR : Remove schedule out of range");
-            return;
-        } Schedules[idx] = Schedules[l-1];
-        Schedules = Arrays.copyOf(Schedules, l-1);
-        sortSchedule();
-    } // remove schedule
 
     public void replaceSchedule(sched pres, sched news){
         int ind = whatSchedIdx(pres);
         Schedules[ind] = news;
     }
-
-    public String toString(){
-        String ret = "[";
-        for(int i = 0; i < Schedules.length; i++){
-            ret += Schedules[i].toString()+",";
-        } return ret+"]";
-    }
-
     public Schedule copyS(){
         Schedule copy = new Schedule();
         for(int i=0; i<Schedules.length; i++){
             copy.addSchedule(Schedules[i].copyS());
         } return copy;
     }
-    public sched[] getScheds(){ return Schedules; }
-    public int getNumSched(){ return Schedules.length; }
-
     public String printing(){
         sortSchedule();
         String str = "[";
@@ -118,7 +108,7 @@ public class Schedule{
             str += s.printing() + " ";
         } str += "]";
         return str;
-    }
+    }*/
 }
 
 class sched {
@@ -157,9 +147,5 @@ class sched {
 
     public String printing(){
         return ("("+time+", "+place.getName()+","+nums+")");
-    }
-
-    public String toString(){
-        return "time("+time+"), place("+place.getName()+"), nums("+nums+")";
     }
 }

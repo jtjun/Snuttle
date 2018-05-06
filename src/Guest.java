@@ -18,7 +18,7 @@ public class Guest {
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
-    }
+    }/*
     public void setRideT(int t){ rideT = t; }
     private void setShuttleName(int n ){ shuttleName = n;}
     private int getShuttleName(){return shuttleName;}
@@ -27,13 +27,14 @@ public class Guest {
 
     public int getRideT(){ return rideT; }
     public int getWaitT(){ return rideT - timeS; }
-    public sched getRide(){return new sched(timeS, placeS, nums);}
+    public int getNums(){ return nums; }
+    public sched getRide(){return new sched(timeS, placeS, nums);}*/
+
     public sched getDrop(){return new sched(timeD, placeD, -nums);}
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
-    public int getNums(){ return nums; }
 }
 
 class Request{
@@ -80,7 +81,7 @@ class Request{
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
     } // sta's guest
-
+    /*
     public int howMany(int ti, Station sta){ // ti, sta's number of guest
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();
@@ -112,5 +113,5 @@ class Request{
             Schedule s = st[i];
             str += s.printing()+"\n";
         } return str + "\n";
-    }
+    }*/
 }

@@ -51,12 +51,12 @@ public class Shuttle {
         S.whatIthSched(idx).setNums(numa+numb);
     }
 
+    public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
+    public sched whatIthS(int idx){ return S.whatIthSched(idx); }
     public sched whereTo(int timei) {
         int idx = S.whatSchedIdx(timei);
         return S.whatIthSched(idx);
-    } // can splited by below
-    public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
-    public sched whatIthS(int idx){ return S.whatIthSched(idx); }
+    } // merge two above method
 
     public sched whereFrom(int timei) {
         int idx = S.whatSchedIdx(timei);
@@ -68,7 +68,7 @@ public class Shuttle {
         x = xi;
         y = yi;
     } // update location
-
+    /*
     public void setTime(int timei) { time = timei;}
     public void setMax(int n){ max = n; }
 
@@ -77,6 +77,7 @@ public class Shuttle {
     public int getY() { return y; }
     public int getTime() { return time; }
     public int getMax() { return max; }
+    */
     public int getNums() {return nums; }
     public int getEmpty() {return max-nums; }
     public Schedule getSchedule() { return S; }
