@@ -75,13 +75,16 @@ public class ActualDrive {
                         shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 );
                         early.add(dropR.getTime()-shuti.whatIthS(idx).getTime());
                         guestsR.removeSchedule(a);
+                        serviced++;
                         a--;
                     } // A person ride a shuti
                 } // shuti is full or there are no guest who can ride this shuti
-            }
+            } shuti.errorCheck(t);
         } else { // schedule to is past error
-            if(!schedTo.equals(shuti.whatIthS(idxt-1))) System.out.println("ERROR : Schedule To searching error! "+t);
-            return shuti.getNums();
-        } return shuti.getNums();
+            if(!schedTo.equals(shuti.whatIthS(idxt-1))){
+                System.out.println("ERROR : Schedule To searching error! "+t);
+            } return shuti.getNums();
+        } shuti.errorCheck(t);
+        return shuti.getNums();
     }
 }
