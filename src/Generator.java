@@ -23,21 +23,26 @@ public class Generator {
             }
         }
         for (int i = 0; i < n; i++) {
-            // Set time with random
-            int timeS = generator.nextInt(Simulator.MAX_TIME);
-            int timeD = generator.nextInt(Simulator.MAX_TIME);
-            if (timeS > timeD) {
-                int tmp = timeS;
-                timeS = timeD;
-                timeD = tmp;
-            }
             // Set stations with random excluding same station
             StationGroup sd = edgelist.get(generator.nextInt(edgelist.size()));
 
             Station placeS = sd.start;
             Station placeD = sd.dest;
 
-            guests.add(new Guest(timeS, placeS, timeD, placeD));
+            // Set time with random
+            int timeD = generator.nextInt(100)+50;
+            int timeS = generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeD);
+            guests.add(new Guest(timeS, placeS, timeS+timeD+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD, generator.nextInt(timeS+1)));
+
+            // int timeS = generator.nextInt(Simulator.MAX_TIME);
+            // int timeD = generator.nextInt(Simulator.MAX_TIME);
+            // if (timeS > timeD) {
+            //     int tmp = timeS;
+            //     timeS = timeD;
+            //     timeD = tmp;
+            // }
+
+            // guests.add(new Guest(timeS, placeS, timeD, placeD));
         }
         sortGuests();
     }
@@ -57,23 +62,44 @@ public class Generator {
             }
         } Collections.shuffle(edgelist);
         
-        for(int i = 0; i < n; i++){
-            // Set time with random
-            int timeS = generator.nextInt(Simulator.MAX_TIME);
-            int timeD = generator.nextInt(Simulator.MAX_TIME);
-            if(timeS>timeD){
-                int tmp = timeS;
-                timeS = timeD;
-                timeD = tmp;
-            }
+        // for(int i = 0; i < n; i++){
+        //     // Set time with random
+        //     StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, edgelist.size()));
 
-            // Set stations with random excluding same station
+        //     Station placeS = sd.start;
+        //     Station placeD = sd.dest;
+
+        //     // Set time with random
+        //     int timeD = generator.nextInt(100)+50;
+        //     int timeS = generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeD);
+
+        //     guests.add(new Guest(timeS, placeS, timeD+timeS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,generator.nextInt(timeS+1)));
+        // }
+
+        for(int i = 0; i < n*9/10; i++){
+            // Set time with random
             StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, edgelist.size()));
 
             Station placeS = sd.start;
             Station placeD = sd.dest;
 
-            guests.add(new Guest(timeS, placeS, timeD, placeD));
+            // Set time with random
+            int timeD = generator.nextInt(100)+50;
+            int timeS = generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeD);
+
+            guests.add(new Guest(timeS, placeS, timeD+timeS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,generator.nextInt(timeS+1)));
+        }
+        StationGroup sd = edgelist.get(getRandomStation(1, k, edgelist.size()));
+        int timeDD = generator.nextInt(100)+50;
+        int timeSS = generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeDD);
+
+        for(int i=n*9/10; i < n; i++){
+
+            Station placeS = sd.start;
+            Station placeD = sd.dest;
+
+
+            guests.add(new Guest(timeSS, placeS, timeDD+timeSS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,timeSS-30));
         }
         sortGuests();
     }
@@ -82,7 +108,7 @@ public class Generator {
     public ArrayList<Guest> copyGuests(){
         ArrayList<Guest> guestCopy = new ArrayList<>();
         for(Guest guest : guests) {
-            guestCopy.add(new Guest(guest.getTimeS(), guest.getPlaceS(), guest.getTimeD(), guest.getPlcaeD()));
+            guestCopy.add(new Guest(guest.getTimeS(), guest.getPlaceS(), guest.getTimeD(), guest.getPlcaeD(), guest.getRequestT()));
         } return guestCopy;
     }
 
