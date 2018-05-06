@@ -146,7 +146,7 @@ public class GreedySchedule{
 
         int[] stationorder = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
 
-        if(shuttlenum<Simulator.fixedshuttle){
+        if(shuttlenum < Simulator.fixedshuttle){
             int x = 15;
             int y = 20;
             int t = 0; // acculated time for shuttle
