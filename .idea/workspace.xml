@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Circular Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular Shuttle Max.txt" />
       <change beforePath="$PROJECT_DIR$/Express Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express Shuttle Max.txt" />
       <change beforePath="$PROJECT_DIR$/Greedy Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Guest.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Guest.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Request.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Request.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
-      <change beforePath="$PROJECT_DIR$/src/Generator.java" afterPath="$PROJECT_DIR$/src/Generator.java" />
-      <change beforePath="$PROJECT_DIR$/src/Guest.java" afterPath="$PROJECT_DIR$/src/Guest.java" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,8 +20,8 @@
       <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+            <state relative-caret-position="-267">
+              <caret line="27" column="45" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,8 +32,8 @@
       <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            <state relative-caret-position="588">
+              <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -316,12 +307,12 @@
       <workItem from="1525509195356" duration="1313000" />
       <workItem from="1525521870994" duration="10301000" />
       <workItem from="1525534930670" duration="284000" />
-      <workItem from="1525563262932" duration="6600000" />
+      <workItem from="1525563262932" duration="6878000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89828000" />
+    <option name="totallyTimeSpent" value="90106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -364,14 +355,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ActualDrive.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
@@ -734,16 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -752,10 +725,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-267">
+          <caret line="27" column="45" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="49" column="42" lean-forward="false" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        <state relative-caret-position="588">
+          <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
           <folding />
         </state>
       </provider>

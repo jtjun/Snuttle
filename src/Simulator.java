@@ -28,19 +28,19 @@ public class Simulator {
         ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
-        // type : Express
-        System.out.println("\ntype : Express");
-        Request RE = new Request(guests, map);
-        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, "Express");
-        Exp.Simulate();
-        System.out.println("Express done");
-
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
         ActualDrive Cir = new ActualDrive(shuttleC, RC, map, "Circular");
         Cir.Simulate();
         System.out.println("Circular done");
+
+        // type : Express
+        System.out.println("\ntype : Express");
+        Request RE = new Request(guests, map);
+        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, "Express");
+        Exp.Simulate();
+        System.out.println("Express done");
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
