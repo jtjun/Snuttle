@@ -41,7 +41,7 @@ public class ActualDrive {
 
         //Printing the result!
         PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
-        shuttlemax.println(type+"\t"+serviced+", "+userN);
+        shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
             shuttlemax.print("Shuttle"+i+"\t"+shutsPN[i][0]);
             for(int j=1; j<runT; j++){
@@ -49,9 +49,7 @@ public class ActualDrive {
             } shuttlemax.println();
         }shuttlemax.println("How early\t"+sumup(early)+"\t"+ ToString(early));
         shuttlemax.println("How wait\t"+sumup(wait)+"\t"+ ToString(wait));
-
-        shuttlemax.print("\nMissed people's location (Destination/Demand time/Source time");
-        shuttlemax.println(R.printingAtT(runT-1, -1)); // sched> W= With<
+        shuttlemax.println(R.printingAtT(runT-1, 0)); // sched> W= With<
         shuttlemax.close();
     }
 

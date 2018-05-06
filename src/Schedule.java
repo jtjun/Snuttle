@@ -120,6 +120,7 @@ class sched {
     private Station place;
     private int nums;
     private int wait=0;
+    private boolean unfair = false;
 
     sched(int t, Station p, int n){
         time = t;
@@ -145,8 +146,12 @@ class sched {
     public void setStation(Station p){ place = p; }
     public void setNums(int n){ nums = n; }
     public void waiting(){wait += 1;}
+    public void unfair(){unfair=true;}
+
     public int getWait(){return wait;}
     public int getSponT(){return (Simulator.MAX_TIME-wait);}
+    public int getDemandT(){return (time-getSponT());}
+    public boolean askUnfair(){return unfair;}
 
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
@@ -154,7 +159,7 @@ class sched {
 
     public String printing(int pr){
         if(pr>0) return ("("+place.getName()+"/"+time+")");
-        else if(pr==0) return (wait+"");
+        else if(pr==0) return (wait+"/"+unfair);
         else return ("("+place.getName()+"/"+time+"/"+getSponT()+")");
     }
 }

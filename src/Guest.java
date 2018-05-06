@@ -99,7 +99,11 @@ class Request{
     }
     public String printingAtT(int t, int pr){ // sched> W= With<
         Schedule[] st = scheduleT(t);
-        String str = "At "+t+"\n";
+        String str ="";
+        if(pr>0) str += "\nMissed people's location (Destination / Demand time)";
+        else if(pr==0) str += "\nMissed people's location (Waiting time / Unfair = true)";
+        else str += "\nMissed people's location (Destination / Demand time / Source time)";
+        str += " At "+t+"\n";
         for(int i =0; i<staN; i++){
             str += (map.getStation(i).getName()+" Station\t");
             Schedule s = st[i];
@@ -114,5 +118,21 @@ class Request{
             Schedule s = st[i];
             str += s.printing(pr)+"\n";
         } return str + "\n";
+    }
+    public int checkUnfair(int t){ // sched> W= With<
+        Schedule[] st = scheduleT(t);
+        int unfair=0;
+        for(int i =0; i<staN; i++){
+            Schedule StaSchedi = st[i];
+            String sourceS = map.getStation(i).getName();
+            for(int j=0; j<StaSchedi.getNumSched(); j++){
+                sched reqstj = StaSchedi.whatIthSched(j);
+                int realdt = map.getDistance(sourceS, reqstj.getStation().getName());
+                if(reqstj.getDemandT() < realdt) {
+                    reqstj.unfair();
+                    unfair++;
+                } // checking unfairness and tell it's unfair to sched.
+            }
+        } return unfair;
     }
 }
