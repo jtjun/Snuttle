@@ -196,7 +196,7 @@ public class GreedySchedule{
                 schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
             }
-            shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[k], shuttlenum, map);
+            shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
         }
     }
 }
