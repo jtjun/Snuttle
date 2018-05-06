@@ -28,8 +28,8 @@ public class Guest {
 
     public int getRideT(){ return rideT; }
     public int getWaitT(){ return rideT - timeS; }
-    public sched getRide(){return request[0];}
-    public sched getDrop(){return request[1];}
+    public sched getRide(){return new sched(timeS, placeS, nums);}
+    public sched getDrop(){return new sched(timeD, placeD, -nums);}
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
     public Station getPlaceS(){ return placeS; }
@@ -42,7 +42,6 @@ class Request{
     private int runT = Simulator.MAX_TIME;
     private int staN;
     private Schedule[][] R;
-    private Schedule[][] Reset;
     private ArrayList<Guest> guests;
     Map map;
 
@@ -51,7 +50,6 @@ class Request{
         map = mapi;
         staN = map.getNumStations();
         R = new Schedule[runT][staN];
-        Reset = new Schedule[runT][staN];
 
         for(int i=0; i<runT; i++){
             for(int j=0; j<staN; j++){
@@ -60,15 +58,6 @@ class Request{
         } for(int i=0; i<guests.size(); i++){
             Guest g = guests.get(i);
             Schedule s = R[g.getTimeS()][map.getIndex(g.getPlaceS().getName())];
-            s.addSchedule(g.getDrop());
-        }
-        for(int i=0; i<runT; i++){
-            for(int j=0; j<staN; j++){
-                Reset[i][j] = new Schedule();
-            }
-        } for(int i=0; i<guests.size(); i++){
-            Guest g = guests.get(i);
-            Schedule s = Reset[g.getTimeS()][map.getIndex(g.getPlaceS().getName())];
             s.addSchedule(g.getDrop());
         }
     }
@@ -92,13 +81,6 @@ class Request{
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
     } // sta's guest
-    public void reset(){
-        for(int i=0; i<runT; i++){
-            for(int j=0; j<staN; j++){
-                R[i][j] = Reset[i][j].copyS();
-            }
-        }
-    }
 
     public int howMany(int ti, Station sta){ // ti, sta's number of guest
         Schedule s = R[ti][map.getIndex(sta.getName())];

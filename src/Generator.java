@@ -80,11 +80,9 @@ public class Generator {
     public ArrayList<Guest> getGuests(){ return guests; }
     public ArrayList<Guest> copyGuests(){
         ArrayList<Guest> guestCopy = new ArrayList<>();
-        for(Guest guest : guests){
+        for(Guest guest : guests) {
             guestCopy.add(new Guest(guest.getTimeS(), guest.getPlaceS(), guest.getTimeD(), guest.getPlcaeD()));
-        }
-        // guestCopy = (ArrayList<Guest>)guests.clone();
-        return guestCopy;
+        } return guestCopy;
     }
 
     private int getRandomStation(double r,int k,int m){
