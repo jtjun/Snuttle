@@ -17,6 +17,7 @@ public class CircularSchedule {
 
             for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
+                if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),

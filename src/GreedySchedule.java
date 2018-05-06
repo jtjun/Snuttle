@@ -76,7 +76,7 @@ public class GreedySchedule{
             Station p = list.get(0);
             schedules[k].addSchedule(t, p, 0);
             for(int i = 1; i < n*10+1; i++){
-                t += map.getDistance(p.getName(), list.get(i%list.size()).getName());
+                t += map.getDistance(list.get((i-1)%list.size()).getName(), list.get(i%list.size()).getName());
                 if(t>Simulator.MAX_TIME) break;
                 schedules[k].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
