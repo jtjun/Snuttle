@@ -11,13 +11,14 @@ public class ActualDrive {
     private Schedule[] S;
     private Request R;
     private Map map;
+    private String type;
 
     private ArrayList<Integer> early = new ArrayList<>();
     private ArrayList<Integer> wait = new ArrayList<>();
     private int[][] shutsPN;
 
 
-    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi){
+    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi, String type){
         shuttles = shuttleS; // scheduled shuttles
         shutN = shuttles.length;
         map = mapi;
@@ -40,7 +41,7 @@ public class ActualDrive {
         /*PrintStream outr = new PrintStream(new File("Request Change.txt"));
         outr.print(strR + R.printing());
         outr.close();*/
-        PrintStream shuttlemax = new PrintStream(new File("Shuttle Max.txt"));
+        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
 
         for(int i=0; i<shutN; i++){
             shuttlemax.print(i);

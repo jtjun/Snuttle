@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class SetCircularSchedule {
+public class CircularSchedule {
     public static void setCircularSchedule(Shuttle[] shuttles, Map map){
         int n = map.getNumStations();
         int[] stationorder = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
