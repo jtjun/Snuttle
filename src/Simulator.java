@@ -22,25 +22,25 @@ public class Simulator {
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
 
         //Setting schedule to shuttle
-        CircularSchedule.setCircularSchedule(shuttleC, map);
-        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
-        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
         guests = generator.copyGuests();
-        ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
+        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
+        ActualDrive Grd = new ActualDrive(shuttleG, guests, map, "Greedy");
         Grd.Simulate();
         System.out.println("Greedy done");
         // type : Cicular
         System.out.println("\ntype : Circular");
         guests = generator.copyGuests();
+        CircularSchedule.setCircularSchedule(shuttleC, map);
         ActualDrive Cir = new ActualDrive(shuttleC, guests, map, "Circular");
         Cir.Simulate();
         System.out.println("Circular done");
         // type : Express
         System.out.println("\ntype : Express");
         guests = generator.copyGuests();
+        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         ActualDrive Exp = new ActualDrive(shuttleE, guests, map, "Express");
         Exp.Simulate();
         System.out.println("Express done");
