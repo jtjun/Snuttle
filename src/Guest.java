@@ -73,7 +73,7 @@ class Request{
     public Schedule scheduleTS(int ti, Station sta){
         return R[ti][map.getIndex(sta.getName())];
     } // ti, sta's schedule
-    /*
+
     public Schedule[] scheduleT(int ti){
         return R[ti];
     } // ti's whole sta's guest
@@ -87,32 +87,32 @@ class Request{
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();
     }
-    public String printing(){
+    public String printing(int pr){
         String str = "";
         for(int i =0; i<runT; i++){
             str += (i+" : ");
             for(int j=0; j< staN; j++){
                 Schedule s = R[i][j];
-                str += s.printing();
+                str += s.printing(pr);
             } str += "\n";
         } return str + "\n";
     }
-    public String printingAtT(int t){
+    public String printingAtT(int t, int pr){ // sched> W= With<
         Schedule[] st = scheduleT(t);
-        String str = "At "+t+" : ";
+        String str = "At "+t+"\n";
         for(int i =0; i<staN; i++){
-            str += (i+"Station : ");
+            str += (map.getStation(i).getName()+" Station\t");
             Schedule s = st[i];
-            str += s.printing()+"\n";
+            str += s.printing(pr)+"\n";
         } return str + "\n";
     }
-    public String printingAtS(Station sta){
+    public String printingAtS(Station sta, int pr){
         Schedule[] st = scheduleS(sta);
         String str = "At "+sta.getName()+" : ";
         for(int i =0; i<runT; i++){
             str += ("When "+i+" : ");
             Schedule s = st[i];
-            str += s.printing()+"\n";
+            str += s.printing(pr)+"\n";
         } return str + "\n";
-    }*/
+    }
 }

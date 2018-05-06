@@ -104,13 +104,13 @@ public class Schedule{
             copy.addSchedule(Schedules[i].copyS());
         } return copy;
     }
-    public String printing(){
+    public String printing(int pr){
         sortSchedule();
-        String str = "[";
-        for(int i=0; i<Schedules.length; i++){
+        String str = whatIthSched(0).printing(pr);
+        for(int i=1; i<Schedules.length; i++){
             sched s = whatIthSched(i);
-            str += s.printing() + " ";
-        } str += "]";
+            str += ", "+s.printing(pr);
+        } str += "";
         return str;
     }
 }
@@ -146,12 +146,15 @@ class sched {
     public void setNums(int n){ nums = n; }
     public void waiting(){wait += 1;}
     public int getWait(){return wait;}
+    public int getSponT(){return (Simulator.MAX_TIME-wait);}
 
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
     public int getNums() { return nums; }
 
-    public String printing(){
-        return ("("+time+", "+place.getName()+","+nums+")");
+    public String printing(int pr){
+        if(pr>0) return ("("+place.getName()+"/"+time+")");
+        else if(pr==0) return (wait+"");
+        else return ("("+place.getName()+"/"+time+"/"+getSponT()+")");
     }
 }

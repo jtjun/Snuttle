@@ -27,28 +27,21 @@ public class Shuttle {
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
+    public void rideS(){ nums++; }
+    public void rideS(int n){ nums+=n; }
+
     public void dropS(int idx){ // sched's index
         sched To = S.whatIthSched(idx);
         if(To.getNums() > 0) {
             System.out.println("ERROR : Shuttle schedule nums is positive");
-            return;
         } else {
             nums += To.getNums(); // drop the people
             To.setNums(0); // change the schedule To's number
         }
     }
-    public void rideS(){
-        nums++;
-    }
 
     public void errorCheck(int time){
         if(nums<0) System.out.println("ERROR : At "+time+" Shuttle"+name+" has negative people.");
-    }
-
-    public void rideGuest(sched s, int idx){
-        int numa = s.getNums();
-        int numb = S.whatIthSched(idx).getNums();
-        S.whatIthSched(idx).setNums(numa+numb);
     }
 
     public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
@@ -63,26 +56,25 @@ public class Shuttle {
         if(idx==0) return S.whatIthSched(0);
         return S.whatIthSched(idx);
     }
+    public int getNums() {return nums; }
+    public int getEmpty() {return max-nums; }
+    public Schedule getSchedule() { return S; }
+
+    public void setTime(int timei) { time = timei;}
+    public void setMax(int n){ max = n; }
     public void setName(int n){ name = n; }
     public void setXY(int xi, int yi) {
         x = xi;
         y = yi;
     } // update location
-    /*
-    public void setTime(int timei) { time = timei;}
-    public void setMax(int n){ max = n; }
 
     public int getName() { return name; }
     public int getX() { return x; }
     public int getY() { return y; }
     public int getTime() { return time; }
     public int getMax() { return max; }
-    */
-    public int getNums() {return nums; }
-    public int getEmpty() {return max-nums; }
-    public Schedule getSchedule() { return S; }
 }
-/*
+/* Use this class when we have to draw map or catch the cross
 class Taski {
     private int time; // current time
     private sched from, to;

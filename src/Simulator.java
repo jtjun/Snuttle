@@ -8,11 +8,14 @@ public class Simulator {
     public static double K_RATIO = 0.5;
     public static int shutn = 10 ;
     public static int userN = 1000;
+    private Map map;
 
-    public Simulator(String type, int shutni, int userNi, int ratio) throws FileNotFoundException{
+    public Simulator() throws FileNotFoundException {
+        map = new Map("stations.csv", "distance.csv");
+    }
+    public void Start(String type, int shutni, int userNi, int ratio) throws FileNotFoundException {
         shutn = shutni;
         userN = userNi;
-        Map map = new Map("stations.csv", "distance.csv");
         System.out.print("\nGuest Type : "+type+" ____________________________");
         // All Random guest situation
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
@@ -52,11 +55,11 @@ public class Simulator {
     }
 
     public static void main(String[] args){
-        try{
-            Simulator simulatorAR = new Simulator("AR", 10, 1000, 2);
-            Simulator simulatorHS = new Simulator("HS", 10, 1000, 2);
+        try{ Simulator SimulatoR = new Simulator();
+            SimulatoR.Start("AR", 10, 1000, 2);
+            SimulatoR.Start("HS", 10, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
-        }catch(FileNotFoundException e){
+        }catch( FileNotFoundException e ){
             System.out.println(e);
         }
     }

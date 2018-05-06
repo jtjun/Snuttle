@@ -32,16 +32,12 @@ public class ActualDrive {
     }
 
     public void Simulate() throws FileNotFoundException {
-        //String strR = "Initial Request's state :\n"+R.printing()+"\nAfter Request's state \n";
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
             } // simulate time's situation
             R.makeUp(time+1);
         }
-        /*PrintStream outr = new PrintStream(new File("Request Change.txt"));
-        outr.print(strR + R.printing());
-        outr.close();*/
 
         //Printing the result!
         PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
@@ -53,6 +49,9 @@ public class ActualDrive {
             } shuttlemax.println();
         }shuttlemax.println("How early\t"+sumup(early)+"\t"+ ToString(early));
         shuttlemax.println("How wait\t"+sumup(wait)+"\t"+ ToString(wait));
+
+        shuttlemax.print("\nMissed people's location (Destination/Demand time/Source time");
+        shuttlemax.println(R.printingAtT(runT-1, -1)); // sched> W= With<
         shuttlemax.close();
     }
 
