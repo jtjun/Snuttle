@@ -134,7 +134,6 @@ class sched {
     public sched copyS(){
         return new sched(this.getTime(), this.getStation(), this.getNums());
     }
-
     public boolean similar(sched s, int dt){
         if(this.place.equals(s.getStation())) {
             if ((this.getTime() - dt) <= s.getTime()
@@ -142,7 +141,7 @@ class sched {
         } return false;
     }
 
-    public void setTime(int t){ time = t; }
+    public void setTime(int t){ time = t;}
     public void setStation(Station p){ place = p; }
     public void setNums(int n){ nums = n; }
     public void waiting(){wait += 1;}
