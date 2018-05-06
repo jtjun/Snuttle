@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Circular Shuttle Max.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Express Shuttle Max.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Greedy Shuttle Max.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" />
-      <change beforePath="$PROJECT_DIR$/src/Generator.java" afterPath="$PROJECT_DIR$/src/Generator.java" />
+      <change beforePath="$PROJECT_DIR$/Circular AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular AR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Circular HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular HS Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Express AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express AR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Express HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express HS Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,23 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+            <state relative-caret-position="255">
+              <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -276,12 +266,12 @@
       <workItem from="1525509195356" duration="1313000" />
       <workItem from="1525521870994" duration="10301000" />
       <workItem from="1525534930670" duration="284000" />
-      <workItem from="1525563262932" duration="17236000" />
+      <workItem from="1525563262932" duration="17667000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100464000" />
+    <option name="totallyTimeSpent" value="100895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -461,10 +451,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           <folding>
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2406#2407#0" expanded="true" />
-            <element signature="e#2469#2470#0" expanded="true" />
-            <element signature="e#2497#2498#0" expanded="true" />
+            <element signature="e#2349#2350#0" expanded="false" />
+            <element signature="e#2406#2407#0" expanded="false" />
+            <element signature="e#2469#2470#0" expanded="false" />
+            <element signature="e#2497#2498#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -604,10 +594,10 @@
         <state relative-caret-position="-518">
           <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
           <folding>
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2406#2407#0" expanded="true" />
-            <element signature="e#2469#2470#0" expanded="true" />
-            <element signature="e#2497#2498#0" expanded="true" />
+            <element signature="e#2349#2350#0" expanded="false" />
+            <element signature="e#2406#2407#0" expanded="false" />
+            <element signature="e#2469#2470#0" expanded="false" />
+            <element signature="e#2497#2498#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -617,10 +607,10 @@
         <state relative-caret-position="-1508">
           <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
-            <element signature="e#4832#4833#0" expanded="true" />
-            <element signature="e#4899#4900#0" expanded="true" />
-            <element signature="e#4930#4931#0" expanded="true" />
-            <element signature="e#5013#5014#0" expanded="true" />
+            <element signature="e#4832#4833#0" expanded="false" />
+            <element signature="e#4899#4900#0" expanded="false" />
+            <element signature="e#4930#4931#0" expanded="false" />
+            <element signature="e#5013#5014#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -638,8 +628,8 @@
         <state relative-caret-position="416">
           <caret line="44" column="50" lean-forward="false" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
           <folding>
-            <element signature="e#1282#1283#0" expanded="true" />
-            <element signature="e#1304#1305#0" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="false" />
+            <element signature="e#1304#1305#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -664,30 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Circular AR Shuttle Max.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Circular HS Shuttle Max.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Express AR Shuttle Max.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -724,21 +690,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+    <entry file="file://$PROJECT_DIR$/Express AR Shuttle Max.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Circular HS Shuttle Max.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-856">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
+        <state relative-caret-position="457">
           <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Circular AR Shuttle Max.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>

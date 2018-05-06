@@ -6,11 +6,12 @@ public class Simulator {
     public static int MAX_TIME = 1000;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 10;
-    public static int userN;
+    public static int shutn = 10 ;
+    public static int userN = 1000;
 
-    public Simulator(String type) throws FileNotFoundException{
-        userN = 1000;
+    public Simulator(String type, int shutni, int userNi ) throws FileNotFoundException{
+        shutn = shutni;
+        userN = userNi;
         Map map = new Map("stations.csv", "distance.csv");
         System.out.print("\nGuest Type : "+type+" ____________________________");
         // All Random guest situation
@@ -52,8 +53,8 @@ public class Simulator {
 
     public static void main(String[] args){
         try{
-            Simulator simulatorAR = new Simulator("AR");
-            Simulator simulatorHS = new Simulator("HS");
+            Simulator simulatorAR = new Simulator("AR", 10, 1000);
+            Simulator simulatorHS = new Simulator("HS", 10, 1000);
         }catch(FileNotFoundException e){
             System.out.println(e);
         }
