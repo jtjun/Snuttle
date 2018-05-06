@@ -12,6 +12,16 @@ public class Simulator {
     public static ArrayList<Guest> guests;
     public static Map map;
 
+    public static void main(String[] args){
+        try{ Simulator SimulatoR = new Simulator();
+            SimulatoR.Start("AR", 10, 1000, 2);
+            SimulatoR.Start("HS", 10, 1000, 2);
+            // ratio is high -> fixed shuttle is low (minimum 1)
+        }catch( FileNotFoundException e ){
+            System.out.println(e);
+        }
+    }
+
     public Simulator() throws FileNotFoundException {
         map = new Map("stations.csv", "distance.csv");
     }
@@ -34,6 +44,10 @@ public class Simulator {
         CircularSchedule.setCircularSchedule(shuttleC, map);
         ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
+        //Printing Shuttle's Schedule
+        PrintShutSched(shuttleC, "Circular");
+        PrintShutSched(shuttleE, "Express");
+        PrintShutSched(shuttleG, "Greedy");
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
@@ -57,13 +71,11 @@ public class Simulator {
         System.out.println("Circular done");
     }
 
-    public static void main(String[] args){
-        try{ Simulator SimulatoR = new Simulator();
-            SimulatoR.Start("AR", 10, 1000, 2);
-            SimulatoR.Start("HS", 10, 1000, 2);
-            // ratio is high -> fixed shuttle is low (minimum 1)
-        }catch( FileNotFoundException e ){
-            System.out.println(e);
-        }
+    public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
+        PrintStream schedul = new PrintStream(new File(type+" Schedule.txt"));
+        schedul.println("Type : "+type);
+        for(int j=0; j<shuttles.length; j++){
+            schedul.println("Shuttle"+j+"'s :\t"+shuttles[j].getSchedule().printing(1));
+        } schedul.close();
     }
 }

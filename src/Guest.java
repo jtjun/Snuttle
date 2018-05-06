@@ -89,7 +89,7 @@ class Request{
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();
     }
-    public String printing(int pr){
+    public String printingAll(int pr){
         String str = "";
         for(int i =0; i<runT; i++){
             str += (i+" : ");
@@ -97,7 +97,7 @@ class Request{
                 Schedule s = R[i][j];
                 str += s.printing(pr);
             } str += "\n";
-        } return str + "\n";
+        } return str;
     }
     public String printingAtT(int t, int pr){ // sched> W= With<
         Schedule[] st = scheduleT(t);
@@ -110,7 +110,7 @@ class Request{
             str += (map.getStation(i).getName()+" Station\t");
             Schedule s = st[i];
             str += s.printing(pr)+"\n";
-        } return str + "\n";
+        } return str;
     }
     public String printingAtS(Station sta, int pr){
         Schedule[] st = scheduleS(sta);

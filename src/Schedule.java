@@ -104,14 +104,13 @@ public class Schedule{
             copy.addSchedule(Schedules[i].copyS());
         } return copy;
     }
-    public String printing(int pr){
+    public String printing(int pr){ // name/time > wait/unfair= name/time/spont<
         sortSchedule();
         String str = whatIthSched(0).printing(pr);
         for(int i=1; i<Schedules.length; i++){
             sched s = whatIthSched(i);
             str += ", "+s.printing(pr);
-        } str += "";
-        return str;
+        } return str;
     }
 }
 
