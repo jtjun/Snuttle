@@ -9,7 +9,7 @@ public class Simulator {
     public static int shutn = 10 ;
     public static int userN = 1000;
 
-    public Simulator(String type, int shutni, int userNi ) throws FileNotFoundException{
+    public Simulator(String type, int shutni, int userNi, int ratio) throws FileNotFoundException{
         shutn = shutni;
         userN = userNi;
         Map map = new Map("stations.csv", "distance.csv");
@@ -26,8 +26,8 @@ public class Simulator {
 
         //Setting schedule to shuttle
         CircularSchedule.setCircularSchedule(shuttleC, map);
-        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
-        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
+        ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
+        GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
@@ -53,8 +53,9 @@ public class Simulator {
 
     public static void main(String[] args){
         try{
-            Simulator simulatorAR = new Simulator("AR", 10, 1000);
-            Simulator simulatorHS = new Simulator("HS", 10, 1000);
+            Simulator simulatorAR = new Simulator("AR", 5, 1000, 2);
+            Simulator simulatorHS = new Simulator("HS", 5, 1000, 2);
+            // ratio is high -> fixed shuttle is low
         }catch(FileNotFoundException e){
             System.out.println(e);
         }

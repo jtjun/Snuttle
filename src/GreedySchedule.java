@@ -64,11 +64,13 @@ public class GreedySchedule{
         for(int i = 0; i < shuttles.length-fixedshuttle; i++){
             lists.add(new ArrayList<Station>());
         }
-        for(StationGroupNum sgn : sgns){
-            if(lists.get(k).size()>map.getNumStations()/8) break;
-            lists.get(k).add(sgn.sg.start);
-            lists.get(k).add(sgn.sg.dest);
-            k = (k+1)%(shuttles.length-fixedshuttle);
+        if( shuttles.length-fixedshuttle >0) {
+            for (StationGroupNum sgn : sgns) {
+                if (lists.get(k).size() > map.getNumStations() / 8) break;
+                lists.get(k).add(sgn.sg.start);
+                lists.get(k).add(sgn.sg.dest);
+                k = (k + 1) % (shuttles.length - fixedshuttle);
+            }
         }
         k = 0;
         for(ArrayList<Station> list : lists){
