@@ -32,7 +32,7 @@ public class ActualDrive {
         gred = gredi;
     }
 
-    public void Simulate() throws FileNotFoundException {
+    public int Simulate() throws FileNotFoundException {
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
@@ -52,6 +52,7 @@ public class ActualDrive {
         shuttlemax.println("How wait\t"+sumup(wait)+"\t"+ ToString(wait));
         //shuttlemax.print(R.printingAtT(runT-1, 0)); // sched> W= With<
         shuttlemax.close();
+        return serviced;
     }
 
     public int shutiDriveT(int i, int t){
