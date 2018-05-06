@@ -65,7 +65,7 @@ public class ActualDrive {
         if(toTime == time){ // shuttle arrive at Station
             for (int a = 0; (a < rNextSta.getNumSched()) && (shuti.getEmpty()>0); a++) {
                 sched guR = rNextSta.whatIthSched(a); //guest's Request
-
+                if(shuti.getNums()==0) break;
                 int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
                 if (idx > 0) {
                     schedTo.setNums(schedTo.getNums() - guR.getNums()); // take a person
