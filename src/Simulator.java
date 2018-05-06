@@ -15,8 +15,8 @@ public class Simulator {
 
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
-            SimulatoR.Start("AR", 10, 1000, 2);
-            SimulatoR.Start("HS", 10, 1000, 2);
+            SimulatoR.Start("HS", 11, 1000, 2);
+            SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
         }catch( FileNotFoundException e ){
             System.out.println(e);
