@@ -198,8 +198,6 @@ public class GreedySchedule{
             }
             shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
         }
-
-        else shuttles[shuttlenum].setNums(0);
     }
 }
 class StationGroup{
