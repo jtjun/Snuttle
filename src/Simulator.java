@@ -27,17 +27,23 @@ public class Simulator {
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
         // type : Greedy
+        System.out.println("\ntype : Greedy");
         guests = generator.copyGuests();
         ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
         Grd.Simulate();
+        System.out.println("Greedy done");
         // type : Cicular
+        System.out.println("\ntype : Circular");
         guests = generator.copyGuests();
         ActualDrive Cir = new ActualDrive(shuttleC, guests, map, "Circular");
         Cir.Simulate();
+        System.out.println("Circular done");
         // type : Express
+        System.out.println("\ntype : Express");
         guests = generator.copyGuests();
         ActualDrive Exp = new ActualDrive(shuttleE, guests, map, "Express");
         Exp.Simulate();
+        System.out.println("Express done");
     }
 
     public static void main(String[] args){
