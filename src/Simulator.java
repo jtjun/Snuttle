@@ -16,6 +16,8 @@ public class Simulator {
         // All Random guest situation
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
         ArrayList<Guest> guests = new ArrayList<>();
+        guests = generator.getGuests();
+        Request R = new Request(guests, map);
 
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
@@ -26,24 +28,26 @@ public class Simulator {
         ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
-        // type : Greedy
-        System.out.println("\ntype : Greedy");
-        guests = generator.copyGuests();
-        ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
-        Grd.Simulate();
-        System.out.println("Greedy done");
-        // type : Cicular
-        System.out.println("\ntype : Circular");
-        guests = generator.copyGuests();
-        ActualDrive Cir = new ActualDrive(shuttleC, guests, map, "Circular");
-        Cir.Simulate();
-        System.out.println("Circular done");
         // type : Express
         System.out.println("\ntype : Express");
-        guests = generator.copyGuests();
-        ActualDrive Exp = new ActualDrive(shuttleE, guests, map, "Express");
+        R.reset();
+        ActualDrive Exp = new ActualDrive(shuttleE, R, map, "Express");
         Exp.Simulate();
         System.out.println("Express done");
+
+        // type : Cicular
+        System.out.println("\ntype : Circular");
+        R.reset();
+        ActualDrive Cir = new ActualDrive(shuttleC, R, map, "Circular");
+        Cir.Simulate();
+        System.out.println("Circular done");
+
+        // type : Greedy
+        System.out.println("\ntype : Greedy");
+        R.reset();
+        ActualDrive Grd = new ActualDrive(shuttleC, R, map, "Greedy");
+        Grd.Simulate();
+        System.out.println("Greedy done");
     }
 
     public static void main(String[] args){

@@ -77,6 +77,7 @@ public class Generator {
         sortGuests();
     }
 
+    public ArrayList<Guest> getGuests(){ return guests; }
     public ArrayList<Guest> copyGuests(){
         ArrayList<Guest> guestCopy = new ArrayList<>();
         guestCopy = (ArrayList<Guest>)guests.clone();

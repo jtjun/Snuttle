@@ -102,7 +102,7 @@ public class Schedule{
     public Schedule copyS(){
         Schedule copy = new Schedule();
         for(int i=0; i<Schedules.length; i++){
-            copy.addSchedule(Schedules[i]);
+            copy.addSchedule(Schedules[i].copyS());
         } return copy;
     }
     public sched[] getScheds(){ return Schedules; }

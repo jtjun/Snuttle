@@ -42,6 +42,7 @@ class Request{
     private int runT = Simulator.MAX_TIME;
     private int staN;
     private Schedule[][] R;
+    private Schedule[][] Reset;
     private ArrayList<Guest> guests;
     Map map;
 
@@ -50,16 +51,24 @@ class Request{
         map = mapi;
         staN = map.getNumStations();
         R = new Schedule[runT][staN];
+        Reset = new Schedule[runT][staN];
 
         for(int i=0; i<runT; i++){
             for(int j=0; j<staN; j++){
                 R[i][j] = new Schedule();
             }
-        }
-
-        for(int i=0; i<guests.size(); i++){
+        } for(int i=0; i<guests.size(); i++){
             Guest g = guests.get(i);
             Schedule s = R[g.getTimeS()][map.getIndex(g.getPlaceS().getName())];
+            s.addSchedule(g.getDrop());
+        }
+        for(int i=0; i<runT; i++){
+            for(int j=0; j<staN; j++){
+                Reset[i][j] = new Schedule();
+            }
+        } for(int i=0; i<guests.size(); i++){
+            Guest g = guests.get(i);
+            Schedule s = Reset[g.getTimeS()][map.getIndex(g.getPlaceS().getName())];
             s.addSchedule(g.getDrop());
         }
     }
@@ -70,10 +79,6 @@ class Request{
             int l = beforeS.getNumSched();
             R[after][i].mergeWith(beforeS);
         }
-    }
-    public int howMany(int ti, Station sta){ // ti, sta's number of guest
-        Schedule s = R[ti][map.getIndex(sta.getName())];
-        return s.getNumSched();
     }
     public Schedule scheduleTS(int ti, Station sta){
         return R[ti][map.getIndex(sta.getName())];
@@ -87,7 +92,18 @@ class Request{
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
     } // sta's guest
+    public void reset(){
+        for(int i=0; i<runT; i++){
+            for(int j=0; j<staN; j++){
+                R[i][j] = Reset[i][j].copyS();
+            }
+        }
+    }
 
+    public int howMany(int ti, Station sta){ // ti, sta's number of guest
+        Schedule s = R[ti][map.getIndex(sta.getName())];
+        return s.getNumSched();
+    }
     public String printing(){
         String str = "";
         for(int i =0; i<runT; i++){
@@ -98,7 +114,6 @@ class Request{
             } str += "\n";
         } return str + "\n";
     }
-
     public String printingAtT(int t){
         Schedule[] st = scheduleT(t);
         String str = "At "+t+" : ";
