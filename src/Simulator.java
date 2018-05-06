@@ -9,14 +9,15 @@ public class Simulator {
     public static int shutn = 10;
     public static int userN;
 
-    public Simulator() throws FileNotFoundException{
+    public Simulator(String type) throws FileNotFoundException{
         userN = 1000;
         Map map = new Map("stations.csv", "distance.csv");
-
+        System.out.print("\nGuest Type : "+type+" ____________________________");
         // All Random guest situation
-        Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
+        Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
         ArrayList<Guest> guests = new ArrayList<>();
         guests = generator.getGuests();
+        Request R = new Request(guests, map);
 
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
@@ -24,33 +25,35 @@ public class Simulator {
 
         //Setting schedule to shuttle
         CircularSchedule.setCircularSchedule(shuttleC, map);
-        ExpressSchedule.setExpressSchedule(shuttleE, map, 4);
-        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 4);
+        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
+        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
         Request RG = new Request(guests, map);
-        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, "Greedy");
+        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type));
         Grd.Simulate();
         System.out.println("Greedy done");
 
         // type : Express
         System.out.println("\ntype : Express");
         Request RE = new Request(guests, map);
-        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, "Express");
+        ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type));
         Exp.Simulate();
         System.out.println("Express done");
 
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
-        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, "Circular");
+        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type));
         Cir.Simulate();
         System.out.println("Circular done");
     }
 
     public static void main(String[] args){
-        try{ Simulator simulator = new Simulator();
+        try{
+            Simulator simulatorAR = new Simulator("AR");
+            Simulator simulatorHS = new Simulator("HS");
         }catch(FileNotFoundException e){
             System.out.println(e);
         }

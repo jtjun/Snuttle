@@ -48,6 +48,7 @@ public class Generator {
         int k = Simulator.MAX_STATION*Simulator.MAX_STATION/2/8; // It can be set with other value
         // Make array for random sampling
         ArrayList<StationGroup> edgelist = new ArrayList<>();
+        guests = new ArrayList<>();
 
         for(int i = 0; i < map.getNumStations(); i++) {
             Station s = map.getStation(i);
