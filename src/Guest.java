@@ -65,6 +65,7 @@ class Request{
         if(after == runT) return ;
         for(int i=0; i<staN; i++){
             Schedule beforeS = R[after-1][i];
+            beforeS.Waiting();
             int l = beforeS.getNumSched();
             R[after][i].mergeWith(beforeS);
         }

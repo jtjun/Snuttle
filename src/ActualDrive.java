@@ -42,14 +42,17 @@ public class ActualDrive {
         /*PrintStream outr = new PrintStream(new File("Request Change.txt"));
         outr.print(strR + R.printing());
         outr.close();*/
-        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
 
+
+        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
         for(int i=0; i<shutN; i++){
             shuttlemax.print(i);
             for(int j=0; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         } shuttlemax.println(serviced+", "+userN);
+        shuttlemax.println("How early :\t"+early.size()+" | "+sumup(early)+" | "+ early.toString());
+        shuttlemax.println("How wait :\t"+wait.size()+" | "+sumup(wait)+" | "+ wait.toString());
         shuttlemax.close();
     }
 
@@ -73,7 +76,8 @@ public class ActualDrive {
                     if (idx > 0) { // shuti will go to guests's drop destination.
                         shuti.rideS(); // second, take a person
                         shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 );
-                        early.add(dropR.getTime()-shuti.whatIthS(idx).getTime());
+                        wait.add(dropR.getWait()); // save wait time
+                        early.add(dropR.getTime()-shuti.whatIthS(idx).getTime()); // save how early
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--;
@@ -86,5 +90,12 @@ public class ActualDrive {
             } return shuti.getNums();
         } shuti.errorCheck(t);
         return shuti.getNums();
+    }
+
+    public int sumup(ArrayList<Integer> ar){
+        int sum = 0;
+        int l = ar.size();
+        for(int i=0; i<l; i++) sum += ar.get(i);
+        return sum;
     }
 }

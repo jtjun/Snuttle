@@ -74,9 +74,15 @@ public class Schedule{
         sortSchedule();
     } // remove schedule
 
+    public void Waiting(){
+        for(int i=0; i<Schedules.length; i++){
+            Schedules[i].waiting();
+        }
+    }
+
     public sched[] getScheds(){ return Schedules; }
     public int getNumSched(){ return Schedules.length; }
-    /*
+
     public void mergeScheds(sched s){
         int idx = whatSchedIdx(s);
         for(int i=idx+1; i<Schedules.length; i++){
@@ -85,11 +91,9 @@ public class Schedule{
                 int ni = Schedules[i].getNums();
                 Schedules[idx].setNums(nidx + ni);
                 removeSchedule(i);
-                i--;
-            }
+                i--; }
         }
     }
-
     public void replaceSchedule(sched pres, sched news){
         int ind = whatSchedIdx(pres);
         Schedules[ind] = news;
@@ -108,13 +112,14 @@ public class Schedule{
             str += s.printing() + " ";
         } str += "]";
         return str;
-    }*/
+    }
 }
 
 class sched {
     private int time;
     private Station place;
     private int nums;
+    private int wait=0;
 
     sched(int t, Station p, int n){
         time = t;
@@ -140,6 +145,8 @@ class sched {
     public void setTime(int t){ time = t; }
     public void setStation(Station p){ place = p; }
     public void setNums(int n){ nums = n; }
+    public void waiting(){wait += 1;}
+    public int getWait(){return wait;}
 
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
