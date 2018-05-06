@@ -48,8 +48,8 @@ public class ActualDrive {
             for(int j=1; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
-        }shuttlemax.println("How early\t"+sumup(early)+"\t"+ ToString(early));
-        shuttlemax.println("How wait\t"+sumup(wait)+"\t"+ ToString(wait));
+        }shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
+        shuttlemax.println("How wait\t"+sumup(wait)+"/"+wait.size()+"\t"+ ToString(wait));
         //shuttlemax.print(R.printingAtT(runT-1, 0)); // sched> W= With<
         shuttlemax.close();
         return serviced;

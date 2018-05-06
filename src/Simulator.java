@@ -38,37 +38,47 @@ public class Simulator {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
+        Shuttle[] shuttleP = new Shuttle[shutn]; // Proposed
 
         //Setting schedule to shuttle
         Simulator.fixedshuttle = shutn/ratio;
         CircularSchedule.setCircularSchedule(shuttleC, map);
         ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
+        ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
         //Printing Shuttle's Schedule
         PrintShutSched(shuttleC, "Circular");
         PrintShutSched(shuttleE, "Express");
         PrintShutSched(shuttleG, "Greedy");
+        PrintShutSched(shuttleP, "Proposed");
 
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
         ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type), 0);
         int cir = Cir.Simulate();
-        System.out.println("Circular done : "+cir);
+        System.out.println("Circular done : "+cir+"/"+userN);
 
         // type : Express
         System.out.println("\ntype : Express");
         Request RE = new Request(guests, map);
         ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type), 0);
         int exp = Exp.Simulate();
-        System.out.println("Express done : "+exp);
+        System.out.println("Express done : "+exp+"/"+userN);
+
+        // type : Proposed
+        System.out.println("\ntype : Proposed");
+        Request RP = new Request(guests, map);
+        ActualDrive Prop = new ActualDrive(shuttleP, RP, map, ("Proposed "+type), 0);
+        int prp = Prop.Simulate();
+        System.out.println("Proposed done : "+prp+"/"+userN);
 
         // type : Greedy
         System.out.println("\ntype : Greedy");
         Request RG = new Request(guests, map);
         ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), 1);
         int grd = Grd.Simulate();
-        System.out.println("Greedy done : "+grd);
+        System.out.println("Greedy done : "+grd+"/"+userN);
     }
 
     public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
