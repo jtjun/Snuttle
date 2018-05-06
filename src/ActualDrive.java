@@ -18,7 +18,7 @@ public class ActualDrive {
     private int[][] shutsPN;
 
 
-    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi, String type){
+    ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi, String typei){
         shuttles = shuttleS; // scheduled shuttles
         shutN = shuttles.length;
         map = mapi;
@@ -28,6 +28,7 @@ public class ActualDrive {
             S[i] = shuttles[i].getSchedule();
         } R = new Request(guests, map);
         shutsPN = new int[shutN][runT];
+        type = typei;
     }
 
     public void Simulate() throws FileNotFoundException {
