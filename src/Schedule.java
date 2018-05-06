@@ -122,7 +122,7 @@ public class Schedule{
 class sched {
     private int time;
     private Station place;
-    private int nums = 1;
+    private int nums;
 
     sched(int t, Station p, int n){
         time = t;
