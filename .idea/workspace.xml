@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Circular Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Express Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Greedy Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Shuttle.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Shuttle.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/sched.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/sched.class" />
-      <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" afterPath="$PROJECT_DIR$/src/ActualDrive.java" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" afterPath="$PROJECT_DIR$/src/Schedule.java" />
-      <change beforePath="$PROJECT_DIR$/src/Shuttle.java" afterPath="$PROJECT_DIR$/src/Shuttle.java" />
-    </list>
+    <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -100,7 +88,7 @@
           <file leaf-file-name="Shuttle.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Shuttle.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="491">
+                <state relative-caret-position="162">
                   <caret line="33" column="109" lean-forward="false" selection-start-line="33" selection-start-column="109" selection-end-line="33" selection-end-column="109" />
                   <folding />
                 </state>
@@ -342,12 +330,12 @@
       <workItem from="1525509195356" duration="1313000" />
       <workItem from="1525521870994" duration="10301000" />
       <workItem from="1525534930670" duration="284000" />
-      <workItem from="1525563262932" duration="8670000" />
+      <workItem from="1525563262932" duration="8789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91898000" />
+    <option name="totallyTimeSpent" value="92017000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -809,7 +797,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Shuttle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
+        <state relative-caret-position="162">
           <caret line="33" column="109" lean-forward="false" selection-start-line="33" selection-start-column="109" selection-end-line="33" selection-end-column="109" />
           <folding />
         </state>
