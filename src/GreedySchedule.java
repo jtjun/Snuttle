@@ -93,7 +93,6 @@ class StationGroup{
         this.start = start;
         this.dest = dest;
     }
-
     public boolean equals(StationGroup sg){
         return this.start == sg.start && this.dest == sg.dest;
     }

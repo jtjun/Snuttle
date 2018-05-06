@@ -16,15 +16,17 @@ public class Simulator {
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
         ArrayList<Guest> guests = generator.getGuests();
 
-        Shuttle[] shuttleC = new Shuttle[shutn]; // Circulat
+        Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
-        Shuttle[] shuttleG = new Shuttle[shutn]; // Gready
-        // SetCircularSchedule.setCircularSchedule(shuttles,map); // making "shuttle - schedule"
+        Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
 
+        //Setting schedule to shuttle
+        CircularSchedule.setCircularSchedule(shuttleC, map);
+        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
         //circular : type Cicular
-        ActualDrive AD = new ActualDrive(shuttles, guests, map, "Circular");
+        ActualDrive AD = new ActualDrive(shuttleC, guests, map, "Circular");
         AD.Simulate();
     }
 
