@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Circular AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular AR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Circular HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular HS Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Express AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express AR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Express HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express HS Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" />
-      <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" afterPath="$PROJECT_DIR$/src/ActualDrive.java" />
-      <change beforePath="$PROJECT_DIR$/src/CircularSchedule.java" afterPath="$PROJECT_DIR$/src/CircularSchedule.java" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" afterPath="$PROJECT_DIR$/src/Schedule.java" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,8 +30,8 @@
       <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="73" column="47" lean-forward="false" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
+            <state relative-caret-position="570">
+              <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -300,12 +289,12 @@
       <workItem from="1525563262932" duration="22551000" />
       <workItem from="1525586955039" duration="44000" />
       <workItem from="1525590398449" duration="5525000" />
-      <workItem from="1525613364152" duration="1011000" />
+      <workItem from="1525613364152" duration="1065000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112359000" />
+    <option name="totallyTimeSpent" value="112413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -722,8 +711,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="73" column="47" lean-forward="false" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
+        <state relative-caret-position="570">
+          <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
           <folding />
         </state>
       </provider>

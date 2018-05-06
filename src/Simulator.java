@@ -41,6 +41,7 @@ public class Simulator {
         CircularSchedule.setCircularSchedule(shuttleC, map);
         ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
+        //Printing Shuttle's Schedule
         PrintShutSched(shuttleC, "Circular");
         PrintShutSched(shuttleE, "Express");
         PrintShutSched(shuttleG, "Greedy");
