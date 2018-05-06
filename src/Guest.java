@@ -18,7 +18,13 @@ public class Guest {
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
         request[1] = new sched(timeD, placeD, -nums);
-    }/*
+    }
+    public sched getDrop(){return new sched(timeD, placeD, -nums);}
+    public int getTimeS(){ return timeS; }
+    public int getTimeD(){ return timeD; }
+    public Station getPlaceS(){ return placeS; }
+    public Station getPlcaeD(){ return placeD; }
+    /*
     public void setRideT(int t){ rideT = t; }
     private void setShuttleName(int n ){ shuttleName = n;}
     private int getShuttleName(){return shuttleName;}
@@ -29,12 +35,6 @@ public class Guest {
     public int getWaitT(){ return rideT - timeS; }
     public int getNums(){ return nums; }
     public sched getRide(){return new sched(timeS, placeS, nums);}*/
-
-    public sched getDrop(){return new sched(timeD, placeD, -nums);}
-    public int getTimeS(){ return timeS; }
-    public int getTimeD(){ return timeD; }
-    public Station getPlaceS(){ return placeS; }
-    public Station getPlcaeD(){ return placeD; }
 }
 
 class Request{
