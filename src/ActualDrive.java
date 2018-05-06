@@ -45,14 +45,14 @@ public class ActualDrive {
 
 
         PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
+        shuttlemax.println(type+"\t"+serviced+", "+userN);
         for(int i=0; i<shutN; i++){
-            shuttlemax.print(i);
-            for(int j=0; j<runT; j++){
+            shuttlemax.print("Shuttle"+i+"\t"+shutsPN[i][0]);
+            for(int j=1; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
-        } shuttlemax.println(serviced+", "+userN);
-        shuttlemax.println("How early :\t"+sumup(early)+"\t| "+ early.toString());
-        shuttlemax.println("How wait :\t"+sumup(wait)+"\t| "+ wait.toString());
+        }shuttlemax.println("How early\t"+sumup(early)+"\t"+ ToString(early));
+        shuttlemax.println("How wait\t"+sumup(wait)+"\t"+ ToString(wait));
         shuttlemax.close();
     }
 
@@ -97,5 +97,12 @@ public class ActualDrive {
         int l = ar.size();
         for(int i=0; i<l; i++) sum += ar.get(i);
         return sum;
+    }
+    public String ToString(ArrayList<Integer> ar){
+        String str="";
+        int l = ar.size();
+        str = ""+ar.get(0);
+        for(int i=1; i<l; i++) str+=","+ar.get(i);
+        return str;
     }
 }
