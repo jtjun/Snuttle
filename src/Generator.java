@@ -4,8 +4,8 @@ public class Generator {
     private ArrayList<Guest> guests;
 
     public Generator(int n, Map map, String type) {
-        if (type.equals("HS")) GeneratorHS(n, map);
-        else GeneratorAR(n, map);
+        if(type.equals("HS")) GeneratorHS(n, map);
+        if(type.equals("AR")) GeneratorAR(n, map);
     }
 
     // Case 1: All Random
@@ -77,8 +77,10 @@ public class Generator {
         sortGuests();
     }
 
-    public ArrayList<Guest> getGuests(){
-        return guests;
+    public ArrayList<Guest> copyGuests(){
+        ArrayList<Guest> guestCopy = new ArrayList<>();
+        guestCopy = (ArrayList<Guest>)guests.clone();
+        return guestCopy;
     }
 
     private int getRandomStation(double r,int k,int m){

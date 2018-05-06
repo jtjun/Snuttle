@@ -49,7 +49,8 @@ public class ActualDrive {
             for(int j=0; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
-        } shuttlemax.close();
+        } shuttlemax.println(serviced+", "+userN);
+        shuttlemax.close();
     }
 
     public int shutiDriveT(int i, int time){

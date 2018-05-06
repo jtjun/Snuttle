@@ -13,8 +13,9 @@ public class Simulator {
         userN = 1000;
         Map map = new Map("stations.csv", "distance.csv");
 
+        // All Random guest situation
         Generator generator = new Generator(userN, map, "AR"); // Generate userN guests for this map
-        ArrayList<Guest> guests = generator.getGuests();
+        ArrayList<Guest> guests = new ArrayList<>();
 
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
@@ -25,15 +26,18 @@ public class Simulator {
         ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
+        // type : Greedy
+        guests = generator.copyGuests();
+        ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
+        Grd.Simulate();
         // type : Cicular
+        guests = generator.copyGuests();
         ActualDrive Cir = new ActualDrive(shuttleC, guests, map, "Circular");
         Cir.Simulate();
         // type : Express
+        guests = generator.copyGuests();
         ActualDrive Exp = new ActualDrive(shuttleE, guests, map, "Express");
         Exp.Simulate();
-        // type : Greedy
-        ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
-        Grd.Simulate();
     }
 
     public static void main(String[] args){

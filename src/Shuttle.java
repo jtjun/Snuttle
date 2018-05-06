@@ -24,15 +24,18 @@ public class Shuttle {
             String str = ("At "+t +"\n");
             str += ("Shuttle"+name+" is arrived at "+ To.getStation().getName()) + "\n";
             int dnum = To.getNums();
-            if(dnum+nums > max) {
-                str += "error we can't take people more\n";
-                System.out.println(str);
+            if(dnum+nums > max || getNums() > max) {
+                System.out.println("error we can't take people more\n");
+                return getNums();
+            }
+            if(dnum+nums < 0|| getNums() < 0) {
+                System.out.println("error negative number of people"+dnum+getNums()+"\n");
                 return getNums();
             }
             nums += dnum;
             str += ("It's current number of people : "+getNums())+"\n";
             str += ("Empty seat : "+getEmpty()+"\n")+"\n";
-            System.out.print(str);
+            //System.out.print(str);
             return getNums();
         } else return getNums();
     } // don't how many ride or drop, just it's number of people
