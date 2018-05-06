@@ -72,6 +72,7 @@ class Request{
     public Schedule scheduleTS(int ti, Station sta){
         return R[ti][map.getIndex(sta.getName())];
     } // ti, sta's schedule
+    /*
     public Schedule[] scheduleT(int ti){
         return R[ti];
     } // ti's whole sta's guest
@@ -81,7 +82,6 @@ class Request{
             timel[i] = R[i][map.getIndex(sta.getName())];
         } return timel;
     } // sta's guest
-    /*
     public int howMany(int ti, Station sta){ // ti, sta's number of guest
         Schedule s = R[ti][map.getIndex(sta.getName())];
         return s.getNumSched();

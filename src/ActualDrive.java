@@ -32,7 +32,7 @@ public class ActualDrive {
     }
 
     public void Simulate() throws FileNotFoundException {
-        /*String strR = "Initial Request's state :\n"+R.printing()+"\nAfter Request's state \n";*/
+        //String strR = "Initial Request's state :\n"+R.printing()+"\nAfter Request's state \n";
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
