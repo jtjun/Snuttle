@@ -6,7 +6,7 @@ public class Shuttle {
     private int refresh = 0;
 
     private Schedule S;
-    private Schedule People;
+    private Schedule People = new Schedule();
     private int time; // Shuttle's current time
     Map map;
 
@@ -35,12 +35,21 @@ public class Shuttle {
     }
     public void dropS(int idx){ // sched's index
         sched To = S.whatIthSched(idx);
-        if(To.getNums() > 0) {
+        int dropn = To.getNums();
+        if(dropn > 0) {
             System.out.println("ERROR : Shuttle schedule nums is positive");
         } else {
-            nums += To.getNums(); // drop the people
+            nums += dropn; // drop the people
             To.setNums(0); // change the schedule To's number
-        }
+        } int dropP = 0;
+        for(int i=0; i<People.getNumSched(); i++){
+            sched person = People.whatIthSched(i);
+            if(To.getTime()<=person.getTime() && person.getStation().equals(To.getStation())){
+                People.removeSchedule(i);
+                dropP--;
+                i--;
+            } // Drop the people who want get out here
+        } if (dropn != dropP) System.out.println("ERROR : Different People are get out"+dropn+", "+dropP);
     }
     public void getOutAll(){
         nums =0;

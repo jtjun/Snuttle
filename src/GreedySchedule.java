@@ -199,11 +199,6 @@ public class GreedySchedule{
             shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[k], shuttlenum, map);
         }
     }
-
-    public static void setGreedyScheduleForEach(Shuttle[] shuttles,int shuttlenum, int time){
-
-    }
-
 }
 class StationGroup{
     public Station start,dest;

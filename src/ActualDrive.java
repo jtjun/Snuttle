@@ -60,7 +60,7 @@ public class ActualDrive {
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
         if(schedTo.getTime() == t){ // shuti arrived at next station
-            shuti.dropS(idxt); // first, drop the people who want drop here
+            shuti.dropS(idxt); // first, drop the people who want get down here
             if((gred>0) && ((t-shuti.getRefresh()) >= 50)){
                 shuti.setRefresh(t); // it's time for refresh schedule
                 Schedule Peopl = shuti.getPeople();
@@ -68,8 +68,10 @@ public class ActualDrive {
                 serviced -= Peopl.getNumSched();
                 for(int k=0; k<Peopl.getNumSched(); k++){
                     sched person = Peopl.whatIthSched(k);
-                    early.remove(person.getEarly());
-                    wait.remove(person.getWait());
+                    Integer rem = person.getEarly();
+                    Integer wat = person.getWait();
+                    early.remove(rem);
+                    wait.remove(wat);
                 } // early and wait 's infromation is modified
                 shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
@@ -85,11 +87,11 @@ public class ActualDrive {
                     sched dropR = guestsR.whatIthSched(a);
                     int idx = shuti.goBefore(t, dropR); // guests' drop index
                     if (idx > 0) { // shuti will go to guests's drop destination.
-                        shuti.rideS(dropR); // second, take a person
-                        shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //third, set drop schedule
+                        shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //second, set drop schedule
                         wait.add(dropR.getWait()); // save wait time
-                        dropR.setEarly(dropR.getTime()-shuti.whatIthS(idx).getTime());
+                        dropR.setEarly( dropR.getTime()-shuti.whatIthS(idx).getTime() );
                         early.add(dropR.getEarly()); // save how early
+                        shuti.rideS(dropR); // third, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--;
