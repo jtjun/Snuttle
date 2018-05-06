@@ -25,15 +25,15 @@ public class Simulator {
 
         //Setting schedule to shuttle
         CircularSchedule.setCircularSchedule(shuttleC, map);
-        ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
-        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
+        ExpressSchedule.setExpressSchedule(shuttleE, map, 4);
+        GreedySchedule.setGreedySchedule(shuttleG, map, guests, 4);
 
-        // type : Cicular
-        System.out.println("\ntype : Circular");
-        Request RC = new Request(guests, map);
-        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, "Circular");
-        Cir.Simulate();
-        System.out.println("Circular done");
+        // type : Greedy
+        System.out.println("\ntype : Greedy");
+        Request RG = new Request(guests, map);
+        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, "Greedy");
+        Grd.Simulate();
+        System.out.println("Greedy done");
 
         // type : Express
         System.out.println("\ntype : Express");
@@ -42,12 +42,12 @@ public class Simulator {
         Exp.Simulate();
         System.out.println("Express done");
 
-        // type : Greedy
-        System.out.println("\ntype : Greedy");
-        Request RG = new Request(guests, map);
-        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, "Greedy");
-        Grd.Simulate();
-        System.out.println("Greedy done");
+        // type : Cicular
+        System.out.println("\ntype : Circular");
+        Request RC = new Request(guests, map);
+        ActualDrive Cir = new ActualDrive(shuttleC, RC, map, "Circular");
+        Cir.Simulate();
+        System.out.println("Circular done");
     }
 
     public static void main(String[] args){
