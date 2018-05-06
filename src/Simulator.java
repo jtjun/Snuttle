@@ -25,9 +25,15 @@ public class Simulator {
         ExpressSchedule.setExpressSchedule(shuttleE, map, 5);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, 5);
 
-        //circular : type Cicular
-        ActualDrive AD = new ActualDrive(shuttleC, guests, map, "Circular");
-        AD.Simulate();
+        // type : Cicular
+        ActualDrive Cir = new ActualDrive(shuttleC, guests, map, "Circular");
+        Cir.Simulate();
+        // type : Express
+        ActualDrive Exp = new ActualDrive(shuttleE, guests, map, "Express");
+        Exp.Simulate();
+        // type : Greedy
+        ActualDrive Grd = new ActualDrive(shuttleC, guests, map, "Greedy");
+        Grd.Simulate();
     }
 
     public static void main(String[] args){

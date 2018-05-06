@@ -1,3 +1,3 @@
-public class G_map {
+public class Gmap {
   
 }
