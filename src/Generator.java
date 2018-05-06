@@ -80,7 +80,10 @@ public class Generator {
     public ArrayList<Guest> getGuests(){ return guests; }
     public ArrayList<Guest> copyGuests(){
         ArrayList<Guest> guestCopy = new ArrayList<>();
-        guestCopy = (ArrayList<Guest>)guests.clone();
+        for(Guest guest : guests){
+            guestCopy.add(new Guest(guest.getTimeS(), guest.getPlaceS(), guest.getTimeD(), guest.getPlcaeD()));
+        }
+        // guestCopy = (ArrayList<Guest>)guests.clone();
         return guestCopy;
     }
 
