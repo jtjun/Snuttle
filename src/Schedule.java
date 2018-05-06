@@ -115,7 +115,7 @@ public class Schedule{
 }
 
 class sched {
-    private int time;
+    private int time, early;
     private Station place;
     private int nums;
     private int wait=0;
@@ -144,12 +144,14 @@ class sched {
     public void setTime(int t){ time = t;}
     public void setStation(Station p){ place = p; }
     public void setNums(int n){ nums = n; }
+    public void setEarly(int t){early=t;}
     public void waiting(){wait += 1;}
     public void unfair(){unfair=true;}
 
     public int getWait(){return wait;}
     public int getSponT(){return (Simulator.MAX_TIME-wait);}
     public int getDemandT(){return (time-getSponT());}
+    public int getEarly(){return early;}
     public boolean askUnfair(){return unfair;}
 
     public int getTime(){ return time; }

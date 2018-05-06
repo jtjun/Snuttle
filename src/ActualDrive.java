@@ -4,7 +4,7 @@ import java.io.*;
 public class ActualDrive {
     private int runT = Simulator.MAX_TIME;
     private int userN = Simulator.userN;
-    private int shutN, staN;
+    private int shutN, staN, gred;
     private int serviced=0;
 
     private Shuttle[] shuttles;
@@ -18,7 +18,7 @@ public class ActualDrive {
     private int[][] shutsPN;
 
 
-    ActualDrive(Shuttle[] shuttleS, Request Ri, Map mapi, String typei){
+    ActualDrive(Shuttle[] shuttleS, Request Ri, Map mapi, String typei, int gredi){
         shuttles = shuttleS; // scheduled shuttles
         shutN = shuttles.length;
         map = mapi;
@@ -29,6 +29,7 @@ public class ActualDrive {
         } R = Ri;
         shutsPN = new int[shutN][runT];
         type = typei;
+        gred = gredi;
     }
 
     public void Simulate() throws FileNotFoundException {
@@ -59,7 +60,22 @@ public class ActualDrive {
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
         if(schedTo.getTime() == t){ // shuti arrived at next station
-            shuti.dropS(idxt); // first, drop the people
+            shuti.dropS(idxt); // first, drop the people who want get down here
+            if((gred>0) && ((t-shuti.getRefresh()) >= 50)){
+                shuti.setRefresh(t); // it's time for refresh schedule
+                Schedule Peopl = shuti.getPeople();
+                R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl); // whole people getting out from shuti, and stay station
+                serviced -= Peopl.getNumSched();
+                for(int k=0; k<Peopl.getNumSched(); k++){
+                    sched person = Peopl.whatIthSched(k);
+                    Integer rem = person.getEarly();
+                    Integer wat = person.getWait();
+                    early.remove(rem);
+                    wait.remove(wat);
+                } // early and wait 's infromation is modified
+                shuti.getOutAll();  // After all passengers are get out,
+                GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+            }
             if(shuti.getEmpty()==0) return shuti.getNums();
             if(shuti.getEmpty()<=0) {
                 System.out.println("ERROR : At "+t+" Shuttle"+i+" has negative people "+shuti.getNums());
@@ -71,10 +87,11 @@ public class ActualDrive {
                     sched dropR = guestsR.whatIthSched(a);
                     int idx = shuti.goBefore(t, dropR); // guests' drop index
                     if (idx > 0) { // shuti will go to guests's drop destination.
-                        shuti.rideS(); // second, take a person
-                        shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 );
+                        shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //second, set drop schedule
                         wait.add(dropR.getWait()); // save wait time
-                        early.add(dropR.getTime()-shuti.whatIthS(idx).getTime()); // save how early
+                        dropR.setEarly( dropR.getTime()-shuti.whatIthS(idx).getTime() );
+                        early.add(dropR.getEarly()); // save how early
+                        shuti.rideS(dropR); // third, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--;
