@@ -1,17 +1,18 @@
 import java.util.*;
 
 public class Guest {
-    private int timeS, timeD, rideT;
+    private int timeS, timeD, requestT, rideT;
     private Station placeS, placeD;
     private sched[] request = new sched[2];
     private int nums = 1;
     private int shuttleName;
 
-    public Guest(int times, Station places, int timed, Station placed){
+    public Guest(int times, Station places, int timed, Station placed, int requestt){
         timeS = times;
         placeS = places;
         timeD = timed;
         placeD = placed;
+        requestT = requestt;
         setRequest(); // input type station
     }
 
@@ -22,6 +23,7 @@ public class Guest {
     public sched getDrop(){return new sched(timeD, placeD, -nums);}
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
+    public int getRequestT(){ return requestT; }
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
     /*

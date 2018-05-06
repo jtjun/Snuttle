@@ -8,7 +8,9 @@ public class Simulator {
     public static double K_RATIO = 0.5;
     public static int shutn = 10 ;
     public static int userN = 1000;
-    private Map map;
+    public static int fixedshuttle = 5;
+    public static ArrayList<Guest> guests;
+    public static Map map;
 
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
@@ -29,7 +31,7 @@ public class Simulator {
         System.out.print("\nGuest Type : "+type+" ____________________________");
         // All Random guest situation
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
-        ArrayList<Guest> guests = new ArrayList<>();
+        guests = new ArrayList<>();
         guests = generator.getGuests();
         Request R = new Request(guests, map);
 
@@ -38,6 +40,7 @@ public class Simulator {
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
 
         //Setting schedule to shuttle
+        Simulator.fixedshuttle = shutn/ratio;
         CircularSchedule.setCircularSchedule(shuttleC, map);
         ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
