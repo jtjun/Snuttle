@@ -82,7 +82,7 @@ public class Simulator {
 
         // type : Greedy 1
         System.out.println("\ntype : Greedy, time period 1");
-        Request RG = new Request(guests, map);
+        Request RG = new Request(guests, map); // gredi is equal to time period of refresh
         ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), 1);
         int grd = Grd.Simulate();
         System.out.println("Greedy done : "+grd+"/"+userN);
