@@ -81,6 +81,7 @@ public class Shuttle {
     public Schedule getPeople(){return People;}
 
     public void setRefresh(int t){refresh=t;}
+    public void setNums(int n){nums=n;}
     public void setTime(int timei) { time = timei;}
     public void setMax(int n){ max = n; }
     public void setName(int n){ name = n; }
