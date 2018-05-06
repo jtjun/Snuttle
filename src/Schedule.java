@@ -110,8 +110,7 @@ public class Schedule{
         for(int i=1; i<Schedules.length; i++){
             sched s = whatIthSched(i);
             str += ", "+s.printing(pr);
-        } str += "";
-        return str;
+        } return str;
     }
 }
 
