@@ -43,11 +43,17 @@ public class ActualDrive {
         PrintStream outs = new PrintStream(
                 new File("Shuttle Change.txt"));
         String strS = "";
+
+        PrintStream shuttlemax = new PrintStream(new File("Shuttle Max.txt"));
+
         for(int i=0; i<shutN; i++){
             strS += "Shuttle"+i+"'s : ";
+            shuttlemax.print(i);
             for(int j=0; j<runT; j++){
+                shuttlemax.print(","+shutsPN[i][j]);
                 strS += j+"["+ shutsPN[i][j] +"]\t";
             } strS += "\n";
+            shuttlemax.println();
         } outs.println(strS +"Earlier drop : "+early.toString());
         outs.println("We serviced "+serviced+" of people");
         outs.println("We can't take "+(userN-serviced)+" of people");
