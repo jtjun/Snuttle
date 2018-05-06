@@ -60,25 +60,26 @@ public class ActualDrive {
         int idxt = shuti.whereToIdx(t);
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
-        if(schedTo.getTime() == t){ // shuti arrived at next station
+        if(schedTo.getTime() == t){// shuti arrived at next station
             shuti.dropS(idxt); // first, drop the people who want get down here
-            if((gred>0) && ((t-shuti.getRefresh()) >= 50)){
+
+            if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time for refresh schedule
-                Schedule Peopl = shuti.getPeople();
-                R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl); // whole people getting out from shuti, and stay station
+                Schedule Peopl = shuti.getPeople(); // all people getting out from shuti, and stay station
+                R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl);
                 serviced -= Peopl.getNumSched();
+
                 for(int k=0; k<Peopl.getNumSched(); k++){
                     sched person = Peopl.whatIthSched(k);
                     Integer rem = person.getEarly();
                     Integer wat = person.getWait();
-                    early.remove(rem);
+                    early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
-                } // early and wait 's infromation is modified
-                shuti.getOutAll();  // After all passengers are get out,
+                } shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
-            if(shuti.getEmpty()<=0) {
+            else if(shuti.getEmpty()<0) {
                 System.out.println("ERROR : At "+t+" Shuttle"+i+" has negative people "+shuti.getNums());
                 return shuti.getNums();
             } else{ // shuti's empty > 0
@@ -95,8 +96,8 @@ public class ActualDrive {
                         shuti.rideS(dropR); // third, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
-                        a--;
-                    } // A person ride a shuti
+                        a--; // A person ride a shuti
+                    }
                 } // shuti is full or there are no guest who can ride this shuti
             } shuti.errorCheck(t);
         } else { // schedule to is past error

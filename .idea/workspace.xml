@@ -9,11 +9,11 @@
       <change beforePath="$PROJECT_DIR$/Express HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express HS Shuttle Max.txt" />
       <change beforePath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy AR Shuttle Max.txt" />
       <change beforePath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy HS Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Proposed AR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Proposed AR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Proposed HS Shuttle Max.txt" afterPath="$PROJECT_DIR$/Proposed HS Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Proposed Schedule.txt" afterPath="$PROJECT_DIR$/Proposed Schedule.txt" />
       <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/StationGroup.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/StationGroup.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/StationGroupNum.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/StationGroupNum.class" />
       <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" afterPath="$PROJECT_DIR$/src/ActualDrive.java" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
     </list>
@@ -27,37 +27,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="92" column="84" lean-forward="false" selection-start-line="92" selection-start-column="84" selection-end-line="92" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-291">
-              <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+            <state relative-caret-position="254">
+              <caret line="101" column="34" lean-forward="true" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GreedySchedule.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="e#9240#9241#0" expanded="true" />
-                <element signature="e#9309#9310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="46" column="77" lean-forward="true" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -105,8 +92,8 @@
         <option value="$PROJECT_DIR$/src/Schedule.java" />
         <option value="$PROJECT_DIR$/src/Shuttle.java" />
         <option value="$PROJECT_DIR$/src/GreedySchedule.java" />
-        <option value="$PROJECT_DIR$/src/ActualDrive.java" />
         <option value="$PROJECT_DIR$/src/ProposedSchedule.java" />
+        <option value="$PROJECT_DIR$/src/ActualDrive.java" />
         <option value="$PROJECT_DIR$/src/Simulator.java" />
       </list>
     </option>
@@ -301,12 +288,12 @@
       <workItem from="1525563262932" duration="22551000" />
       <workItem from="1525586955039" duration="44000" />
       <workItem from="1525590398449" duration="5525000" />
-      <workItem from="1525613364152" duration="9837000" />
+      <workItem from="1525613364152" duration="11353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121185000" />
+    <option name="totallyTimeSpent" value="122701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -320,7 +307,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23541453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.765609" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -676,32 +663,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+    <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="46" column="77" lean-forward="true" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
-          <folding />
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <element signature="e#9240#9241#0" expanded="true" />
+            <element signature="e#9309#9310#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-291">
-          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        <state relative-caret-position="254">
+          <caret line="101" column="34" lean-forward="true" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
+    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#9240#9241#0" expanded="true" />
-            <element signature="e#9309#9310#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="445">
+          <caret line="92" column="84" lean-forward="false" selection-start-line="92" selection-start-column="84" selection-end-line="92" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
