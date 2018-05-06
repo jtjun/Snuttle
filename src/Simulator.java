@@ -53,8 +53,8 @@ public class Simulator {
 
     public static void main(String[] args){
         try{
-            Simulator simulatorAR = new Simulator("AR", 4, 1000, 2);
-            Simulator simulatorHS = new Simulator("HS", 4, 1000, 2);
+            Simulator simulatorAR = new Simulator("AR", 10, 1000, 2);
+            Simulator simulatorHS = new Simulator("HS", 10, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
         }catch(FileNotFoundException e){
             System.out.println(e);

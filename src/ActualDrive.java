@@ -51,8 +51,8 @@ public class ActualDrive {
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         } shuttlemax.println(serviced+", "+userN);
-        shuttlemax.println("How early :\t"+early.size()+" | "+sumup(early)+" | "+ early.toString());
-        shuttlemax.println("How wait :\t"+wait.size()+" | "+sumup(wait)+" | "+ wait.toString());
+        shuttlemax.println("How early :\t"+sumup(early)+"\t| "+ early.toString());
+        shuttlemax.println("How wait :\t"+sumup(wait)+"\t| "+ wait.toString());
         shuttlemax.close();
     }
 
@@ -86,7 +86,7 @@ public class ActualDrive {
             } shuti.errorCheck(t);
         } else { // schedule to is past error
             if(!schedTo.equals(shuti.whatIthS(idxt-1))){
-                System.out.println("ERROR : Schedule To searching error! "+t);
+                System.out.println("ERROR : Schedule 'To' searching error! "+t);
             } return shuti.getNums();
         } shuti.errorCheck(t);
         return shuti.getNums();
