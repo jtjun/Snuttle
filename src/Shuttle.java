@@ -25,12 +25,13 @@ public class Shuttle {
             str += ("Shuttle"+name+" is arrived at "+ To.getStation().getName()) + "\n";
             int dnum = To.getNums();
             if(dnum+nums > max || getNums() > max) {
+                System.out.println("Shuttle"+name+" at "+t);
                 System.out.println("error we can't take people more\n");
                 return getNums();
             }
-            if(dnum+nums < 0|| getNums() < 0) {
-                System.out.println("error negative number of people"+dnum+getNums()+"\n");
-                return getNums();
+            if(dnum+nums < 0 || getNums() < 0) {
+                System.out.println("Shuttle"+name+" at "+t);
+                System.out.println("error negative number of people"+dnum+nums+", current :"+getNums()+"\n");
             }
             nums += dnum;
             str += ("It's current number of people : "+getNums())+"\n";

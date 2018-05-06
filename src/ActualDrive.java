@@ -62,18 +62,20 @@ public class ActualDrive {
         // below run when shuttle is on station
         Station toSta = schedTo.getStation();
         Schedule rNextSta = R.scheduleTS(toTime, toSta);
+        if(toTime == time){ // shuttle arrive at Station
+            for (int a = 0; (a < rNextSta.getNumSched()) && (shuti.getEmpty()>0); a++) {
+                sched guR = rNextSta.whatIthSched(a); //guest's Request
 
-        for (int a = 0; a < rNextSta.getNumSched() && shuti.getEmpty()>0; a++) {
-            sched guR = rNextSta.whatIthSched(a); //guest's Request
-            int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
-            if (idx > 0) {
-                schedTo.setNums(schedTo.getNums() + 1); // take a person
-                int dt = allocate(shuti, guR, idx);
-                rNextSta.removeSchedule(guR); // after allocate it should remove
-                early.add(dt);
-                serviced++;
-            } // before arrive toStation it decide schedule
-        } return shuti.Driving(time); // arrive at station
+                int idx = shuti.goBefore(toTime, guR); // toTime : arrive time of next Station
+                if (idx > 0) {
+                    schedTo.setNums(schedTo.getNums() - guR.getNums()); // take a person
+                    int dt = allocate(shuti, guR, idx); // set drop schedule
+                    rNextSta.removeSchedule(guR); // after allocate it should remove
+                    early.add(dt);
+                    serviced++;
+                } // before arrive toStation it decide schedule
+            } return shuti.Driving(time); // arrive at station
+        } return shuti.getNums();
     }
 
     public int allocate(Shuttle shut,sched guR, int idx){ // goBefore is true(>0)
