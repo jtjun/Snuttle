@@ -31,7 +31,7 @@ public class Shuttle {
             }
             if(dnum+nums < 0 || getNums() < 0) {
                 System.out.println("Shuttle"+name+" at "+t);
-                System.out.println("error negative number of people"+dnum+nums+", current :"+getNums()+"\n");
+                System.out.println("error negative number of people"+(dnum+nums)+", current :"+getNums()+"\n");
             }
             nums += dnum;
             str += ("It's current number of people : "+getNums())+"\n";
