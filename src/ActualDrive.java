@@ -3,17 +3,19 @@ import java.io.*;
 
 public class ActualDrive {
     private int runT = Simulator.MAX_TIME;
+    private int userN = Simulator.userN;
+    private int shutN, staN;
+    private int serviced=0;
+
     private Shuttle[] shuttles;
     private Schedule[] S;
     private Request R;
+    private Map map;
+
     private ArrayList<Integer> early = new ArrayList<>();
     private ArrayList<Integer> wait = new ArrayList<>();
-
     private int[][] shutsPN;
-    private int shutN, staN;
-    private int userN = Simulator.userN;
-    private int serviced=0;
-    private Map map;
+
 
     ActualDrive(Shuttle[] shuttleS, ArrayList<Guest> guests, Map mapi){
         shuttles = shuttleS; // scheduled shuttles
@@ -32,32 +34,20 @@ public class ActualDrive {
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time);
-            } // doing time's situation
+            } // simulate time's situation
             R.makeUp(time+1);
         }
-        /*PrintStream outr = new PrintStream(
-                new File("Request Change.txt"));
+        /*PrintStream outr = new PrintStream(new File("Request Change.txt"));
         outr.print(strR + R.printing());
         outr.close();*/
-
-        PrintStream outs = new PrintStream(
-                new File("Shuttle Change.txt"));
-        String strS = "";
-
         PrintStream shuttlemax = new PrintStream(new File("Shuttle Max.txt"));
 
         for(int i=0; i<shutN; i++){
-            strS += "Shuttle"+i+"'s : ";
             shuttlemax.print(i);
             for(int j=0; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
-                strS += j+"["+ shutsPN[i][j] +"]\t";
-            } strS += "\n";
-            shuttlemax.println();
-        } outs.println(strS +"Earlier drop : "+early.toString());
-        outs.println("We serviced "+serviced+" of people");
-        outs.println("We can't take "+(userN-serviced)+" of people");
-        outs.close();
+            } shuttlemax.println();
+        } shuttlemax.close();
     }
 
     public int shutiDriveT(int i, int time){
