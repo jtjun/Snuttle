@@ -6,9 +6,9 @@ public class Simulator {
     public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 1;
-    public static int ratio = 2;
-    public static int userN = 1000;
+    public static int shutn = 50;
+    public static int ratio = 3;
+    public static int userN = 10000;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
@@ -87,7 +87,7 @@ public class Simulator {
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         // type : Greedy 1
-        System.out.println("\ntype : Greedy, time period 1");
+        System.out.println("\ntype : Greedy, time period "+gred);
         Request RG = new Request(guests, map); // gredi is equal to time period of refresh
         ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), gred);
         int grd = Grd.Simulate(monit);
