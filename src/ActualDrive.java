@@ -37,6 +37,7 @@ public class ActualDrive {
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time, monit);
+                shuttles[i].errorCheck(time);
             } // simulate time's situation
             R.makeUp(time+1);
         }
