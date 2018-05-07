@@ -203,7 +203,9 @@ public class GreedySchedule{
                 p = list.get(i%list.size());
             }
             // System.out.println(schedules[shuttlenum-Simulator.fixedshuttle].printing(1));
+            double[] pastTperD = shuttles[shuttlenum].getTperD();
             shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), time, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
+            shuttles[shuttlenum].setTperD(pastTperD);
         }
     }
 }

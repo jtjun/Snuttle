@@ -57,7 +57,7 @@ public class ActualDrive {
 
         PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
         double[] TperD = {};
-        pTperD.println(type+" Time Per Distance");
+        pTperD.print(type+" Time Per Distance ");
         for(int i=0; i < shuttles.length; i++){
             double[] TperDi = shuttles[i].getTperD();
             double[] temp = new double[TperD.length+TperDi.length];
@@ -65,22 +65,11 @@ public class ActualDrive {
             System.arraycopy(TperDi, 0, temp, TperD.length, TperDi.length);
             TperD = temp;
         } Arrays.sort(TperD);
+        pTperD.println(TperD.length);
         if(TperD.length>0) pTperD.println(ToString(TperD));
+        if(TperD.length!=serviced) System.out.println("ERROR : Serviced and reported T/D number are differ.");
         pTperD.close();
-        /*
-        PrintStream piTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
-        int[] iTperD = {};
-        piTperD.println(type+" Time Per Distance");
-        for(int i=0; i < shuttles.length; i++){
-            int[] iTperDi = shuttles[i].getiTperD();
-            int l0 = iTperD.length;
-            int l1 = iTperDi.length;
-            iTperD = Arrays.copyOf(iTperD, l0+l1);
-            System.arraycopy(iTperDi, 0, iTperD, l0, l1);
-        } Arrays.sort(iTperD);
-        piTperD.println(ToString(iTperD));
-        piTperD.close();
-        */
+
         return serviced;
     }
 
@@ -112,12 +101,8 @@ public class ActualDrive {
                     Integer wat = person.getWait();
                     early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
-                } shuti.getOutAll();  // After all passengers are get out,\
-                // if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
+                } shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
-                // if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
-                // System.out.println();
-                //System.out.println("Schedule refreshed!\n");
                 shuti = shuttles[i];
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
@@ -173,13 +158,6 @@ public class ActualDrive {
         return str;
     }
     public String ToString(double[] ar){
-        String str="";
-        int l = ar.length;
-        str = ""+ar[0];
-        for(int i=1; i<l; i++) str+=","+ar[i];
-        return str;
-    }
-    public String ToString(int[] ar){
         String str="";
         int l = ar.length;
         str = ""+ar[0];

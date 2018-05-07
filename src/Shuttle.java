@@ -11,7 +11,6 @@ public class Shuttle {
     private Schedule People;
     private int timeN; // Shuttle's current time
     private double[] TperD = {};
-    private int[] iTperD = {};
     Map map;
 
     Shuttle(int xi, int yi, int timei, Schedule Si, int namei, Map mapi) {
@@ -63,7 +62,6 @@ public class Shuttle {
                 if(To.getTime() <= person.getTime() || goThere){
                     person.tempOut(t);
                     saveTperD(person);
-                    saveiTperD(person);
                     People.removeSchedule(i);
                     People.sortSchedule();
                     dropP++;
@@ -91,11 +89,6 @@ public class Shuttle {
                 (((person.getRiding()+person.getWait())*1.0/person.getDistance())==person.getTperD())+" TperD "+person.getTperD());
         TperD[l] = person.getTperD();
     }
-    public void saveiTperD(sched person){
-        int l = iTperD.length;
-        iTperD = Arrays.copyOf(iTperD, l+1);
-        iTperD[l] = person.getiTperD();
-    }
 
     public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
     public sched whatIthS(int idx){ return S.whatIthSched(idx); }
@@ -116,9 +109,9 @@ public class Shuttle {
     public Schedule getSchedule() { return S; }
     public Schedule getPeople(){return People;}
     public double[] getTperD(){return TperD;}
-    public int[] getiTperD(){ return iTperD; }
 
     public void setRefresh(int t){refresh=t;}
+    public void setTperD(double[] tperd){TperD=tperd;}
     public void setNums(int n){nums=n;}
     public void setTimeN(int timei) { timeN = timei;}
     public void setMax(int n){ max = n; }
