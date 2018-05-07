@@ -44,7 +44,7 @@ public class Map {
                     }
                 }
             }
-        }
+        }/*
         PrintStream mapp = new PrintStream(new File("MapDist.txt"));
         for(int i=0; i<Simulator.staN; i++) {
             mapp.print("\t"+stations.get(i).getName());
@@ -54,7 +54,7 @@ public class Map {
             for(int b=0; b<Simulator.staN; b++){
                 mapp.print("\t"+dist[a][b]);
             } mapp.println();
-        } mapp.close();
+        } mapp.close();*/
     }
 
     public Station getStation(String name) { // Get station by name
@@ -87,6 +87,12 @@ public class Map {
     public int getDistance(String name1, String name2) { // Get distance between two stations by name
         int idx1 = getIndex(name1);
         int idx2 = getIndex(name2);
+        return getDistance(idx1, idx2); // it equals to time
+    }
+
+    public int getDistance(Station sta1, Station sta2) { // Get distance between two stations by Station
+        int idx1 = getIndex(sta1.getName());
+        int idx2 = getIndex(sta2.getName());
         return getDistance(idx1, idx2); // it equals to time
     }
 

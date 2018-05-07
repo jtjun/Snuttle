@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Guest {
-    private int timeS, timeD, requestT, rideT;
+    private int timeS, timeD, requestT, rideT, dist;
     private Station placeS, placeD;
     private sched[] request = new sched[2];
     private int nums = 1;
@@ -13,14 +13,15 @@ public class Guest {
         timeD = timed;
         placeD = placed;
         requestT = requestt;
+        dist = Simulator.map.getDistance(placeS, placeD);
         setRequest(); // input type station
     }
 
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
-        request[1] = new sched(timeD, placeD, -nums);
+        request[1] = new sched(timeD, placeD, -nums, dist);
     }
-    public sched getDrop(){return new sched(timeD, placeD, -nums);}
+    public sched getDrop(){return new sched(timeD, placeD, -nums, dist);}
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
     public int getRequestT(){ return requestT; }

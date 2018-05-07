@@ -3,7 +3,9 @@ public class Station {
     private int x, y;
     private int nums = 0;
 
-    Station(String namei, int xi, int yi){
+    public Station(){}
+
+    public Station(String namei, int xi, int yi){
         name = namei;
         x = xi;
         y = yi;
