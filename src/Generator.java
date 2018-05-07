@@ -106,6 +106,7 @@ public class Generator {
     public void GeneratorLR(int n,Map map){
         Random rand = new Random();
         int m = map.getNumStations();
+        guests = new ArrayList<Guest>();
 
         ArrayList<Station> lecture_building = new ArrayList<>();
         int lecture_num = 12;
