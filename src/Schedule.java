@@ -115,6 +115,7 @@ public class Schedule{
         } return copy;
     }
     public String printing(int pr){ // name/time > wait/unfair= name/time/spont<
+        if(Schedules.length<1) return "";
         sortSchedule();
         String str = whatIthSched(0).printing(pr);
         for(int i=1; i<Schedules.length; i++){
