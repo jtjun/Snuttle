@@ -65,7 +65,7 @@ public class ActualDrive {
             System.arraycopy(TperDi, 0, temp, TperD.length, TperDi.length);
             TperD = temp;
         } Arrays.sort(TperD);
-        pTperD.println(ToString(TperD));
+        if(TperD.length>0) pTperD.println(ToString(TperD));
         pTperD.close();
         /*
         PrintStream piTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
