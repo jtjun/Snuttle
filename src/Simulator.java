@@ -18,7 +18,7 @@ public class Simulator {
             SimulatoR.Start("LR", 11, 1000, 2);
             //SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
-            //SimulatoR.StartG("HS", 1, 500, 100, 30, false);
+            //SimulatoR.StartG("LR", 1, 500, 100, 30, false);
 
         }catch( FileNotFoundException e ){
             System.out.println(e);
@@ -26,7 +26,7 @@ public class Simulator {
     }
 
     public Simulator() throws FileNotFoundException {
-        map = new Map("stations.csv", "distance.csv");
+        map = new Map("stations.csv", "distancev2.csv");
         staN = map.getNumStations();
     }
 
