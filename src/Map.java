@@ -29,8 +29,7 @@ public class Map {
                 dist[idx][j] = Integer.parseInt(parsed[j]);
             }
             idx++;
-        }
-        scanner.close();
+        } scanner.close();
 
         // Find shortest distance using Floyd
         for (int k = 0; k < n; k++) {
@@ -46,6 +45,16 @@ public class Map {
                 }
             }
         }
+        PrintStream mapp = new PrintStream(new File("MapDist.txt"));
+        for(int i=0; i<Simulator.staN; i++) {
+            mapp.print("\t"+stations.get(i).getName());
+        } mapp.println(); // print stations * stations 2dimension array
+        for(int a=0; a<Simulator.staN; a++){
+            mapp.print(stations.get(a).getName());
+            for(int b=0; b<Simulator.staN; b++){
+                mapp.print("\t"+dist[a][b]);
+            } mapp.println();
+        } mapp.close();
     }
 
     public Station getStation(String name) { // Get station by name

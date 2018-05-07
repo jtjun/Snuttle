@@ -15,9 +15,11 @@ public class Simulator {
 
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
-            SimulatoR.Start("HS", 11, 1000, 2);
-            SimulatoR.Start("HS", 11, 1000, 2);
+            //SimulatoR.Start("HS", 11, 1000, 2);
+            //SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
+            SimulatoR.StartG("HS", 1, 500, 100, 30);
+
         }catch( FileNotFoundException e ){
             System.out.println(e);
         }
@@ -37,14 +39,12 @@ public class Simulator {
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
         guests = new ArrayList<>();
         guests = generator.getGuests();
-        Request R = new Request(guests, map);
 
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
         Shuttle[] shuttleP = new Shuttle[shutn]; // Proposed
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
         Shuttle[] shuttleGd = new Shuttle[shutn]; // Greedy
-
 
         //Setting schedule to shuttle
         Simulator.fixedshuttle = shutn/ratio;
@@ -82,12 +82,12 @@ public class Simulator {
         int grd = Grd.Simulate();
         System.out.println("Greedy done : "+grd+"/"+userN);
 
-        // type : Greedy 30
-        System.out.println("\ntype : Greedy, time period 100");
+        // type : Greedy n
+        System.out.println("\ntype : Greedy, time period n");
         Request RGd = new Request(guests, map);
-        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy "+type), 100);
+        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n "+type), 100);
         int grdd = Grdd.Simulate();
-        System.out.println("Greedy done : "+grdd+"/"+userN);
+        System.out.println("Greedy n done : "+grdd+"/"+userN);
 
         /*Printing Shuttle's Schedule
         PrintShutSched(shuttleC, "Circular");
@@ -103,5 +103,25 @@ public class Simulator {
         for(int j=0; j<shuttles.length; j++){
             schedul.println("Shuttle"+j+"'s :\t"+shuttles[j].getSchedule().printing(1));
         } schedul.close();
+    }
+
+    public void StartG(String type, int shutni, int userNi, int ratio, int gredi) throws FileNotFoundException {
+        shutn = shutni;
+        userN = userNi;
+        System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
+        System.out.print("\nGuest Type : " + type + " ____________________________");
+        // All Random guest situation
+        Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
+        guests = new ArrayList<>();
+        guests = generator.getGuests();
+        Shuttle[] shuttleGd = new Shuttle[shutn]; // Greedy
+        GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
+
+        // type : Greedy n
+        System.out.println("\ntype : Greedy, time period n");
+        Request RGd = new Request(guests, map);
+        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n " + type), gredi);
+        int grdd = Grdd.Simulate();
+        System.out.println("Greedy n done : " + grdd + "/" + userN);
     }
 }

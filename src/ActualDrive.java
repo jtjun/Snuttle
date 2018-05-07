@@ -57,16 +57,24 @@ public class ActualDrive {
 
     public int shutiDriveT(int i, int t){
         Shuttle shuti = shuttles[i];
+        shuti.errorCheck(t);
+
         int idxt = shuti.whereToIdx(t);
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
         if(schedTo.getTime() == t){// shuti arrived at next station
+            //System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at "+t);
+            //System.out.println("Guest number "+shuti.getNums());
             shuti.dropS(idxt); // first, drop the people who want get down here
 
             if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
-                shuti.setRefresh(t); // it's time for refresh schedule
-                Schedule Peopl = shuti.getPeople(); // all people getting out from shuti, and stay station
+                //System.out.println("\nIt's time to refresh "+t);
+                shuti.setRefresh(t); // it's time to refresh schedule
+
+                Schedule Peopl = shuti.getPeople();
                 R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl);
+                // all people getting out from shuti, and stay station
+                //System.out.println(Peopl.getNumSched()+" get out for transfer.");
                 serviced -= Peopl.getNumSched();
 
                 for(int k=0; k<Peopl.getNumSched(); k++){
@@ -77,6 +85,7 @@ public class ActualDrive {
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                //System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
             else if(shuti.getEmpty()<0) {
@@ -93,18 +102,22 @@ public class ActualDrive {
                         wait.add(dropR.getWait()); // save wait time
                         dropR.setEarly( dropR.getTime()-shuti.whatIthS(idx).getTime() );
                         early.add(dropR.getEarly()); // save how early
-                        shuti.rideS(dropR); // third, take a person
+
+                        shuti.rideS(dropR, t, idxt); // third, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--; // A person ride a shuti
                     }
                 } // shuti is full or there are no guest who can ride this shuti
             } shuti.errorCheck(t);
+            //System.out.println("Leave with "+shuti.getNums()+"\n");
+
         } else { // schedule to is past error
             if(!schedTo.equals(shuti.whatIthS(idxt-1))){
                 System.out.println("ERROR : Schedule 'To' searching error! "+t);
             } return shuti.getNums();
         } shuti.errorCheck(t);
+        shuttles[i] = shuti;
         return shuti.getNums();
     }
 

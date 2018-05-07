@@ -6,7 +6,7 @@ public class Shuttle {
     private int refresh = 0;
 
     private Schedule S;
-    private Schedule People = new Schedule();
+    private Schedule People;
     private int time; // Shuttle's current time
     Map map;
 
@@ -17,6 +17,7 @@ public class Shuttle {
         time = timei;
         map = mapi;
         S = Si; // we don't care sched's nums now
+        People  = new Schedule();
     }
 
     public int goBefore(int timeS, sched s){
@@ -29,7 +30,8 @@ public class Shuttle {
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
-    public void rideS(sched person){
+    public void rideS(sched person, int t, int idxt){
+       //System.out.println("A person ride shuttle at station "+S.whatIthSched(idxt).getStation().getName()+", at "+t);
         People.addSchedule(person);
         nums++;
     }
@@ -44,21 +46,26 @@ public class Shuttle {
         } int dropP = 0;
         for(int i=0; i<People.getNumSched(); i++){
             sched person = People.whatIthSched(i);
-            if(To.getTime()<=person.getTime() && person.getStation().equals(To.getStation())){
+            if(To.getTime() <= person.getTime() && person.getStation().equals(To.getStation())){
                 People.removeSchedule(i);
-                dropP--;
+                People.sortSchedule();
+                dropP++;
                 i--;
             } // Drop the people who want get out here
-        } if (dropn != dropP) System.out.println("ERROR : Different People are get out"+dropn+", "+dropP);
+        } if (dropn != -dropP) System.out.println("ERROR : Different People are get out "+(-dropn)+", "+dropP);
+        //else System.out.println(dropP+" are get out at station "+To.getStation().getName()+", at "+To.getTime());
     }
     public void getOutAll(){
         nums =0;
         People = new Schedule();
+        for(int i=0; i<S.getNumSched(); i++){
+            S.whatIthSched(i).setNums(0);
+        }
     }
 
     public void errorCheck(int time){
         if(nums<0) System.out.println("ERROR : At "+time+" Shuttle"+name+" has negative people.");
-        if(nums!=People.getNumSched()) System.out.println("ERROR : Different number of people"+nums+","+People.getNumSched());
+        if(nums!=People.getNumSched()) System.out.println("ERROR : Different number of people "+nums+","+People.getNumSched());
     }
 
     public int whereToIdx(int timei) { return S.whatSchedIdx(timei); }
