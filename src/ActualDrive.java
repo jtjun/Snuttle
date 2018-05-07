@@ -52,7 +52,7 @@ public class ActualDrive {
         }
         shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
         shuttlemax.println("How wait\t"+sumup(wait)+"/"+wait.size()+"\t"+ ToString(wait));
-        //shuttlemax.print(R.printingAtT(runT-1, 0)); // sched> W= With<
+        shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
         PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
