@@ -6,7 +6,7 @@ public class Simulator {
     public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 2;
+    public static int shutn = 11;
     public static int ratio = 2;
     public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
@@ -37,7 +37,6 @@ public class Simulator {
         guests = new ArrayList<>();
         guests = generator.getGuests();
         ratio = ratioi;
-        debug = new PrintStream(new File("debug.txt"));
         Simulator.fixedshuttle = (shutn/ratio);
     }
 

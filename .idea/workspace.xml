@@ -2,26 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Circular LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Circular LR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Debug.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Debug.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Express LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Express LR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Greedy LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Greedy LR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule$1.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/GreedySchedule.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Proposed LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Proposed LR Shuttle Max.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Shuttle.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Shuttle.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/StationGroup.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/StationGroup.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/StationGroupNum.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/StationGroupNum.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Circular LR.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Circular LR.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Express LR.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Express LR.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Greedy LR.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Greedy LR.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Proposed LR.txt" afterPath="$PROJECT_DIR$/out/production/Snuttle/Time Per Distance Proposed LR.txt" />
+      <change beforePath="$PROJECT_DIR$/Circular LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Circular LR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Express LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Express LR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Greedy LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Greedy LR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Proposed LR Shuttle Max.txt" afterPath="$PROJECT_DIR$/Proposed LR Shuttle Max.txt" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular LR.txt" afterPath="$PROJECT_DIR$/Time Per Distance Circular LR.txt" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Express LR.txt" afterPath="$PROJECT_DIR$/Time Per Distance Express LR.txt" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy LR.txt" afterPath="$PROJECT_DIR$/Time Per Distance Greedy LR.txt" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed LR.txt" afterPath="$PROJECT_DIR$/Time Per Distance Proposed LR.txt" />
       <change beforePath="$PROJECT_DIR$/src/Generator.java" afterPath="$PROJECT_DIR$/src/Generator.java" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
     </list>
@@ -55,21 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GreedySchedule.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GreedySchedule.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3045">
-              <caret line="205" column="65" lean-forward="false" selection-start-line="205" selection-start-column="65" selection-end-line="205" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Generator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Generator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1337">
-              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="375">
+              <caret line="25" column="42" lean-forward="false" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -325,16 +303,15 @@
       <workItem from="1525667076995" duration="1656000" />
       <workItem from="1525682884171" duration="14389000" />
       <workItem from="1525701387774" duration="107000" />
-      <workItem from="1525701632639" duration="4670000" />
+      <workItem from="1525701632639" duration="4745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152308000" />
+    <option name="totallyTimeSpent" value="152383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -349,7 +326,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2741148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2741148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -579,18 +556,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
+    <entry file="file://$PROJECT_DIR$/src/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3045">
-          <caret line="205" column="65" lean-forward="false" selection-start-line="205" selection-start-column="65" selection-end-line="205" selection-end-column="65" />
+        <state relative-caret-position="2235">
+          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Generator.java">
+    <entry file="file://$PROJECT_DIR$/src/GreedySchedule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1337">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="375">
+          <caret line="25" column="42" lean-forward="false" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
           <folding />
         </state>
       </provider>
