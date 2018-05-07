@@ -30,12 +30,12 @@ public class Shuttle {
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
 
-    public void rideS(sched person, int t, int idxt){
-       //System.out.println("A person ride shuttle at station "+S.whatIthSched(idxt).getStation().getName()+", at "+t);
+    public void rideS(sched person, int t, boolean monit){
+        if(monit) System.out.println("A person ride shuttle at "+t);
         People.addSchedule(person);
         nums++;
     }
-    public void dropS(int idx){ // sched's index
+    public void dropS(int idx, boolean monit){ // sched's index
         sched To = S.whatIthSched(idx);
         int dropn = To.getNums();
         if(dropn > 0) {
@@ -53,7 +53,7 @@ public class Shuttle {
                 i--;
             } // Drop the people who want get out here
         } if (dropn != -dropP) System.out.println("ERROR : Different People are get out "+(-dropn)+", "+dropP);
-        //else System.out.println(dropP+" are get out at station "+To.getStation().getName()+", at "+To.getTime());
+        if(monit) System.out.println(dropP+" are get out at station "+To.getStation().getName()+", at "+To.getTime());
     }
     public void getOutAll(){
         nums =0;

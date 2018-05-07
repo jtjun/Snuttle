@@ -18,7 +18,7 @@ public class Simulator {
             SimulatoR.Start("HS", 11, 1000, 2);
             SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
-            // SimulatoR.StartG("HS", 1, 500, 100, 30);
+            SimulatoR.StartG("HS", 1, 500, 100, 30, false);
 
         }catch( FileNotFoundException e ){
             System.out.println(e);
@@ -58,35 +58,35 @@ public class Simulator {
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
         ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type), 0);
-        int cir = Cir.Simulate();
+        int cir = Cir.Simulate(false);
         System.out.println("Circular done : "+cir+"/"+userN);
 
         // type : Express
         System.out.println("\ntype : Express");
         Request RE = new Request(guests, map);
         ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type), 0);
-        int exp = Exp.Simulate();
+        int exp = Exp.Simulate(false);
         System.out.println("Express done : "+exp+"/"+userN);
 
         // type : Proposed
         System.out.println("\ntype : Proposed");
         Request RP = new Request(guests, map);
         ActualDrive Prop = new ActualDrive(shuttleP, RP, map, ("Proposed "+type), 0);
-        int prp = Prop.Simulate();
+        int prp = Prop.Simulate(false);
         System.out.println("Proposed done : "+prp+"/"+userN);
 
         // type : Greedy 1
         System.out.println("\ntype : Greedy, time period 1");
         Request RG = new Request(guests, map); // gredi is equal to time period of refresh
         ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), 1);
-        int grd = Grd.Simulate();
+        int grd = Grd.Simulate(false);
         System.out.println("Greedy done : "+grd+"/"+userN);
 
         // type : Greedy n
         System.out.println("\ntype : Greedy, time period n");
         Request RGd = new Request(guests, map);
         ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n "+type), 100);
-        int grdd = Grdd.Simulate();
+        int grdd = Grdd.Simulate(false);
         System.out.println("Greedy n done : "+grdd+"/"+userN);
 
         /*Printing Shuttle's Schedule
@@ -105,7 +105,7 @@ public class Simulator {
         } schedul.close();
     }
 
-    public void StartG(String type, int shutni, int userNi, int ratio, int gredi) throws FileNotFoundException {
+    public void StartG(String type, int shutni, int userNi, int ratio, int gredi, boolean monit) throws FileNotFoundException {
         shutn = shutni;
         userN = userNi;
         System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
@@ -120,8 +120,8 @@ public class Simulator {
         // type : Greedy n
         System.out.println("\ntype : Greedy, time period n");
         Request RGd = new Request(guests, map);
-        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n " + type), gredi);
-        int grdd = Grdd.Simulate();
+        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("A Greedy " + type), gredi);
+        int grdd = Grdd.Simulate(monit);
         System.out.println("Greedy n done : " + grdd + "/" + userN);
     }
 }
