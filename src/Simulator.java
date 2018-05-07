@@ -11,12 +11,17 @@ public class Simulator {
     public static int fixedshuttle = 5;
     public static ArrayList<Guest> guests;
     public static Map map;
+<<<<<<< HEAD
     public static int staN;
     public static boolean monit=false;
+=======
+    public static int staN = 23;
+>>>>>>> 4fbcd8c83be5e55522c92b15df9499894e55fbf5
 
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
-            SimulatoR.Start("LR", 11, 1000, 2);
+            SimulatoR.Start("LR", shutn, userN, 2);
+            // SimulatoR.Start("LR", 11, 1000, 2);
             //SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
             //SimulatoR.StartG("LR", 1, 500, 100, 30, false);
