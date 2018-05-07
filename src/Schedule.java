@@ -24,7 +24,10 @@ public class Schedule{
 
     public sched whatIthSched(int i){
         int l = Schedules.length;
-        if(i >= l) {
+        if(l==0) {
+            System.out.println("ERROR : Schedule is empty! / It can be non error situation");
+            return (new sched());
+        } else if(i >= l) {
             sched lasts = Schedules[l-1];
             return (new sched(lasts.getTime(),lasts.getStation(),0));
         } return Schedules[i];
@@ -61,7 +64,7 @@ public class Schedule{
     }
     public void removeSchedule(int idx){
         int l = Schedules.length;
-        if(idx >= l) {
+        if(idx >= l || l==0) {
             System.out.println("ERROR : Remove schedule out of range");
             return;
         } Schedules[idx] = Schedules[l-1];
@@ -77,6 +80,13 @@ public class Schedule{
     public void Waiting(){
         for(int i=0; i<Schedules.length; i++){
             Schedules[i].waiting();
+        }
+    }
+
+    public void getOutt(int time){
+        int l = Schedules.length;
+        for(int i=0; i<l; i++){
+            Schedules[i].getout(time);
         }
     }
 
@@ -114,17 +124,25 @@ public class Schedule{
     }
 }
 
-class sched {
-    private int time, early;
+class sched{
+    private int time, early, rideT, nums, distance;
     private Station place;
-    private int nums;
     private int wait=0;
+    private int ridingT=0;
     private boolean unfair = false;
 
-    sched(int t, Station p, int n){
+    public sched(){ nums =0; }
+
+    public sched(int t, Station p, int n){
         time = t;
         place = p;
         nums = n;
+    }
+    public sched(int t, Station p, int n, int dist){
+        time = t;
+        place = p;
+        nums = n;
+        distance = dist;
     }
 
     public boolean equals(sched s){
@@ -142,16 +160,24 @@ class sched {
     }
 
     public void setTime(int t){ time = t;}
-    public void setStation(Station p){ place = p; }
+    public void setStation(Station p){ place = p;}
     public void setNums(int n){ nums = n; }
     public void setEarly(int t){early=t;}
+    public void setRideT(int t){rideT = t;}
     public void waiting(){wait += 1;}
     public void unfair(){unfair=true;}
+    public void getout(int t){ridingT += (t-rideT);}
+    public void setRidingT(int t){ridingT+=t;}
+    public void setDistance(int d){distance=d;}
 
     public int getWait(){return wait;}
     public int getSponT(){return (Simulator.MAX_TIME-wait);}
     public int getDemandT(){return (time-getSponT());}
     public int getEarly(){return early;}
+    public double getTperD(){return (((ridingT+wait)*1.0)/distance); }
+    public int getRideT(){return rideT;}
+    public int getRiding(){return ridingT;}
+    public int getDistance(){return distance;}
     public boolean askUnfair(){return unfair;}
 
     public int getTime(){ return time; }

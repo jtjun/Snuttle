@@ -6,6 +6,7 @@ public class ActualDrive {
     private int userN = Simulator.userN;
     private int shutN, staN, gred;
     private int serviced=0;
+    private boolean goThere = true;
 
     private Shuttle[] shuttles;
     private Schedule[] S;
@@ -48,29 +49,39 @@ public class ActualDrive {
             for(int j=1; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
-        }shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
+        }
+        shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
         shuttlemax.println("How wait\t"+sumup(wait)+"/"+wait.size()+"\t"+ ToString(wait));
         //shuttlemax.print(R.printingAtT(runT-1, 0)); // sched> W= With<
         shuttlemax.close();
+
+        PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
+        pTperD.println(type+" Time Per Distance");
+        for(int i=0; i < shuttles.length; i++){
+            double[] TperDi = shuttles[i].getTperD();
+            pTperD.print("Shuttle"+i+"\t");
+            pTperD.println(ToString(TperDi));
+        } pTperD.close();
+
         return serviced;
     }
 
     public int shutiDriveT(int i, int t, boolean monit){
         Shuttle shuti = shuttles[i];
         shuti.errorCheck(t);
-
         int idxt = shuti.whereToIdx(t);
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
+
         if(schedTo.getTime() == t){// shuti arrived at next station
             if(monit) System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at " +t
                     +"\nGuest number "+shuti.getNums());
-            shuti.dropS(idxt, monit); // first, drop the people who want get down here
+            shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
 
             if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
-
                 Schedule Peopl = shuti.getPeople();
+                Peopl.getOutt(t);
                 R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl);
                 // all people getting out from shuti, and stay station
                 if(monit) System.out.println("\nIt's time to refresh "+t
@@ -96,15 +107,18 @@ public class ActualDrive {
                 Schedule guestsR =  R.scheduleTS(t, schedTo.getStation());
                 for(int a=0; (a<guestsR.getNumSched()) && (shuti.getEmpty()>0); a++) {
                     shuti.errorCheck(t);
-                    sched dropR = guestsR.whatIthSched(a);
-                    int idx = shuti.goBefore(t, dropR); // guests' drop index
-                    if (idx > 0) { // shuti will go to guests's drop destination.
+                    sched person = guestsR.whatIthSched(a);
+                    //int idx = shuti.goBefore(t, dropR); // guests' drop index
+                    int idx = shuti.goThere(t, person);
+                    if (idx >= 0) { // shuti will go to guests's drop destination.
                         shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //second, set drop schedule
-                        wait.add(dropR.getWait()); // save wait time
-                        dropR.setEarly( dropR.getTime()-shuti.whatIthS(idx).getTime() );
-                        early.add(dropR.getEarly()); // save how early
+                        person.setRideT(t);// tell person ride time
+                        // third save information on person
+                        wait.add(person.getWait()); // save wait time
+                        person.setEarly( person.getTime()-shuti.whatIthS(idx).getTime() );
+                        early.add(person.getEarly()); // save how early
 
-                        shuti.rideS(dropR, t, monit); // third, take a person
+                        shuti.rideS(person, t, monit); // fourth, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--; // A person ride a shuti
@@ -133,6 +147,13 @@ public class ActualDrive {
         int l = ar.size();
         str = ""+ar.get(0);
         for(int i=1; i<l; i++) str+=","+ar.get(i);
+        return str;
+    }
+    public String ToString(double[] ar){
+        String str="";
+        int l = ar.length;
+        str = ""+ar[0];
+        for(int i=1; i<l; i++) str+=","+ar[i];
         return str;
     }
 }

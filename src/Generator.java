@@ -76,7 +76,7 @@ public class Generator {
         //     guests.add(new Guest(timeS, placeS, timeD+timeS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,generator.nextInt(timeS+1)));
         // }
 
-        for(int i = 0; i < n*9/10; i++){
+        for(int i = 0; i < n*17/20; i++){
             // Set time with random
             StationGroup sd = edgelist.get(getRandomStation(Simulator.K_RATIO, k, edgelist.size()));
 
@@ -93,11 +93,9 @@ public class Generator {
         int timeDD = generator.nextInt(100)+50;
         int timeSS = Math.max(generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeDD),100);
 
-        for(int i=n*9/10; i < n; i++){
-
+        for(int i=n*17/20; i < n; i++){
             Station placeS = sd.start;
             Station placeD = sd.dest;
-
 
             guests.add(new Guest(timeSS, placeS, timeDD+timeSS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,timeSS-200));
         }
