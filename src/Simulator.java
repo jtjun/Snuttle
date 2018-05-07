@@ -7,10 +7,7 @@ public class Simulator {
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
     public static int shutn = 1;
-<<<<<<< HEAD
     public static int ratio = 2;
-=======
->>>>>>> afe0fc919ded8714ca32c887c2be1b301c62ff82
     public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
