@@ -32,10 +32,10 @@ public class ActualDrive {
         gred = gredi;
     }
 
-    public int Simulate() throws FileNotFoundException {
+    public int Simulate(boolean monit) throws FileNotFoundException {
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
-                shutsPN[i][time] = shutiDriveT(i, time);
+                shutsPN[i][time] = shutiDriveT(i, time, monit);
             } // simulate time's situation
             R.makeUp(time+1);
         }
@@ -55,7 +55,7 @@ public class ActualDrive {
         return serviced;
     }
 
-    public int shutiDriveT(int i, int t){
+    public int shutiDriveT(int i, int t, boolean monit){
         Shuttle shuti = shuttles[i];
         shuti.errorCheck(t);
 
@@ -63,18 +63,18 @@ public class ActualDrive {
         sched schedTo = shuti.whatIthS(idxt); // shut's destination schedule
         if(schedTo.getTime() > t) return shuti.getNums();
         if(schedTo.getTime() == t){// shuti arrived at next station
-            //System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at "+t);
-            //System.out.println("Guest number "+shuti.getNums());
-            shuti.dropS(idxt); // first, drop the people who want get down here
+            if(monit) System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at " +t
+                    +"\nGuest number "+shuti.getNums());
+            shuti.dropS(idxt, monit); // first, drop the people who want get down here
 
             if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
-                //System.out.println("\nIt's time to refresh "+t);
                 shuti.setRefresh(t); // it's time to refresh schedule
 
                 Schedule Peopl = shuti.getPeople();
                 R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl);
                 // all people getting out from shuti, and stay station
-                //System.out.println(Peopl.getNumSched()+" get out for transfer.");
+                if(monit) System.out.println("\nIt's time to refresh "+t
+                        +"\n"+Peopl.getNumSched()+" get out for transfer.");
                 serviced -= Peopl.getNumSched();
 
                 for(int k=0; k<Peopl.getNumSched(); k++){
@@ -85,7 +85,7 @@ public class ActualDrive {
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
-                //System.out.println("Schedule refreshed!\n");
+                if(monit) System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
             else if(shuti.getEmpty()<0) {
@@ -103,14 +103,14 @@ public class ActualDrive {
                         dropR.setEarly( dropR.getTime()-shuti.whatIthS(idx).getTime() );
                         early.add(dropR.getEarly()); // save how early
 
-                        shuti.rideS(dropR, t, idxt); // third, take a person
+                        shuti.rideS(dropR, t, monit); // third, take a person
                         guestsR.removeSchedule(a);
                         serviced++;
                         a--; // A person ride a shuti
                     }
                 } // shuti is full or there are no guest who can ride this shuti
             } shuti.errorCheck(t);
-            //System.out.println("Leave with "+shuti.getNums()+"\n");
+            if(monit) System.out.println("Leave with "+shuti.getNums()+"people\n");
 
         } else { // schedule to is past error
             if(!schedTo.equals(shuti.whatIthS(idxt-1))){
