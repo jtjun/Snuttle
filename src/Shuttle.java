@@ -3,7 +3,7 @@ import java.util.*;
 public class Shuttle {
     private int name;
     private int x, y;
-    private int max = 50;
+    private int max = Simulator.maxPeople;
     private int nums = 0;
     private int refresh = 0;
 
