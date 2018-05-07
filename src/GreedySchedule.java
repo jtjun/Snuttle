@@ -192,15 +192,18 @@ public class GreedySchedule{
             int t = time;
             Station p = shuttles[shuttlenum].whereTo(time).getStation();
             schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, p, 0);
-            t += map.getDistance(p.getName(), list.get(0).getName());
-            schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(0), 0);
+            if(!p.getName().equals(list.get(0).getName())){
+                t+= map.getDistance(p.getName(), list.get(0).getName());
+                schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(0), 0);
+            }
             for(int i = 1; i < n*10+1; i++){
                 t += map.getDistance(list.get((i-1)%list.size()).getName(), list.get(i%list.size()).getName());
                 if(t>Simulator.MAX_TIME) break;
                 schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(i%list.size()), 0);
                 p = list.get(i%list.size());
             }
-            shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), 0, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
+            // System.out.println(schedules[shuttlenum-Simulator.fixedshuttle].printing(1));
+            shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), time, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
         }
     }
 }
