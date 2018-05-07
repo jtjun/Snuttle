@@ -15,10 +15,10 @@ public class Simulator {
 
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
-            //SimulatoR.Start("HS", 11, 1000, 2);
-            //SimulatoR.Start("HS", 11, 1000, 2);
+            SimulatoR.Start("HS", 11, 1000, 2);
+            SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
-            SimulatoR.StartG("HS", 1, 500, 100, 30);
+            // SimulatoR.StartG("HS", 1, 500, 100, 30);
 
         }catch( FileNotFoundException e ){
             System.out.println(e);
