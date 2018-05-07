@@ -13,6 +13,7 @@ public class Simulator {
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
     public static Map map;
+    public static PrintStream debug;
 
     public static int staN;
     public static boolean monit=false;
@@ -59,6 +60,10 @@ public class Simulator {
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
 
+        debug = new PrintStream(new File("Debug.txt"));
+        for(Guest guest : guests){
+            debug.print("("+guest.getPlaceS().getName()+","+guest.getPlcaeD().getName()+"),");
+        }
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
@@ -90,7 +95,7 @@ public class Simulator {
         // type : Greedy n
         System.out.println("\ntype : Greedy, time period n");
         Request RGd = new Request(guests, map);
-        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n "+type), 100);
+        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n "+type), 60);
         int grdd = Grdd.Simulate(monit);
         System.out.println("Greedy n done : "+grdd+"/"+userN);
 

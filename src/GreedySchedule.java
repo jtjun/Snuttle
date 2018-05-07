@@ -204,6 +204,7 @@ public class GreedySchedule{
             }
             // System.out.println(schedules[shuttlenum-Simulator.fixedshuttle].printing(1));
             shuttles[shuttlenum] = new Shuttle(list.get(0).getX(), list.get(0).getY(), time, schedules[shuttlenum-Simulator.fixedshuttle], shuttlenum, map);
+            Simulator.debug.println(shuttles[shuttlenum].getSchedule().printing(1));
         }
     }
 }
