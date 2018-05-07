@@ -6,9 +6,9 @@ public class Simulator {
     public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 1;
-    public static int ratio = 2;
-    public static int userN = 1000;
+    public static int shutn = 50;
+    public static int ratio = 3;
+    public static int userN = 10000;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
@@ -19,119 +19,87 @@ public class Simulator {
     public static boolean monit=false;
 
     public static void main(String[] args){
-        try{ Simulator SimulatoR = new Simulator();
-            SimulatoR.Start("LR", shutn, userN, ratio);
-            //SimulatoR.Start("HS", 11, 1000, 2);
-            //SimulatoR.Start("HS", 11, 1000, 2);
-            // ratio is high -> fixed shuttle is low (minimum 1)
-            //SimulatoR.StartG("LR", 1, 500, 100, 30, false);
+        String type = "LR";
+        try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
+            SimulatoR.Start(type);
 
         }catch( FileNotFoundException e ){
             System.out.println(e);
         }
     }
 
-    public Simulator() throws FileNotFoundException {
+    public Simulator(String type, int shutni, int userNi, int ratioi) throws FileNotFoundException {
         map = new Map("stations.csv", "distancev2.csv");
         staN = map.getNumStations();
-    }
-
-    public void Start(String type, int shutni, int userNi, int ratio) throws FileNotFoundException {
         shutn = shutni;
         userN = userNi;
-        System.out.print("\nUser number: "+userN+" Shuttle number: "+shutn+" Station number: "+staN);
-        System.out.print("\nGuest Type : "+type+" ____________________________");
-        // All Random guest situation
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
         guests = new ArrayList<>();
         guests = generator.getGuests();
+        ratio = ratioi;
+        Simulator.fixedshuttle = (shutn/ratio);
+    }
 
+    public void Start(String type) throws FileNotFoundException {
+        System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
+        System.out.print("\nGuest Type : " + type + " ____________________________");
+        // All Random guest situation
+        StartC(type);
+        StartE(type);
+        StartP(type);
+        StartG(type,1);
+        StartG(type,30);
+    }
+    public void StartC(String type) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
-        Shuttle[] shuttleE = new Shuttle[shutn]; // Express
-        Shuttle[] shuttleP = new Shuttle[shutn]; // Proposed
-        Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
-        Shuttle[] shuttleGd = new Shuttle[shutn]; // Greedy
-
-        //Setting schedule to shuttle
-        Simulator.fixedshuttle = shutn/ratio;
         CircularSchedule.setCircularSchedule(shuttleC, map);
-        ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
-        ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
-        GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
-        GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
-
-        debug = new PrintStream(new File("Debug.txt"));
-        for(Guest guest : guests){
-            debug.print("("+guest.getPlaceS().getName()+","+guest.getPlcaeD().getName()+"),");
-        }
         // type : Cicular
         System.out.println("\ntype : Circular");
         Request RC = new Request(guests, map);
         ActualDrive Cir = new ActualDrive(shuttleC, RC, map, ("Circular "+type), 0);
         int cir = Cir.Simulate(monit);
         System.out.println("Circular done : "+cir+"/"+userN);
+        //PrintShutSched(shuttleC, "Circular");
 
+    }
+    public void StartE(String type) throws FileNotFoundException {
+        Shuttle[] shuttleE = new Shuttle[shutn]; // Express
+        ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         // type : Express
         System.out.println("\ntype : Express");
         Request RE = new Request(guests, map);
         ActualDrive Exp = new ActualDrive(shuttleE, RE, map, ("Express "+type), 0);
         int exp = Exp.Simulate(monit);
         System.out.println("Express done : "+exp+"/"+userN);
-
+        // PrintShutSched(shuttleE, "Express");
+    }
+    public void StartP(String type) throws FileNotFoundException {
+        Shuttle[] shuttleP = new Shuttle[shutn]; // Proposed
+        ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
         // type : Proposed
         System.out.println("\ntype : Proposed");
         Request RP = new Request(guests, map);
         ActualDrive Prop = new ActualDrive(shuttleP, RP, map, ("Proposed "+type), 0);
         int prp = Prop.Simulate(monit);
         System.out.println("Proposed done : "+prp+"/"+userN);
-
+        // PrintShutSched(shuttleP, "Proposed");
+    }
+    public void StartG(String type, int gred) throws FileNotFoundException {
+        Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
+        GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         // type : Greedy 1
-        System.out.println("\ntype : Greedy, time period 1");
+        System.out.println("\ntype : Greedy, time period "+gred);
         Request RG = new Request(guests, map); // gredi is equal to time period of refresh
-        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), 1);
+        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), gred);
         int grd = Grd.Simulate(monit);
         System.out.println("Greedy done : "+grd+"/"+userN);
-
-        // type : Greedy n
-        System.out.println("\ntype : Greedy, time period n");
-        Request RGd = new Request(guests, map);
-        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy n "+type), 60);
-        int grdd = Grdd.Simulate(monit);
-        System.out.println("Greedy n done : "+grdd+"/"+userN);
-
-        /*Printing Shuttle's Schedule
-        PrintShutSched(shuttleC, "Circular");
-        PrintShutSched(shuttleE, "Express");
-        PrintShutSched(shuttleP, "Proposed");
-        PrintShutSched(shuttleG, "Greedy");
-        PrintShutSched(shuttleGd, "Greedy100");*/
+        //PrintShutSched(shuttleG, "Greedy "+gred);
     }
-
     public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
         PrintStream schedul = new PrintStream(new File(type+" Schedule.txt"));
         schedul.println("Type : "+type);
         for(int j=0; j<shuttles.length; j++){
             schedul.println("Shuttle"+j+"'s :\t"+shuttles[j].getSchedule().printing(1));
         } schedul.close();
-    }
-
-    public void StartG(String type, int shutni, int userNi, int ratio, int gredi) throws FileNotFoundException {
-        shutn = shutni;
-        userN = userNi;
-        System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
-        System.out.print("\nGuest Type : " + type + " ____________________________");
-        // All Random guest situation
-        Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
-        guests = new ArrayList<>();
-        guests = generator.getGuests();
-        Shuttle[] shuttleGd = new Shuttle[shutn]; // Greedy
-        GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
-
-        // type : Greedy n
-        System.out.println("\ntype : Greedy, time period n");
-        Request RGd = new Request(guests, map);
-        ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("A Greedy " + type), gredi);
-        int grdd = Grdd.Simulate(monit);
-        System.out.println("Greedy n done : " + grdd + "/" + userN);
     }
 }
