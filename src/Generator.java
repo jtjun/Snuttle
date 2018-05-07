@@ -6,6 +6,7 @@ public class Generator {
     public Generator(int n, Map map, String type) {
         if(type.equals("HS")) GeneratorHS(n, map);
         if(type.equals("AR")) GeneratorAR(n, map);
+        if(type.equals("LR")) GeneratorLR(n, map);
     }
 
     // Case 1: All Random
