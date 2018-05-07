@@ -87,7 +87,7 @@ public class Generator {
             int timeD = generator.nextInt(100)+50;
             int timeS = generator.nextInt(Simulator.MAX_TIME-map.getDistance(sd.start.getName(), sd.dest.getName())-timeD);
 
-            guests.add(new Guest(timeS, placeS, timeD+timeS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,generator.nextInt(timeS+1)));
+            guests.add(new Guest(timeS, placeS, timeD+timeS+map.getDistance(sd.start.getName(), sd.dest.getName()), placeD,Math.max(generator.nextInt(10)+timeS-10,0)));
         }
         StationGroup sd = edgelist.get(getRandomStation(1, k, edgelist.size()));
         int timeDD = generator.nextInt(100)+50;
