@@ -111,7 +111,7 @@ public class Shuttle {
     public double[] getTperD(){return TperD;}
 
     public void setRefresh(int t){refresh=t;}
-    public void setTperD(double[] tperd){TperD=tperd;}
+    public void setTperD(double[] tperd){ TperD=tperd;}
     public void setNums(int n){nums=n;}
     public void setTimeN(int timei) { timeN = timei;}
     public void setMax(int n){ max = n; }
