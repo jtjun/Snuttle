@@ -85,6 +85,7 @@ public class ActualDrive {
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                shuti = shuttles[i];
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
