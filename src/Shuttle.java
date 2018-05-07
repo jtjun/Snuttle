@@ -28,7 +28,7 @@ public class Shuttle {
         int idx = S.whatSchedIdx(timeS)+1;
         for(int i=idx; i<schedn; i++){
             sched si = S.whatIthSched(i);
-            if(si.getTime() > s.getTime()) return -1;
+            if(si.getTime() > s.getTime() || si.getTime()>=Simulator.MAX_TIME) return -1;
             if(si.getStation().equals(s.getStation())) return i;
         } return -1;
     }// when call this method, shuttle's To equals to guest's source
@@ -38,6 +38,7 @@ public class Shuttle {
         int idx0 = S.whatSchedIdx(time)+1;
         for(int i=idx0; i<schedn; i++){
             sched si = S.whatIthSched(i);
+            if(si.getTime()>=Simulator.MAX_TIME) return -1;
             if(si.getStation().equals(s.getStation())) return i;
         } return -1;
     }

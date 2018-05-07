@@ -37,25 +37,26 @@ public class ActualDrive {
         for(int time=0; time<runT; time++){
             for(int i=0; i<shutN; i++){
                 shutsPN[i][time] = shutiDriveT(i, time, monit);
+                shuttles[i].errorCheck(time);
             } // simulate time's situation
             R.makeUp(time+1);
         }
 
         //Printing the result!
-        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
+        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
-            shuttlemax.print("Shuttle"+i+"\t"+shutsPN[i][0]);
+            shuttlemax.print("Shuttle"+i+",\t"+shutsPN[i][0]);
             for(int j=1; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         }
-        shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
-        shuttlemax.println("How wait\t"+sumup(wait)+"/"+wait.size()+"\t"+ ToString(wait));
+        shuttlemax.println("How early,\t"+sumup(early)+"/"+early.size()+",\t"+ ToString(early));
+        shuttlemax.println("How wait,\t"+sumup(wait)+"/"+wait.size()+",\t"+ ToString(wait));
         shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
-        PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
+        PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".csv"));
         double[] TperD = {};
         pTperD.print(type+" Time Per Distance ");
         for(int i=0; i < shuttles.length; i++){

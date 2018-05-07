@@ -126,7 +126,7 @@ public class Schedule{
 }
 
 class sched{
-    private int time, early, rideT, nums, distance;
+    private int time, early, rideT, nums, distance, reqsT;
     private Station place;
     private int wait=0;
     private int ridingT=0;
@@ -139,11 +139,12 @@ class sched{
         place = p;
         nums = n;
     }
-    public sched(int t, Station p, int n, int dist){
+    public sched(int t, Station p, int n, int dist, int reqst){
         time = t;
         place = p;
         nums = n;
         distance = dist;
+        reqsT = reqst;
     }
 
     public boolean equals(sched s){
@@ -187,7 +188,7 @@ class sched{
     public int getNums() { return nums; }
 
     public String printing(int pr){
-        if(pr>0) return ("("+place.getName()+"/"+time+")");
+        if(pr>0) return ("("+place.getName()+"/"+reqsT+")");
         else if(pr==0) return (wait+"/"+unfair);
         else return ("("+place.getName()+"/"+time+"/"+getSponT()+")");
     }
