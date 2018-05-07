@@ -6,9 +6,9 @@ public class Simulator {
     public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 10 ;
+    public static int shutn = 1 ;
     public static int userN = 1000;
-    public static int fixedshuttle = 5;
+    public static int fixedshuttle = 0;
     public static ArrayList<Guest> guests;
     public static Map map;
 
