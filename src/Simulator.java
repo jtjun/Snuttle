@@ -99,7 +99,7 @@ public class Simulator {
         PrintStream schedul = new PrintStream(new File(type+" Schedule.csv"));
         schedul.println("Type : "+type);
         for(int j=0; j<shuttles.length; j++){
-            schedul.println("Shuttle"+j+"'s :\t"+shuttles[j].getSchedule().printing(1));
+            schedul.println("Shuttle"+j+"'s :,\t"+shuttles[j].getSchedule().printing(1));
         } schedul.close();
     }
 }

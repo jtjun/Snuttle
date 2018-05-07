@@ -19,9 +19,9 @@ public class Guest {
 
     public void setRequest(){
         request[0] = new sched(timeS, placeS, nums);
-        request[1] = new sched(timeD, placeD, -nums, dist);
+        request[1] = new sched(timeD, placeD, -nums, dist, requestT);
     }
-    public sched getDrop(){return new sched(timeD, placeD, -nums, dist);}
+    public sched getDrop(){return new sched(timeD, placeD, -nums, dist, requestT);}
     public int getTimeS(){ return timeS; }
     public int getTimeD(){ return timeD; }
     public int getRequestT(){ return requestT; }
@@ -108,7 +108,7 @@ class Request{
         else str += "\nMissed people's location (Destination / Demand time / Source time)";
         str += " At "+t+"\n";
         for(int i =0; i<staN; i++){
-            str += (map.getStation(i).getName()+" Station\t");
+            str += (map.getStation(i).getName()+" Station,\t");
             Schedule s = st[i];
             str += s.printing(pr)+"\n";
         } return str;

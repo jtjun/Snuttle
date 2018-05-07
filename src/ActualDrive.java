@@ -46,13 +46,13 @@ public class ActualDrive {
         PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
-            shuttlemax.print("Shuttle"+i+"\t"+shutsPN[i][0]);
+            shuttlemax.print("Shuttle"+i+",\t"+shutsPN[i][0]);
             for(int j=1; j<runT; j++){
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         }
-        shuttlemax.println("How early\t"+sumup(early)+"/"+early.size()+"\t"+ ToString(early));
-        shuttlemax.println("How wait\t"+sumup(wait)+"/"+wait.size()+"\t"+ ToString(wait));
+        shuttlemax.println("How early,\t"+sumup(early)+"/"+early.size()+",\t"+ ToString(early));
+        shuttlemax.println("How wait,\t"+sumup(wait)+"/"+wait.size()+",\t"+ ToString(wait));
         shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
