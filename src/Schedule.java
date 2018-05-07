@@ -166,7 +166,7 @@ class sched{
     public void setRideT(int t){rideT = t;}
     public void waiting(){wait += 1;}
     public void unfair(){unfair=true;}
-    public void tempOut(int t){ridingT += (t-rideT);}
+    public void tempOut(int t){ridingT = ridingT+(t-rideT);}
     public void setRidingT(int t){ridingT+=t;}
     public void setDistance(int d){distance=d;}
 
