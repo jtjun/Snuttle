@@ -6,9 +6,10 @@ public class Simulator {
     public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 1 ;
+    public static int shutn = 1;
     public static int userN = 1000;
-    public static int fixedshuttle = 0;
+    public static int fixedshuttle = 5;
+    public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
     public static Map map;
 
@@ -18,7 +19,7 @@ public class Simulator {
     public static void main(String[] args){
         try{ Simulator SimulatoR = new Simulator();
             SimulatoR.Start("LR", shutn, userN, 2);
-            // SimulatoR.Start("LR", 11, 1000, 2);
+            //SimulatoR.Start("HS", 11, 1000, 2);
             //SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
             //SimulatoR.StartG("LR", 1, 500, 100, 30, false);
