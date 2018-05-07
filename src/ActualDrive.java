@@ -86,9 +86,13 @@ public class ActualDrive {
                 } shuti.getOutAll();  // After all passengers are get out,\
                 if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+<<<<<<< HEAD
                 if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
                 System.out.println();
                 //System.out.println("Schedule refreshed!\n");
+=======
+                shuti = shuttles[i];
+>>>>>>> 25717c9e8df52556c7ba7787c36b3e3b455a0fb9
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
