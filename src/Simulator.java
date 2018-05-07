@@ -27,6 +27,7 @@ public class Simulator {
         map = new Map("stations.csv", "distance.csv");
         staN = map.getNumStations();
     }
+
     public void Start(String type, int shutni, int userNi, int ratio) throws FileNotFoundException {
         shutn = shutni;
         userN = userNi;
@@ -52,12 +53,6 @@ public class Simulator {
         ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         GreedySchedule.setGreedySchedule(shuttleGd, map, guests, shutn/ratio);
-        /*Printing Shuttle's Schedule
-        PrintShutSched(shuttleC, "Circular");
-        PrintShutSched(shuttleE, "Express");
-        PrintShutSched(shuttleP, "Proposed");
-        PrintShutSched(shuttleG, "Greedy");
-        PrintShutSched(shuttleGd, "Greedy100");*/
 
         // type : Cicular
         System.out.println("\ntype : Circular");
@@ -93,6 +88,13 @@ public class Simulator {
         ActualDrive Grdd = new ActualDrive(shuttleGd, RGd, map, ("Greedy "+type), 100);
         int grdd = Grdd.Simulate();
         System.out.println("Greedy done : "+grdd+"/"+userN);
+
+        /*Printing Shuttle's Schedule
+        PrintShutSched(shuttleC, "Circular");
+        PrintShutSched(shuttleE, "Express");
+        PrintShutSched(shuttleP, "Proposed");
+        PrintShutSched(shuttleG, "Greedy");
+        PrintShutSched(shuttleGd, "Greedy100");*/
     }
 
     public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
