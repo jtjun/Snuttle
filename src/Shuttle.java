@@ -38,7 +38,7 @@ public class Shuttle {
         int idx0 = S.whatSchedIdx(time)+1;
         for(int i=idx0; i<schedn; i++){
             sched si = S.whatIthSched(i);
-            if(si.getTime()>=Simulator.MAX_TIME) return -1;
+            if(si.getTime()>Simulator.MAX_TIME-1) return -1;
             if(si.getStation().equals(s.getStation())) return i;
         } return -1;
     }

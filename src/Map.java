@@ -45,27 +45,6 @@ public class Map {
                 }
             }
         }
-        // PrintStream mapp = new PrintStream(new File("MapDist.txt"));
-        // for(int i=0; i<Simulator.staN; i++) {
-        //     mapp.print("\t"+stations.get(i).getName());
-        // } mapp.println(); // print stations * stations 2dimension array
-        // for(int a=0; a<Simulator.staN; a++){
-        //     mapp.print(stations.get(a).getName());
-        //     for(int b=0; b<Simulator.staN; b++){
-        //         mapp.print("\t"+dist[a][b]);
-        //     } mapp.println();
-        // } mapp.close();
-        // PrintStream mapp = new PrintStream(new File("MapDist.txt"));
-        // for(int i=0; i<Simulator.staN; i++) {
-        //     System.out.print("\t"+stations.get(i).getName());
-        // } System.out.println(); // print stations * stations 2dimension array
-        // for(int a=0; a<Simulator.staN; a++){
-        //     System.out.print(stations.get(a).getName());
-        //     for(int b=0; b<Simulator.staN; b++){
-        //         System.out.print("\t"+dist[a][b]);
-        //     } System.out.println();
-        // }
-        // } System.out.close();
     }
 
     public Station getStation(String name) { // Get station by name

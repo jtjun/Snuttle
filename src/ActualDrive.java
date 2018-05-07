@@ -6,7 +6,7 @@ public class ActualDrive {
     private int userN = Simulator.userN;
     private int shutN, staN, gred;
     private int serviced=0;
-    private boolean goThere = true;
+    private boolean goThere = false;
 
     private Shuttle[] shuttles;
     private Schedule[] S;
@@ -66,7 +66,9 @@ public class ActualDrive {
             System.arraycopy(TperDi, 0, temp, TperD.length, TperDi.length);
             TperD = temp;
         } Arrays.sort(TperD);
-        pTperD.println(TperD.length);
+        pTperD.print(TperD.length);
+        pTperD.println(" / "+getPeopleN(shuttles));
+
         if(TperD.length>0) pTperD.println(ToString(TperD));
         if(TperD.length!=serviced) System.out.println("ERROR : Serviced and reported T/D number are differ.");
         pTperD.close();
@@ -143,6 +145,13 @@ public class ActualDrive {
         } shuti.errorCheck(t);
         shuttles[i] = shuti;
         return shuti.getNums();
+    }
+    public int getPeopleN(Shuttle[] shuts){
+        int l = shuts.length;
+        int num=0;
+        for(int i=0; i<l; i++){
+            num += shuts[i].getPeople().getNumSched();
+        } return num;
     }
 
     public int sumup(ArrayList<Integer> ar){

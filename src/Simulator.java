@@ -8,18 +8,18 @@ public class Simulator {
     public static double K_RATIO = 0.5;
     public static int shutn = 10;
     public static int ratio = 2;
-    public static int userN = 10000;
+    public static int userN = 5000;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
     public static Map map;
-    public static PrintStream debug;
+    public static int totalD=77;
 
     public static int staN;
     public static boolean monit=false;
 
     public static void main(String[] args){
-        String type = "GG";
+        String type = "LR";
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
 
@@ -102,4 +102,6 @@ public class Simulator {
             schedul.println("Shuttle"+j+"'s :,\t"+shuttles[j].getSchedule().printing(1));
         } schedul.close();
     }
+
+    public static void setTotalD(int dist){totalD = dist;}
 }

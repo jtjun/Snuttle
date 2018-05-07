@@ -4,6 +4,10 @@ public class CircularSchedule {
     public static void setCircularSchedule(Shuttle[] shuttles, Map map) {
         int n = map.getNumStations();
         int[] stationorder = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
+        int totald=0;
+        for(int i=0; i<stationorder.length-1; i++){
+            totald += map.getDistance(stationorder[i], stationorder[i+1]);
+        } Simulator.setTotalD(totald);
 
         for(int i = 0; i < shuttles.length; i++){ // For each shuttle,
             int x = 15;

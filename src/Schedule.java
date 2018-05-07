@@ -188,7 +188,7 @@ class sched{
     public int getNums() { return nums; }
 
     public String printing(int pr){
-        if(pr>0) return ("("+place.getName()+"/"+reqsT+")");
+        if(pr>0) return ("("+place.getName()+"/"+time+")");
         else if(pr==0) return (wait+"/"+unfair);
         else return ("("+place.getName()+"/"+time+"/"+getSponT()+")");
     }
