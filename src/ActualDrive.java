@@ -43,7 +43,7 @@ public class ActualDrive {
         }
 
         //Printing the result!
-        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.txt"));
+        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
             shuttlemax.print("Shuttle"+i+"\t"+shutsPN[i][0]);
@@ -56,7 +56,7 @@ public class ActualDrive {
         shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
-        PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
+        PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".csv"));
         double[] TperD = {};
         pTperD.print(type+" Time Per Distance ");
         for(int i=0; i < shuttles.length; i++){
