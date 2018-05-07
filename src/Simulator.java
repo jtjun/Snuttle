@@ -13,6 +13,7 @@ public class Simulator {
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
     public static Map map;
+    public static PrintStream debug;
 
     public static int staN;
     public static boolean monit=false;
