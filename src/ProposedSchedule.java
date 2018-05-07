@@ -42,7 +42,7 @@ public class ProposedSchedule{
             int startStation = n/fixedshuttle * i; // Start at different positions
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
 
-            for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
+            for(int j = startStation+1; /*j < startStation+n*10*/ t<=Simulator.MAX_TIME; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
@@ -77,7 +77,7 @@ public class ProposedSchedule{
             int t = 0;
             Station p = list.get(0);
             schedules[k].addSchedule(t, p, 0);
-            for(int i = 1; i < n*10+1; i++){
+            for(int i = 1;/* i < n*10+1*/ t<=Simulator.MAX_TIME; i++){
                 t += map.getDistance(list.get((i-1)%list.size()).getName(), list.get(i%list.size()).getName());
                 if(t>Simulator.MAX_TIME) break;
                 schedules[k].addSchedule(t, list.get(i%list.size()), 0);

@@ -15,7 +15,7 @@ public class ExpressSchedule {
             Schedule schedule = new Schedule();
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
 
-            for(int j = startStation+1; j < startStation+n*10; j++){ // Visit each node for 10 cycles
+            for(int j = startStation+1;/* j < startStation+n*10*/ t<=Simulator.MAX_TIME; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
@@ -40,7 +40,7 @@ public class ExpressSchedule {
             // Make new schedule
             Schedule schedule = new Schedule();
             schedule.addSchedule(t,map.getStation(stationorder[(al.get(i%3).get(0))]), 0);
-            for(int j = 1; j < n*20; j++){
+            for(int j = 1; /*j < n*20*/ t<=Simulator.MAX_TIME; j++){
                 int l = al.get(i%3).size();
                 t += map.getDistance(stationorder[(al.get(i%3).get((j-1)%l))],stationorder[(al.get(i%3).get(j%l))]);
                 if(t>Simulator.MAX_TIME) break;
