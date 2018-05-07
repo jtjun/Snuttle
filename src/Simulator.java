@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 
 public class Simulator {
-    public static int MAX_TIME = 1000;
+    public static int MAX_TIME = 1440;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
     public static int shutn = 10 ;

@@ -104,6 +104,50 @@ public class Generator {
         sortGuests();
     }
 
+    public void GeneratorLR(int n,Map map){
+        Random rand = new Random();
+        int m = map.getNumStations();
+
+        ArrayList<Station> lecture_building = new ArrayList<>();
+        int lecture_num = 12;
+        for(int i = 0; i < m; i++){
+            lecture_building.add(map.getStation(i));
+        }
+        Collections.shuffle(lecture_building);
+
+        while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
+        
+        for(int i = 0 ; i < n*8/10; i++){
+            int timeS = (rand.nextInt(20-9)+9)*60;
+            int s = rand.nextInt(lecture_num);
+            int d = rand.nextInt(lecture_num);
+            while( s == d ) d = rand.nextInt(lecture_num);
+
+            int requestT = Math.max(timeS-rand.nextInt(30*60),0);
+            guests.add(new Guest(timeS, lecture_building.get(s), Simulator.MAX_TIME, lecture_building.get(d), requestT));
+        }
+
+        for(int i = n*8/10; i < n*9/10; i++){
+            int timeS = rand.nextInt(24*60-9*60)+9*60;
+            int s = rand.nextInt(m);
+            int d = rand.nextInt(m);
+            while( s == d ) d = rand.nextInt(m);
+
+            int requestT = Math.max(timeS-rand.nextInt(30*60),0);
+            guests.add(new Guest(timeS, map.getStation(s), Simulator.MAX_TIME, map.getStation(d), requestT));
+        }
+
+        for(int i = n*9/10; i < n; i++){
+            int timeS = rand.nextInt(24*60);
+            int s = rand.nextInt(m);
+            int d = rand.nextInt(m);
+            while( s == d ) d = rand.nextInt(m);
+
+            int requestT = Math.max(timeS-rand.nextInt(30*60),0);
+            guests.add(new Guest(timeS, map.getStation(s), Simulator.MAX_TIME, map.getStation(d), requestT));
+        }
+    }
+
     public ArrayList<Guest> getGuests(){ return guests; }
     public ArrayList<Guest> copyGuests(){
         ArrayList<Guest> guestCopy = new ArrayList<>();
