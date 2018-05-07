@@ -83,8 +83,11 @@ public class ActualDrive {
                     Integer wat = person.getWait();
                     early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
-                } shuti.getOutAll();  // After all passengers are get out,
+                } shuti.getOutAll();  // After all passengers are get out,\
+                if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
                 GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                if(i>=Simulator.fixedshuttle) System.out.println(shuttles[i].getSchedule().printing(1));
+                System.out.println();
                 //System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
