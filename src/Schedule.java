@@ -83,11 +83,11 @@ public class Schedule{
         }
     }
 
-    public void getOutt(int time){
+    public void outTransfer(int time){
         int l = Schedules.length;
         for(int i=0; i<l; i++){
-            Schedules[i].getout(time);
-        }
+            Schedules[i].tempOut(time);
+        } // out for transfer
     }
 
     public sched[] getScheds(){ return Schedules; }
@@ -166,7 +166,7 @@ class sched{
     public void setRideT(int t){rideT = t;}
     public void waiting(){wait += 1;}
     public void unfair(){unfair=true;}
-    public void getout(int t){ridingT += (t-rideT);}
+    public void tempOut(int t){ridingT += (t-rideT);}
     public void setRidingT(int t){ridingT+=t;}
     public void setDistance(int d){distance=d;}
 
@@ -174,7 +174,8 @@ class sched{
     public int getSponT(){return (Simulator.MAX_TIME-wait);}
     public int getDemandT(){return (time-getSponT());}
     public int getEarly(){return early;}
-    public double getTperD(){return (((ridingT+wait)*1.0)/distance); }
+    public double getTperD(){return (((ridingT + wait)*1.0)/distance); }
+    public int getiTperD(){return ((ridingT+wait)/distance); }
     public int getRideT(){return rideT;}
     public int getRiding(){return ridingT;}
     public int getDistance(){return distance;}

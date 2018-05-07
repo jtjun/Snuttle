@@ -56,13 +56,31 @@ public class ActualDrive {
         shuttlemax.close();
 
         PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
+        double[] TperD = {};
         pTperD.println(type+" Time Per Distance");
         for(int i=0; i < shuttles.length; i++){
             double[] TperDi = shuttles[i].getTperD();
-            pTperD.print("Shuttle"+i+"\t");
-            pTperD.println(ToString(TperDi));
-        } pTperD.close();
-
+            int l0 = TperD.length;
+            int l1 = TperDi.length;
+            TperD = Arrays.copyOf(TperD, l0+l1);
+            System.arraycopy(TperDi, 0, TperD, l0, l1);
+        } Arrays.sort(TperD);
+        pTperD.println(ToString(TperD));
+        pTperD.close();
+        /*
+        PrintStream piTperD = new PrintStream(new File("Time Per Distance "+type+".txt"));
+        int[] iTperD = {};
+        piTperD.println(type+" Time Per Distance");
+        for(int i=0; i < shuttles.length; i++){
+            int[] iTperDi = shuttles[i].getiTperD();
+            int l0 = iTperD.length;
+            int l1 = iTperDi.length;
+            iTperD = Arrays.copyOf(iTperD, l0+l1);
+            System.arraycopy(iTperDi, 0, iTperD, l0, l1);
+        } Arrays.sort(iTperD);
+        piTperD.println(ToString(iTperD));
+        piTperD.close();
+        */
         return serviced;
     }
 
@@ -81,7 +99,7 @@ public class ActualDrive {
             if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
                 Schedule Peopl = shuti.getPeople();
-                Peopl.getOutt(t);
+                Peopl.outTransfer(t);
                 R.scheduleTS(t, schedTo.getStation()).mergeWith(Peopl);
                 // all people getting out from shuti, and stay station
                 if(monit) System.out.println("\nIt's time to refresh "+t
@@ -108,8 +126,9 @@ public class ActualDrive {
                 for(int a=0; (a<guestsR.getNumSched()) && (shuti.getEmpty()>0); a++) {
                     shuti.errorCheck(t);
                     sched person = guestsR.whatIthSched(a);
-                    //int idx = shuti.goBefore(t, dropR); // guests' drop index
-                    int idx = shuti.goThere(t, person);
+                    int idx =0;
+                    if(goThere) idx = shuti.goThere(t, person);
+                    else idx = shuti.goBefore(t, person); // guests' drop index
                     if (idx >= 0) { // shuti will go to guests's drop destination.
                         shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //second, set drop schedule
                         person.setRideT(t);// tell person ride time
@@ -150,6 +169,13 @@ public class ActualDrive {
         return str;
     }
     public String ToString(double[] ar){
+        String str="";
+        int l = ar.length;
+        str = ""+ar[0];
+        for(int i=1; i<l; i++) str+=","+ar[i];
+        return str;
+    }
+    public String ToString(int[] ar){
         String str="";
         int l = ar.length;
         str = ""+ar[0];
