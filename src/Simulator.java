@@ -18,11 +18,7 @@ public class Simulator {
             SimulatoR.Start("HS", 11, 1000, 2);
             SimulatoR.Start("HS", 11, 1000, 2);
             // ratio is high -> fixed shuttle is low (minimum 1)
-<<<<<<< HEAD
             SimulatoR.StartG("HS", 1, 500, 100, 30, false);
-=======
-            // SimulatoR.StartG("HS", 1, 500, 100, 30);
->>>>>>> 37fb2cd3933f558087ab9c5ec46e9c98cc65514a
 
         }catch( FileNotFoundException e ){
             System.out.println(e);
