@@ -87,6 +87,8 @@ public class Shuttle {
     public void saveTperD(sched person){
         int l = TperD.length;
         TperD = Arrays.copyOf(TperD, l+1);
+        if(Simulator.monit) System.out.println(person.getRiding()+"+"+person.getWait()+"/"+person.getDistance()+" "+
+                (((person.getRiding()+person.getWait())*1.0/person.getDistance())==person.getTperD())+" TperD "+person.getTperD());
         TperD[l] = person.getTperD();
     }
     public void saveiTperD(sched person){

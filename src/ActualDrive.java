@@ -60,10 +60,10 @@ public class ActualDrive {
         pTperD.println(type+" Time Per Distance");
         for(int i=0; i < shuttles.length; i++){
             double[] TperDi = shuttles[i].getTperD();
-            int l0 = TperD.length;
-            int l1 = TperDi.length;
-            TperD = Arrays.copyOf(TperD, l0+l1);
-            System.arraycopy(TperDi, 0, TperD, l0, l1);
+            double[] temp = new double[TperD.length+TperDi.length];
+            System.arraycopy(TperD, 0, temp, 0, TperD.length);
+            System.arraycopy(TperDi, 0, temp, TperD.length, TperDi.length);
+            TperD = temp;
         } Arrays.sort(TperD);
         pTperD.println(ToString(TperD));
         pTperD.close();
