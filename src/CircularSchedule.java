@@ -18,11 +18,19 @@ public class CircularSchedule {
             Schedule schedule = new Schedule();
             int startStation = n/shuttles.length * i; // Start at different positions
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
+            if(Simulator.Wait) {
+                t+=1;
+                schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);//WAIT
+            }
 
             for(int j = startStation+1; /*j < startStation+n*10*/ t<=Simulator.MAX_TIME; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);//WAIT
+                }
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),

@@ -60,8 +60,9 @@ public class Shuttle {
         for(int i=0; i<People.getNumSched(); i++){
             sched person = People.whatIthSched(i);
             if(person.getStation().equals(To.getStation())){
-                if(To.getTime() <= person.getTime() || goThere){
+                if(idx == person.getDropIdx()){
                     person.tempOut(t);
+                    if(monit) System.out.println(person.printing(1));
                     saveTperD(person);
                     People.removeSchedule(i);
                     People.sortSchedule();
@@ -86,8 +87,8 @@ public class Shuttle {
     public void saveTperD(sched person){
         int l = TperD.length;
         TperD = Arrays.copyOf(TperD, l+1);
-        if(Simulator.monit) System.out.println(person.getRiding()+"+"+person.getWait()+"/"+person.getDistance()+" "+
-                (((person.getRiding()+person.getWait())*1.0/person.getDistance())==person.getTperD())+" TperD "+person.getTperD());
+        //if(Simulator.monit) System.out.println("TperD: "+person.getTperD()+": "+person.getRiding()+"+"+person.getWait()+"/"+person.getDistance()+" "
+        // +(((person.getRiding()+person.getWait())*1.0/person.getDistance())==person.getTperD()));
         TperD[l] = person.getTperD();
     }
 

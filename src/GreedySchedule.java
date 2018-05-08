@@ -15,11 +15,19 @@ public class GreedySchedule{
             Schedule schedule = new Schedule();
             int startStation = n/shuttles.length * i; // Start at different positions
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
+            if(Simulator.Wait) {
+                t+=1;
+                schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
+            }
 
             for(int j = startStation+1;/* j < startStation+n*10*/ t<=Simulator.MAX_TIME; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
+                }
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),
@@ -192,14 +200,26 @@ public class GreedySchedule{
             int t = time;
             Station p = shuttles[shuttlenum].whereTo(time).getStation();
             schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, p, 0);
+            if(Simulator.Wait) {
+                t+=1;
+                schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, p, 0);
+            }
             if(!p.getName().equals(list.get(0).getName())){
                 t+= map.getDistance(p.getName(), list.get(0).getName());
                 schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(0), 0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(0), 0);
+                }
             }
             for(int i = 1; /*i < n*10+1*/ t <= Simulator.MAX_TIME; i++){
                 t += map.getDistance(list.get((i-1)%list.size()).getName(), list.get(i%list.size()).getName());
                 if(t>Simulator.MAX_TIME) break;
                 schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(i%list.size()), 0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedules[shuttlenum-Simulator.fixedshuttle].addSchedule(t, list.get(i%list.size()), 0);
+                }
                 p = list.get(i%list.size());
             }
             // System.out.println(schedules[shuttlenum-Simulator.fixedshuttle].printing(1));

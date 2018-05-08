@@ -9,6 +9,8 @@ public class Generator {
         if(type.equals("AR")) GeneratorAR(n, map);
         if(type.equals("LR")) GeneratorLR(n, map);
         if(type.equals("GG")) GeneratorGG(n, map);
+        if(type.equals("TJ")) GeneratorTJ(n, map);
+        if(type.equals("CM")) GeneratorCM(n, map);
     }
 
     // Case 1: All Random
@@ -303,6 +305,64 @@ public class Generator {
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
         }
+    }
+
+    public void GeneratorTJ(int n,Map map){
+        Random rand = new Random();
+        int m = map.getNumStations();
+        guests = new ArrayList<Guest>();
+        double randGaussianD =  rand.nextGaussian();
+        double randD = rand.nextDouble();
+
+        for(int t=0; t<Simulator.MAX_TIME; t++){
+
+        }
+    }
+
+    public void GeneratorCM(int n,Map map){ //Cammel
+        Random rand = new Random();
+        int m = map.getNumStations();
+        guests = new ArrayList<Guest>();
+        int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
+
+        for(int i=0; i< n/2; i++){
+            double randGaussian =  rand.nextGaussian();
+            int timeS = ((int) (360 + randGaussian));
+            timeS = cutT(timeS);
+            int sp = rand.nextInt(23);
+            int dp = (sp+4+rand.nextInt(19))%23;
+
+            int s = staOrd[sp];
+            int d = staOrd[dp];
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(s),
+                    timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
+                    , map.getStation(d), requestT));
+        }
+        for(int i=n/2; i< n; i++){
+            double randGaussian =  rand.nextGaussian();
+            int timeS = ((int) (1080 + randGaussian));
+            timeS = cutT(timeS);
+            int sp = rand.nextInt(23);
+            int dp = (sp+4+rand.nextInt(19))%23;
+
+            int s = staOrd[sp];
+            int d = staOrd[dp];
+
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(s),
+                    timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
+                    , map.getStation(d), requestT));
+
+        }
+    }
+
+    public int cutT(int t){
+        if(t<0) return 0;
+        if(t>Simulator.MAX_TIME-1) return Simulator.MAX_TIME-1;
+        return t;
     }
 
     public ArrayList<Guest> getGuests(){ return guests; }

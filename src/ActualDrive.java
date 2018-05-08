@@ -6,7 +6,7 @@ public class ActualDrive {
     private int userN = Simulator.userN;
     private int shutN, staN, gred;
     private int serviced=0;
-    private boolean goThere = false;
+    private boolean goThere = Simulator.goThereS;
 
     private Shuttle[] shuttles;
     private Schedule[] S;
@@ -85,7 +85,7 @@ public class ActualDrive {
 
         if(schedTo.getTime() == t){// shuti arrived at next station
             if(monit) System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at " +t
-                    +"\nGuest number "+shuti.getNums());
+                    +" "+schedTo.printing(1)+"\nGuest number "+shuti.getNums());
             shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
 
             if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
@@ -123,6 +123,7 @@ public class ActualDrive {
                     else idx = shuti.goBefore(t, person); // guests' drop index
                     if (idx >= 0) { // shuti will go to guests's drop destination.
                         shuti.whatIthS(idx).setNums( shuti.whatIthS(idx).getNums()-1 ); //second, set drop schedule
+                        person.setDropIdx(idx);// tell person where to drop
                         person.setRideT(t);// tell person ride time
                         // third save information on person
                         wait.add(person.getWait()); // save wait time
@@ -136,7 +137,7 @@ public class ActualDrive {
                     }
                 } // shuti is full or there are no guest who can ride this shuti
             } shuti.errorCheck(t);
-            if(monit) System.out.println("Leave with "+shuti.getNums()+"people\n");
+            if(monit) System.out.println("Leave with "+shuti.getNums()+" people\n");
 
         } else { // schedule to is past error
             if(!schedTo.equals(shuti.whatIthS(idxt-1))){

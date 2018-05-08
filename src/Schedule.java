@@ -127,6 +127,7 @@ public class Schedule{
 
 class sched{
     private int time, early, rideT, nums, distance, reqsT;
+    private int dropIdx;
     private Station place;
     private int wait=0;
     private int ridingT=0;
@@ -169,6 +170,7 @@ class sched{
     public void waiting(){wait += 1;}
     public void unfair(){unfair=true;}
     public void tempOut(int t){ridingT = ridingT+(t-rideT);}
+    public void setDropIdx(int idx){dropIdx =idx;}
     public void setRidingT(int t){ridingT+=t;}
     public void setDistance(int d){distance=d;}
 
@@ -177,6 +179,7 @@ class sched{
     public int getDemandT(){return (time-getSponT());}
     public int getEarly(){return early;}
     public double getTperD(){return (((ridingT + wait)*1.0)/distance); }
+    public int getDropIdx(){return dropIdx;}
     public int getiTperD(){return ((ridingT+wait)/distance); }
     public int getRideT(){return rideT;}
     public int getRiding(){return ridingT;}
@@ -188,7 +191,7 @@ class sched{
     public int getNums() { return nums; }
 
     public String printing(int pr){
-        if(pr>0) return ("("+place.getName()+"/"+time+")");
+        if(pr>0) return ("("+place.getName()+"/"+time+"/"+nums+")");
         else if(pr==0) return (wait+"/"+unfair);
         else return ("("+place.getName()+"/"+time+"/"+getSponT()+")");
     }

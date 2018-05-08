@@ -8,7 +8,7 @@ public class Simulator {
     public static double K_RATIO = 0.5;
     public static int shutn = 10;
     public static int ratio = 2;
-    public static int userN = 5000;
+    public static int userN = 4500;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
@@ -17,9 +17,11 @@ public class Simulator {
 
     public static int staN;
     public static boolean monit=false;
+    public static boolean goThereS = true;
+    public static boolean Wait=false;
 
     public static void main(String[] args){
-        String type = "LR";
+        String type = "CM";
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
 
@@ -43,14 +45,14 @@ public class Simulator {
     public void Start(String type) throws FileNotFoundException {
         System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
         System.out.print("\nGuest Type : " + type + " ____________________________");
-        // All Random guest situation
-        StartC(type);
-        StartE(type);
-        StartP(type);
-        StartG(type,1);
-        StartG(type,30);
+
+        StartC(type, monit);
+        StartE(type, monit);
+        StartP(type, monit);
+        StartG(type,1, monit);
+        StartG(type,30, monit);
     }
-    public void StartC(String type) throws FileNotFoundException {
+    public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
         CircularSchedule.setCircularSchedule(shuttleC, map);
         // type : Cicular
@@ -62,7 +64,7 @@ public class Simulator {
         //PrintShutSched(shuttleC, "Circular");
 
     }
-    public void StartE(String type) throws FileNotFoundException {
+    public void StartE(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleE = new Shuttle[shutn]; // Express
         ExpressSchedule.setExpressSchedule(shuttleE, map, shutn/ratio);
         // type : Express
@@ -73,7 +75,7 @@ public class Simulator {
         System.out.println("Express done : "+exp+"/"+userN);
         // PrintShutSched(shuttleE, "Express");
     }
-    public void StartP(String type) throws FileNotFoundException {
+    public void StartP(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleP = new Shuttle[shutn]; // Proposed
         ProposedSchedule.setProposedSchedule(shuttleP, map, guests, shutn/ratio);
         // type : Proposed
@@ -84,7 +86,7 @@ public class Simulator {
         System.out.println("Proposed done : "+prp+"/"+userN);
         // PrintShutSched(shuttleP, "Proposed");
     }
-    public void StartG(String type, int gred) throws FileNotFoundException {
+    public void StartG(String type, int gred, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
         // type : Greedy 1

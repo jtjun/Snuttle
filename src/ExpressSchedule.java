@@ -14,11 +14,19 @@ public class ExpressSchedule {
             int startStation = n/shuttles.length * i; // Start at different positions
             Schedule schedule = new Schedule();
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
+            if(Simulator.Wait) {
+                t+=1;
+                schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
+            }
 
             for(int j = startStation+1;/* j < startStation+n*10*/ t<=Simulator.MAX_TIME; j++){ // Visit each node for 10 cycles
                 t += map.getDistance(stationorder[(j-1)%n], stationorder[j%n]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedule.addSchedule(t, map.getStation(stationorder[j%n]), 0);
+                }
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[startStation]).getX(),
                                       map.getStation(stationorder[startStation]).getY(),
@@ -40,11 +48,19 @@ public class ExpressSchedule {
             // Make new schedule
             Schedule schedule = new Schedule();
             schedule.addSchedule(t,map.getStation(stationorder[(al.get(i%3).get(0))]), 0);
+            if(Simulator.Wait) {
+                t+=1;
+                schedule.addSchedule(t,map.getStation(stationorder[(al.get(i%3).get(0))]), 0);
+            }
             for(int j = 1; /*j < n*20*/ t<=Simulator.MAX_TIME; j++){
                 int l = al.get(i%3).size();
                 t += map.getDistance(stationorder[(al.get(i%3).get((j-1)%l))],stationorder[(al.get(i%3).get(j%l))]);
                 if(t>Simulator.MAX_TIME) break;
                 schedule.addSchedule(t, map.getStation(stationorder[al.get(i%3).get(j%l)]),0);
+                if(Simulator.Wait) {
+                    t+=1;
+                    schedule.addSchedule(t, map.getStation(stationorder[al.get(i%3).get(j%l)]),0);
+                }
             }
             shuttles[i] = new Shuttle(map.getStation(stationorder[al.get(i%3).get(0)]).getX(),
                                       map.getStation(stationorder[al.get(i%3).get(0)]).getY(),

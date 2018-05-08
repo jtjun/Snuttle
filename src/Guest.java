@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Guest {
-    private int timeS, timeD, requestT, rideT, dist;
+    private int timeS, timeD, requestT, dist;
     private Station placeS, placeD;
     private sched[] request = new sched[2];
     private int nums = 1;
@@ -27,17 +27,6 @@ public class Guest {
     public int getRequestT(){ return requestT; }
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
-    /*
-    public void setRideT(int t){ rideT = t; }
-    private void setShuttleName(int n ){ shuttleName = n;}
-    private int getShuttleName(){return shuttleName;}
-    public void setTS(int t){ request[0].setTime(t);} // counter request
-    public void setTD(int t){ request[1].setTime(t);} // counter request
-
-    public int getRideT(){ return rideT; }
-    public int getWaitT(){ return rideT - timeS; }
-    public int getNums(){ return nums; }
-    public sched getRide(){return new sched(timeS, placeS, nums);}*/
 }
 
 class Request{
