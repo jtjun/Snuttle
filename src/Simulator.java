@@ -21,7 +21,7 @@ public class Simulator {
     public static boolean Wait=false;
 
     public static void main(String[] args){
-        String type = "PG";
+        String type = "CM";
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
 
@@ -92,7 +92,7 @@ public class Simulator {
         // type : Greedy 1
         System.out.println("\ntype : Greedy, time period "+gred);
         Request RG = new Request(guests, map); // gredi is equal to time period of refresh
-        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+type), gred);
+        ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+gred+" "+type), gred);
         int grd = Grd.Simulate(monit);
         System.out.println("Greedy done : "+grd+"/"+userN);
         //PrintShutSched(shuttleG, "Greedy "+gred);
