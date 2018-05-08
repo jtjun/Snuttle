@@ -21,7 +21,7 @@ public class Simulator {
     public static boolean Wait=false;
 
     public static void main(String[] args){
-        String type = "CM";
+        String type = "PG";
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
 

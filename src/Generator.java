@@ -311,11 +311,31 @@ public class Generator {
         Random rand = new Random();
         int m = map.getNumStations();
         guests = new ArrayList<Guest>();
-        double randGaussianD =  rand.nextGaussian();
-        double randD = rand.nextDouble();
+        int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
 
-        for(int t=0; t<Simulator.MAX_TIME; t++){
+        for(int i=0; i<n/3; i++){
+            int timeS = rand.nextInt(1440);
+            int sp = rand.nextInt(23);
+            int dp = (sp+4+rand.nextInt(19))%23;
 
+            int s = staOrd[sp];
+            int d = staOrd[dp];
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(s),
+                    timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
+                    , map.getStation(d), requestT));
+        }
+        for(int i=n/3; i< n; i++){ // explosion
+            int timeS = (rand.nextInt(20-9)+9)*60;
+            String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
+            int ord = rand.nextInt(4);
+            String[] SD = farS[ord];
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(SD[0]),
+                    timeS + map.getDistance(map.getStation(SD[0]), map.getStation(SD[1])) + Simulator.totalD/kr
+                    , map.getStation(SD[1]), requestT));
         }
     }
 

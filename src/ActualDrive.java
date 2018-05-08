@@ -43,7 +43,7 @@ public class ActualDrive {
         }
 
         //Printing the result!
-        PrintStream shuttlemax = new PrintStream(new File(type +" Shuttle Max.csv"));
+        PrintStream shuttlemax = new PrintStream(new File("Shuttle Max "+type +".csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
             shuttlemax.print("Shuttle"+i+",\t"+shutsPN[i][0]);
