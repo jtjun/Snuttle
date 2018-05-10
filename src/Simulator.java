@@ -21,10 +21,19 @@ public class Simulator {
     public static boolean goThereS = true;
     public static boolean Wait=false;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String type = "CM";
-        Scanner scanner = new Scanner(System.in);
+        try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
+            SimulatoR.Start(type);
+        }catch( FileNotFoundException e ){
+            System.out.println(e);
+        }
+        //Interface();
+    }
 
+    public static void Interface(){
+        Scanner scanner = new Scanner(System.in);
+        String type;
         // type
         System.out.print("Input a generator type(AR/HS/LR/GG/CM/PG): ");
         String input = scanner.nextLine();
@@ -47,26 +56,21 @@ public class Simulator {
         // refresh time
         System.out.print("Input a refresh time(>0): ");
         refresh = Integer.parseInt(scanner.nextLine());
-
         // ratio
         System.out.print("Input a generating ratio(>0): ");
         ratio = Integer.parseInt(scanner.nextLine());
-
         // user number
         System.out.print("Input the number of people: ");
         userN = Integer.parseInt(scanner.nextLine());
-
         // shuttle number
         System.out.print("Input the number of shuttles: ");
         shutn = Integer.parseInt(scanner.nextLine());
-
         // maxpeople
         System.out.print("Input the capacity of each shuttle: ");
         maxPeople = Integer.parseInt(scanner.nextLine());
 
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
-
         }catch( FileNotFoundException e ){
             System.out.println(e);
         }
