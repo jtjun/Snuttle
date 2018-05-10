@@ -316,6 +316,7 @@ public class Generator {
             int timeS = rand.nextInt(1440);
             int sp = rand.nextInt(23);
             int dp = (sp+4+rand.nextInt(19))%23;
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -348,6 +349,7 @@ public class Generator {
             timeS = cutT(timeS);
             int sp = rand.nextInt(23);
             int dp = (sp+4+rand.nextInt(19))%23;
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -363,6 +365,7 @@ public class Generator {
             timeS = cutT(timeS);
             int sp = rand.nextInt(23);
             int dp = (sp+4+rand.nextInt(19))%23;
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -400,6 +403,7 @@ public class Generator {
             timeS = cutT(timeS);
             int sp = rand.nextInt(23);
             int dp = (sp+4+rand.nextInt(19))%23;
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
 
             int s = staOrd[sp];
             int d = staOrd[dp];

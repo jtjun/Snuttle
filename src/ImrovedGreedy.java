@@ -1,17 +1,23 @@
 import java.util.*;
 
 public class ImrovedGreedy {
-    private static weight[] weights = new weight[Simulator.staN*Simulator.staN];
+    private weight[] weights = new weight[Simulator.staN*Simulator.staN];
+    private int fixed;
     // Station Source  - Station Destination
+    ImrovedGreedy(){
+        fixed=0;
+    }
 
-    public static void setIGreddy(Shuttle[] shuttles, Map map, ArrayList<Guest> guests, int fixedshuttle){
+    public void setIGreddy(Shuttle[] shuttles, Map map, ArrayList<Guest> guests, int fixedshuttle){
+        System.out.println();
+        fixed = fixedshuttle;
         for(int i=0; i<Simulator.staN; i++){
             for(int j=0; j<Simulator.staN; j++){
                 int d = map.getDistance(i,j);
-                weights[i*Simulator.staN+j] = new weight(i,j,d);
+                weight weighti =  new weight(i,j,d);
+                weights[i*Simulator.staN+j] = weighti;
             }
-        }
-        int l = guests.size();
+        } int l = guests.size();
         for(int i=0; i<l; i++){
             Guest person = guests.get(i);
             int staS = map.getIndex(person.getPlaceS().getName());
@@ -23,9 +29,9 @@ public class ImrovedGreedy {
         Arrays.sort(weights, new Comparator<weight>() {
             @Override
             public int compare(weight o1, weight o2) {
-                final int n1 = o1.getNums();
-                final int n2 = o2.getNums();
-                return Integer.compare(n1, n2);
+                final int n1 = o1.getNpD();
+                final int n2 = o2.getNpD();
+                return -Integer.compare(n1, n2);
             } // sort by Nums
         }); // we can modify the norm of sort
 
@@ -35,31 +41,54 @@ public class ImrovedGreedy {
             IGredShuts[i] = shuttles[i];
         }
         for(int i=0; i<greedyshuttle; i++){
-            setIGreedyEach(IGredShuts[i], i);
+            IGredShuts[i] = setIGreedyEach(i, map);
         }
         Shuttle[] CircShuts = new Shuttle[fixedshuttle];
         for(int i=greedyshuttle; i<shuttles.length; i++){
-            CircShuts[i] = shuttles[i];
+            CircShuts[i-greedyshuttle] = shuttles[i];
         } CircularSchedule.setCircularSchedule(CircShuts, map);
 
-        for(int i=0; i<greedyshuttle; i++){
-            shuttles[i] = IGredShuts[i];
-        } for(int i=0; i<fixedshuttle; i++){
-            shuttles[i+greedyshuttle] = CircShuts[i];
+        for(int i=0; i<fixedshuttle; i++){
+            shuttles[i] = CircShuts[i];
+        } for(int i=0; i<greedyshuttle; i++){
+            shuttles[i+fixedshuttle] = IGredShuts[i];
         } // set shuttles schedule
     }
 
-    public static void setIGreedyEach(Shuttle shuti, int rank){
 
+    // 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, ...
+    public Shuttle setIGreedyEach(int rank, Map map){
+        int l = weights.length-1;
+        Schedule schedule = new Schedule();
+        int t = 0;
+        int coveredSta = rank+2;
+        if(coveredSta > Simulator.staN/2) coveredSta = (Simulator.staN/2)+1;
+
+        for (int i = 0; i < coveredSta && (t < Simulator.MAX_TIME-1); i++) {
+            if(weights[i].getNums()==0) break;
+            int staSidx = weights[i].getStaS();
+            int staDidx = weights[i].getStaS();
+            int dist = map.getDistance(staSidx, staDidx);
+
+            if(i!=0) { // add distance from previous station
+                sched s = schedule.whatIthSched(schedule.getNumSched() - 1);
+                int staPrevious = map.getIndex(s.getStation().getName());
+                t += map.getDistance(staPrevious, staSidx);
+            }
+            schedule.addSchedule(t, map.getStation(staSidx), 0);
+            t += dist;
+            schedule.addSchedule(t, map.getStation(staDidx), 0);
+        }
+        return (new Shuttle(0,0, 0, schedule,fixed+rank, map));
     }
 }
 
 class weight{
-    private static int staS;
-    private static int staD;
-    private static int nums;
-    private static int dist;
-    private static int hotTimes;
+    private int staS;
+    private int staD;
+    private int nums;
+    private int dist;
+    private int hotTimes;
 
     weight(int staSi, int staDi, int d){
         staS = staSi;
@@ -69,12 +98,18 @@ class weight{
         else dist = d;
         hotTimes=0;
     }
-
-    public static void addnums(int timeS){
+    public void addnums(int timeS){
         nums+=1;
         hotTimes += timeS;
     }
-    public static int getHotTime(){return hotTimes/nums;}
-    public static int getNums(){return nums;}
-    public static double getNpD(){return ((double)(nums/dist));}
+    public String printing(){
+        return "staS "+staS+" staD "+staD+" nums "+nums;
+    }
+
+    public int getStaS(){return staS;}
+    public int getStaD(){return staD;}
+    public int getDist(){return dist;}
+    public int getHotTime(){return hotTimes/nums;}
+    public int getNums(){return nums;}
+    public int getNpD(){return (nums/dist);}
 }
