@@ -20,15 +20,20 @@ public class Simulator {
     public static boolean monit=false;
     public static boolean goThereS = true;
     public static boolean Wait=false;
+    public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG"};
 
     public static void main(String[] args) {
         String type = "CM";
+        //quickStart(type);
+        Interface();
+    }
+
+    public static void quickStart(String type){
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
         }catch( FileNotFoundException e ){
             System.out.println(e);
         }
-        //Interface();
     }
 
     public static void Interface(){
@@ -37,19 +42,9 @@ public class Simulator {
         // type
         System.out.print("Input a generator type(AR/HS/LR/GG/CM/PG): ");
         String input = scanner.nextLine();
-        if(input.equals("AR")){
+        if(isIn(input, types)) {
             type = input;
-        }else if(input.equals("HS")){
-            type = input;
-        }else if(input.equals("LR")){
-            type = input;
-        }else if(input.equals("GG")){
-            type = input;
-        }else if(input.equals("CM")){
-            type = input;
-        }else if(input.equals("PG")){
-            type = input;
-        }else{
+        }  else{
             System.out.println("Wrong Type");
             return;
         }
@@ -150,5 +145,11 @@ public class Simulator {
         } schedul.close();
     }
 
+    public static boolean isIn(String str, String[] strs){
+        int l = strs.length;
+        for(int i=0; i<l; i++){
+            if(str.equals(strs[i])) return true;
+        } return false;
+    }
     public static void setTotalD(int dist){totalD = dist;}
 }
