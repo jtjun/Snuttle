@@ -86,11 +86,12 @@ public class Simulator {
     public void Start(String type) throws FileNotFoundException {
         System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
         System.out.print("\nGuest Type : " + type + " ____________________________");
-
+        /*
         StartC(type, monit);
         StartE(type, monit);
         StartP(type, monit);
-        StartG(type,refresh, monit);
+        StartG(type,refresh, monit); */
+        StartIG(type, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
@@ -129,12 +130,24 @@ public class Simulator {
     public void StartG(String type, int gred, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleG = new Shuttle[shutn]; // Greedy
         GreedySchedule.setGreedySchedule(shuttleG, map, guests, shutn/ratio);
-        // type : Greedy 1
+        // type : Greedy gred
         System.out.println("\ntype : Greedy, time period "+gred);
         Request RG = new Request(guests, map); // gredi is equal to time period of refresh
         ActualDrive Grd = new ActualDrive(shuttleG, RG, map, ("Greedy "+gred+" "+type), gred);
         int grd = Grd.Simulate(monit);
         System.out.println("Greedy done : "+grd+"/"+userN);
+        //PrintShutSched(shuttleG, "Greedy "+gred);
+    }
+    public void StartIG(String type, boolean monit) throws FileNotFoundException {
+        Shuttle[] shuttleIG = new Shuttle[shutn]; // Greedy
+        ImrovedGreedy IGreed = new ImrovedGreedy();
+        IGreed.setIGreddy(shuttleIG, map, guests, shutn/2);
+        // type : IGreedy
+        System.out.println("\ntype : Improved Greedy");
+        Request RIG = new Request(guests, map); // gredi is equal to time period of refresh
+        ActualDrive IGrd = new ActualDrive(shuttleIG, RIG, map, ("IGreedy "+type), 0);
+        int Igrd = IGrd.Simulate(monit);
+        System.out.println("IGreedy done : "+Igrd+"/"+userN);
         //PrintShutSched(shuttleG, "Greedy "+gred);
     }
     public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
