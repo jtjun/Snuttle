@@ -14,6 +14,7 @@ public class Simulator {
     public static ArrayList<Guest> guests;
     public static Map map;
     public static int totalD=77;
+    public static int refresh;
 
     public static int staN;
     public static boolean monit=false;
@@ -22,6 +23,47 @@ public class Simulator {
 
     public static void main(String[] args){
         String type = "CM";
+        Scanner scanner = new Scanner(System.in);
+
+        // type
+        System.out.print("Input a generator type(AR/HS/LR/GG/CM/PG): ");
+        String input = scanner.nextLine();
+        if(input.equals("AR")){
+            type = input;
+        }else if(input.equals("HS")){
+            type = input;
+        }else if(input.equals("LR")){
+            type = input;
+        }else if(input.equals("GG")){
+            type = input;
+        }else if(input.equals("CM")){
+            type = input;
+        }else if(input.equals("PG")){
+            type = input;
+        }else{
+            System.out.println("Wrong Type");
+            return;
+        }
+        // refresh time
+        System.out.print("Input a refresh time(>0): ");
+        refresh = Integer.parseInt(scanner.nextLine());
+
+        // ratio
+        System.out.print("Input a generating ratio(>0): ");
+        ratio = Integer.parseInt(scanner.nextLine());
+
+        // user number
+        System.out.print("Input the number of people: ");
+        userN = Integer.parseInt(scanner.nextLine());
+
+        // shuttle number
+        System.out.print("Input the number of shuttles: ");
+        shutn = Integer.parseInt(scanner.nextLine());
+
+        // maxpeople
+        System.out.print("Input the capacity of each shuttle: ");
+        maxPeople = Integer.parseInt(scanner.nextLine());
+
         try{ Simulator SimulatoR = new Simulator(type, shutn, userN, ratio);
             SimulatoR.Start(type);
 
@@ -49,8 +91,7 @@ public class Simulator {
         StartC(type, monit);
         StartE(type, monit);
         StartP(type, monit);
-        StartG(type,1, monit);
-        StartG(type,30, monit);
+        StartG(type,refresh, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
