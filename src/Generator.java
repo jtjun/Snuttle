@@ -3,6 +3,7 @@ import java.util.*;
 public class Generator {
     private ArrayList<Guest> guests;
     private static int kr=2;
+    public static int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
 
     public Generator(int n, Map map, String type) {
         if(type.equals("HS")) GeneratorHS(n, map);
@@ -11,10 +12,10 @@ public class Generator {
         if(type.equals("GG")) GeneratorGG(n, map);
         if(type.equals("PG")) GeneratorPG(n, map);
         if(type.equals("CM")) GeneratorCM(n, map);
+        if(type.equals("EX")) GeneratorEX(n, map, 2);
     }
 
-    // Case 1: All Random
-    public void GeneratorAR(int n, Map map) {
+    public void GeneratorAR(int n, Map map) { // All Random
         Random generator = new Random();
         guests = new ArrayList<>();
         ArrayList<StationGroup> edgelist = new ArrayList<>();
@@ -52,8 +53,7 @@ public class Generator {
         sortGuests();
     }
 
-    // Case 2: K hotspots
-     public void GeneratorHS(int n, Map map) {
+     public void GeneratorHS(int n, Map map) { // Hot Spot
         Random generator = new Random();
         int k = Simulator.MAX_STATION*Simulator.MAX_STATION/2/8; // It can be set with other value
         // Make array for random sampling
@@ -107,7 +107,7 @@ public class Generator {
         sortGuests();
     }
 
-    public void GeneratorLR(int n,Map map){
+    public void GeneratorLR(int n,Map map){ // Like Real
         Random rand = new Random();
         int m = map.getNumStations();
         guests = new ArrayList<Guest>();
@@ -158,7 +158,7 @@ public class Generator {
         }
     }
 
-    public void GeneratorGG(int n, Map map){
+    public void GeneratorGG(int n, Map map){ // Greedy Good
         int[] stationorder = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
         Random rand = new Random();
         int m = map.getNumStations();
@@ -307,11 +307,10 @@ public class Generator {
         }
     }
 
-    public void GeneratorPG(int n,Map map){
+    public void GeneratorPG(int n,Map map){ // Power Greedy
         Random rand = new Random();
         int m = map.getNumStations();
         guests = new ArrayList<Guest>();
-        int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
 
         for(int i=0; i<n/3; i++){
             int timeS = rand.nextInt(1440);
@@ -329,7 +328,7 @@ public class Generator {
         for(int i=n/3; i< n; i++){ // explosion
             int timeS = (rand.nextInt(20-9)+9)*60;
             String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
-            int ord = rand.nextInt(4);
+            int ord = rand.nextInt(farS.length);
             String[] SD = farS[ord];
 
             int requestT = Math.max(timeS-rand.nextInt(30),0);
@@ -341,9 +340,7 @@ public class Generator {
 
     public void GeneratorCM(int n,Map map){ //Cammel
         Random rand = new Random();
-        int m = map.getNumStations();
         guests = new ArrayList<Guest>();
-        int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
 
         for(int i=0; i< n/3; i++){
             double randGaussian =  rand.nextGaussian();
@@ -382,7 +379,41 @@ public class Generator {
             if(par>=0/5) timeS = 1080;
             else timeS =360;
             String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
-            int ord = rand.nextInt(4);
+            int ord = rand.nextInt(farS.length);
+            String[] SD = farS[ord];
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(SD[0]),
+                    timeS + map.getDistance(map.getStation(SD[0]), map.getStation(SD[1])) + Simulator.totalD/kr
+                    , map.getStation(SD[1]), requestT));
+        }
+    }
+
+    public void GeneratorEX(int n,Map map, int rk){ //Explosion
+        Random rand = new Random();
+        guests = new ArrayList<Guest>();
+
+
+        for(int i=0; i< n/rk; i++){
+            double randGaussian =  rand.nextGaussian();
+            int timeS = ((int) (Simulator.MAX_TIME/2 + randGaussian));
+            timeS = cutT(timeS);
+            int sp = rand.nextInt(23);
+            int dp = (sp+4+rand.nextInt(19))%23;
+
+            int s = staOrd[sp];
+            int d = staOrd[dp];
+
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            guests.add(new Guest(timeS, map.getStation(s),
+                    timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
+                    , map.getStation(d), requestT));
+        } // HOT SPOT
+        for(int i=n/rk; i< n; i++){
+            double gaus = rand.nextGaussian();
+            int timeS = (Simulator.MAX_TIME/2)+ ((int)gaus*100)%10;
+            String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
+            int ord = rand.nextInt(farS.length);
             String[] SD = farS[ord];
 
             int requestT = Math.max(timeS-rand.nextInt(30),0);

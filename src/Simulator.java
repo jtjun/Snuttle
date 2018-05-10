@@ -14,18 +14,18 @@ public class Simulator {
     public static ArrayList<Guest> guests;
     public static Map map;
     public static int totalD=77;
-    public static int refresh;
+    public static int refresh=1;
 
     public static int staN;
     public static boolean monit=false;
     public static boolean goThereS = true;
     public static boolean Wait=false;
-    public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG"};
+    public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-        String type = "CM";
-        //quickStart(type);
-        Interface();
+        String type = "EX";
+        quickStart(type);
+        //Interface();
     }
 
     public static void quickStart(String type){
