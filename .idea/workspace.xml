@@ -3,16 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Express PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Greedy PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Express PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed PG.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" />
-      <change beforePath="$PROJECT_DIR$/src/Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular CM.csv" afterPath="$PROJECT_DIR$/Shuttle Max Circular CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Express CM.csv" afterPath="$PROJECT_DIR$/Shuttle Max Express CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Greedy 1 CM.csv" afterPath="$PROJECT_DIR$/Shuttle Max Greedy 1 CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Greedy 30 CM.csv" afterPath="$PROJECT_DIR$/Shuttle Max Greedy 30 CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed CM.csv" afterPath="$PROJECT_DIR$/Shuttle Max Proposed CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular CM.csv" afterPath="$PROJECT_DIR$/Time Per Distance Circular CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Express CM.csv" afterPath="$PROJECT_DIR$/Time Per Distance Express CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy 1 CM.csv" afterPath="$PROJECT_DIR$/Time Per Distance Greedy 1 CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy 30 CM.csv" afterPath="$PROJECT_DIR$/Time Per Distance Greedy 30 CM.csv" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed CM.csv" afterPath="$PROJECT_DIR$/Time Per Distance Proposed CM.csv" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,20 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
+            <state relative-caret-position="315">
               <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Time Per Distance Circular CM.csv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Time Per Distance Circular CM.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Time Per Distance Circular CM.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4554">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -173,7 +173,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -215,7 +215,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,16 +370,16 @@
       <workItem from="1525745895213" duration="3237000" />
       <workItem from="1525752988360" duration="435000" />
       <workItem from="1525757433909" duration="3544000" />
-      <workItem from="1525766413222" duration="204000" />
+      <workItem from="1525766413222" duration="222000" />
+      <workItem from="1525910359389" duration="31000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171534000" />
+    <option name="totallyTimeSpent" value="171583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -389,12 +389,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37256908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37256908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2936508" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2973138" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -556,27 +556,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shuttle Max Circular PG.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Time Per Distance Circular PG.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Time Per Distance Proposed PG.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Shuttle Max Circular PG.csv" />
+    <entry file="file://$PROJECT_DIR$/Time Per Distance Circular PG.csv" />
+    <entry file="file://$PROJECT_DIR$/Time Per Distance Proposed PG.csv" />
     <entry file="file://$PROJECT_DIR$/src/CircularSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -589,14 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2655">
           <caret line="181" column="43" lean-forward="false" selection-start-line="181" selection-start-column="43" selection-end-line="181" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -635,8 +609,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Time Per Distance Circular CM.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4554">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding />
         </state>
       </provider>
