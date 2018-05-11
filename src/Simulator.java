@@ -85,14 +85,14 @@ public class Simulator {
 
     public void Start(String type) throws FileNotFoundException {
         System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
-        System.out.print("\nGuest Type : " + type + " ____________________________");
-        /*
+        System.out.println("\nGuest Type : " + type + " ____________________________");
+
         StartC(type, monit);
-        StartE(type, monit);
+        //StartE(type, monit);
         StartP(type, monit);
-        StartG(type,refresh, monit);
-        StartIG(type, monit);*/
-        StartTS(type, 30, monit);
+        //StartG(type,refresh, monit);
+        StartAG(type, monit);
+        //StartTS(type, 30, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
@@ -154,13 +154,24 @@ public class Simulator {
     public void StartTS(String type, int gred, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleTS = new Shuttle[shutn]; // Greedy
         TrampSteamerGreedy.setGreedySchedule(shuttleTS, map, guests, shutn/ratio);
-        // type : Greedy gred
+        // type : Greedy TS
         System.out.println("\ntype : TS Greedy, time period "+gred);
         Request RTS = new Request(guests, map); // gredi is equal to time period of refresh
         ActualDrive GTS = new ActualDrive(shuttleTS, RTS, map, ("Greedy "+gred+" "+type), gred);
         int grd = GTS.Simulate(monit);
         System.out.println("TS Greedy done : "+grd+"/"+userN);
         //PrintShutSched(shuttleG, "Greedy "+gred);
+    }
+    public void StartAG(String type, boolean monit) throws FileNotFoundException {
+        Shuttle[] shuttleAG = new Shuttle[shutn]; // Greedy
+        AnotherGreedy AGreedy = new AnotherGreedy();
+        AGreedy.setAGreddy(shuttleAG, map, guests, shutn/2);
+        // type : AGreedy
+        System.out.println("\ntype : Another Greedy");
+        Request AG = new Request(guests, map); // gredi is equal to time period of refresh
+        ActualDrive AGrd = new ActualDrive(shuttleAG, AG, map, ("AGreedy "+type), 0);
+        int Agrd = AGrd.Simulate(monit);
+        System.out.println("AGreedy done : "+Agrd+"/"+userN);
     }
     public void PrintShutSched(Shuttle[] shuttles, String type) throws  FileNotFoundException{
         PrintStream schedul = new PrintStream(new File(type+" Schedule.csv"));

@@ -88,7 +88,7 @@ public class ActualDrive {
                     +" "+schedTo.printing(1)+"\nGuest number "+shuti.getNums());
             shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
 
-            if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
+            if((gred!=0) && ((t-shuti.getRefresh()) >= Math.abs(gred))){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
                 Schedule Peopl = shuti.getPeople();
                 Peopl.outTransfer(t);
@@ -105,8 +105,8 @@ public class ActualDrive {
                     early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
-                TrampSteamerGreedy.setIGreedyEach(shuttles, i, t);
-                //GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                if(gred<0)TrampSteamerGreedy.setIGreedyEach(shuttles, i, t);
+                if(gred>0)GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
                 shuti = shuttles[i];
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
@@ -150,6 +150,10 @@ public class ActualDrive {
     }
     public int getPeopleN(Shuttle[] shuts){
         int l = shuts.length;
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (getPeopleN");
+            return 0;
+        }
         int num=0;
         for(int i=0; i<l; i++){
             num += shuts[i].getPeople().getNumSched();
@@ -159,12 +163,20 @@ public class ActualDrive {
     public int sumup(ArrayList<Integer> ar){
         int sum = 0;
         int l = ar.size();
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (sumup)");
+            return 0;
+        }
         for(int i=0; i<l; i++) sum += ar.get(i);
         return sum;
     }
     public String ToString(ArrayList<Integer> ar){
         String str="";
         int l = ar.size();
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (ToString)");
+            return "";
+        }
         str = ""+ar.get(0);
         for(int i=1; i<l; i++) str+=","+ar.get(i);
         return str;
@@ -172,6 +184,10 @@ public class ActualDrive {
     public String ToString(double[] ar){
         String str="";
         int l = ar.length;
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (ToString)");
+            return "";
+        }
         str = ""+ar[0];
         for(int i=1; i<l; i++) str+=","+ar[i];
         return str;
