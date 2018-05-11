@@ -2,30 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AnotherGreedy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TimeGreedy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max AGreedy EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max AGreedy EX.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shuttle Max Circular EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Circular EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Express EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Express EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Greedy 1 EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Greedy 1 EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max IGreedy EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max IGreedy EX.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Proposed EX.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance AGreedy EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance AGreedy EX.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Time Per Distance Circular EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Circular EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Express EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Express EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy 1 EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Greedy 1 EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance IGreedy EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance IGreedy EX.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Proposed EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/ActualDrive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ImrovedGreedy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/ImrovedGreedy$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/ImrovedGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/ImrovedGreedy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/weight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/weight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActualDrive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImrovedGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImrovedGreedy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/AnotherGreedy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/AnotherGreedy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AnotherGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnotherGreedy.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +28,8 @@
       <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2135">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="90">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -57,8 +42,8 @@
       <file leaf-file-name="AnotherGreedy.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AnotherGreedy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="93" column="50" selection-start-line="93" selection-start-column="50" selection-end-line="93" selection-end-column="50" />
+            <state relative-caret-position="487">
+              <caret line="73" column="34" lean-forward="true" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#430#431#0" expanded="true" />
@@ -282,12 +267,12 @@
       <workItem from="1525912816773" duration="2154000" />
       <workItem from="1525925224218" duration="7166000" />
       <workItem from="1525961128346" duration="1732000" />
-      <workItem from="1526017966335" duration="11813000" />
+      <workItem from="1526017966335" duration="13768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194686000" />
+    <option name="totallyTimeSpent" value="196641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -334,25 +319,25 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AnotherGreedy.java</url>
-          <line>82</line>
+          <line>87</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AnotherGreedy.java</url>
-          <line>95</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AnotherGreedy.java</url>
-          <line>73</line>
+          <line>80</line>
           <properties />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AnotherGreedy.java</url>
-          <line>69</line>
+          <line>72</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
@@ -547,15 +532,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2135">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="90">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnotherGreedy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="93" column="50" selection-start-line="93" selection-start-column="50" selection-end-line="93" selection-end-column="50" />
+        <state relative-caret-position="487">
+          <caret line="73" column="34" lean-forward="true" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />

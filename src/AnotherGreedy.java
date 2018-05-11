@@ -45,7 +45,7 @@ public class AnotherGreedy {
             IGredShuts[i] = shuttles[i];
         }
         for (int i = 0; i < greedyshuttle; i++) {
-            IGredShuts[i] = setAGreedyEach(i, map);
+            IGredShuts[i] = setAGreedyEach(i, greedyshuttle-1, map);
         }
         Shuttle[] CircShuts = new Shuttle[fixedshuttle];
         for (int i = greedyshuttle; i < shuttles.length; i++) {
@@ -61,54 +61,54 @@ public class AnotherGreedy {
         } // set shuttles schedule
     }
 
-    public Shuttle setAGreedyEach(int rank, Map map) {
+    public Shuttle setAGreedyEach(int rank, int l, Map map) {
         Schedule schedule = new Schedule();
         int t = 0;
         int th = 0;
+        int idxR = indxReader[rank%l];
+        int staPrev = idxR/Simulator.staN;
 
         while(t < Simulator.MAX_TIME) {
+            int[] visited = {};
             //System.out.println("loop "+th);
-            int idxr = indxReader[(rank/3)+th];
-            int staSidx0 = idxr/Simulator.staN;
+            int idxr = indxReader[rank%l+th];
+            int staSidx = idxr/Simulator.staN;
             int staDidx = idxr%Simulator.staN;
-            //System.out.println(staSidx0 + " "+ staDidx);
-            schedule.addSchedule(t, map.getStation(staSidx0), 0);
-            t += map.getDistance(staSidx0, staDidx);
+            t += map.getDistance(staPrev, staSidx);
+            visited= arrayAdd(visited, staSidx);
+            visited= arrayAdd(visited, staDidx);
+
+            //System.out.println(staSidx + " "+ staDidx);
+            schedule.addSchedule(t, map.getStation(staSidx), 0);
+            t += map.getDistance(staSidx, staDidx);
             schedule.addSchedule(t, map.getStation(staDidx), 0);
-            int staSprev = staSidx0;
-            int staDprev = staDidx;
 
             while (t < Simulator.MAX_TIME) {
-                int staSidx = searchDIdx(staDidx, th);
+                staSidx = searchDIdx(staDidx, th);
                 //System.out.println(staDidx + " "+ staSidx);
-                if (staSidx == staSidx0 || staSidx == staSprev ) {
-                    t += map.getDistance(staDidx, staSidx0);
-                    th++;
-                    break;
-                } // if one roof is complete
-
                 t += map.getDistance(staDidx, staSidx);
                 schedule.addSchedule(t, map.getStation(staSidx), 0);
 
-                staDprev = staDidx;
-                staDidx = searchDIdx(staSidx, th);
+                if (isIn(visited, staSidx)) {
+                    staPrev = staSidx;
+                    th++;
+                    break; // WE HAVE TO ADD "T" FROM NOW TO NEXT
+                } // if one roof is complete
+                visited= arrayAdd(visited, staSidx);
 
+                staDidx = searchDIdx(staSidx, th);
                 //System.out.println(staSidx + " "+ staDidx);
                 t += map.getDistance(staSidx, staDidx);
                 schedule.addSchedule(t, map.getStation(staDidx), 0);
-                if (staDidx == staSidx0 || staDidx == staSprev || staDidx == staDprev) {
-                    t += map.getDistance(staDidx, staSidx0);
+
+                if (isIn(visited, staDidx)) {
+                    staPrev = staDidx;
                     th++;
-                    break;
-                }
-                staSprev = staSidx;
+                    break; // WE HAVE TO ADD "T" FROM NOW TO NEXT
+                } // if one roof is complete
+                visited= arrayAdd(visited, staDidx);
             }
         }
-        // can detact
-        // s0 d0 s1 d1 s0 \ s0 d0 s1 d1 s0
-        // s0 d0 s1 d1(s0)
-        // s0 d0 s1 d1 s1 \d1 s1
-        // s0 d0 s1 d1 s2 d2(s1) s3(d1) d4(s2) s5(d2) d6(s1)
         return (new Shuttle(0,0, 0, schedule,fixed+rank, map));
     }
 
@@ -134,5 +134,18 @@ public class AnotherGreedy {
                 if (iDweights[i] > iDweights[max]) max = j;
             } iDweights[max] =0;
         } return max;
+    }
+
+    public boolean isIn(int[] ar, int n){
+        int l = ar.length;
+        for(int i=0; i<l; i++){
+            if(ar[i] == n) return true;
+        } return false;
+    }
+    public int[] arrayAdd(int[] ar, int n){
+        int l= ar.length;
+        ar = Arrays.copyOf(ar, l+1);
+        ar[l] = n;
+        return ar;
     }
 }
