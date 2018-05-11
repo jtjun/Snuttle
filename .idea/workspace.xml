@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Circular EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Express EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Express EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Greedy 1 EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Greedy 1 EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Proposed EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Circular EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Express EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Express EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Greedy 1 EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Greedy 1 EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed EX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Proposed EX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator$StationGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Generator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Snuttle/Simulator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImrovedGreedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImrovedGreedy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActualDrive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,24 +19,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ImrovedGreedy.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ImrovedGreedy.java">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="114" column="1" lean-forward="true" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
-              <folding>
-                <element signature="e#211#212#0" expanded="true" />
-                <element signature="e#231#232#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="411">
+              <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+      <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="143" column="57" selection-start-line="143" selection-start-column="57" selection-end-line="143" selection-end-column="57" />
+            <state relative-caret-position="262">
+              <caret line="101" column="57" lean-forward="true" selection-start-line="101" selection-start-column="57" selection-end-line="101" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrampSteamerGreedy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TrampSteamerGreedy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="37" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -103,11 +95,11 @@
         <option value="$PROJECT_DIR$/src/GreedySchedule.java" />
         <option value="$PROJECT_DIR$/src/ProposedSchedule.java" />
         <option value="$PROJECT_DIR$/src/Guest.java" />
-        <option value="$PROJECT_DIR$/src/ActualDrive.java" />
         <option value="$PROJECT_DIR$/src/Map.java" />
         <option value="$PROJECT_DIR$/src/Generator.java" />
-        <option value="$PROJECT_DIR$/src/Simulator.java" />
         <option value="$PROJECT_DIR$/src/ImrovedGreedy.java" />
+        <option value="$PROJECT_DIR$/src/Simulator.java" />
+        <option value="$PROJECT_DIR$/src/ActualDrive.java" />
       </list>
     </option>
   </component>
@@ -131,8 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,17 +135,13 @@
               <item name="Snuttle" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Snuttle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Snuttle" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GreedySchedule.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,12 +239,13 @@
       <workItem from="1525912376737" duration="238000" />
       <workItem from="1525912816773" duration="2154000" />
       <workItem from="1525925224218" duration="7166000" />
-      <workItem from="1525961128346" duration="1648000" />
+      <workItem from="1525961128346" duration="1732000" />
+      <workItem from="1526017966335" duration="270000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182789000" />
+    <option name="totallyTimeSpent" value="183143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -266,7 +253,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.28923076" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
@@ -274,11 +260,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3723077" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3723077" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31196582" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31562883" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -292,6 +278,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.28923076" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +293,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Map.txt" />
     <entry file="file://$PROJECT_DIR$/Circular GG Shuttle Max.csv" />
     <entry file="file://$PROJECT_DIR$/Time Per Distance Greedy GG.csv" />
     <entry file="file://$PROJECT_DIR$/Express GG Shuttle Max.csv" />
@@ -378,13 +364,6 @@
         <state relative-caret-position="-7420" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Snuttle.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -454,21 +433,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+    <entry file="file://$PROJECT_DIR$/src/ImrovedGreedy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="143" column="57" selection-start-line="143" selection-start-column="57" selection-end-line="143" selection-end-column="57" />
+        <state relative-caret-position="838">
+          <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+          <folding>
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ImrovedGreedy.java">
+    <entry file="file://$PROJECT_DIR$/src/TrampSteamerGreedy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="114" column="1" lean-forward="true" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
-          <folding>
-            <element signature="e#211#212#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="570">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="101" column="57" lean-forward="true" selection-start-line="101" selection-start-column="57" selection-end-line="101" selection-end-column="57" />
         </state>
       </provider>
     </entry>

@@ -105,7 +105,8 @@ public class ActualDrive {
                     early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
-                GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                TrampSteamerGreedy.setIGreedyEach(shuttles, i, t);
+                //GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
                 shuti = shuttles[i];
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
