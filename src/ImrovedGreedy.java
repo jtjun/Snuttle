@@ -9,7 +9,6 @@ public class ImrovedGreedy {
     }
 
     public void setIGreddy(Shuttle[] shuttles, Map map, ArrayList<Guest> guests, int fixedshuttle){
-        System.out.println();
         fixed = fixedshuttle;
         for(int i=0; i<Simulator.staN; i++){
             for(int j=0; j<Simulator.staN; j++){
@@ -29,8 +28,8 @@ public class ImrovedGreedy {
         Arrays.sort(weights, new Comparator<weight>() {
             @Override
             public int compare(weight o1, weight o2) {
-                final int n1 = o1.getNpD();
-                final int n2 = o2.getNpD();
+                final int n1 = o1.getNums();
+                final int n2 = o2.getNums();
                 return -Integer.compare(n1, n2);
             } // sort by Nums
         }); // we can modify the norm of sort
