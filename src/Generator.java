@@ -136,7 +136,7 @@ public class Generator {
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(hours*11/12*60-hours*3/8*60)+hours*3/8*60;
+            int timeS = rand.nextInt(hours*10/12*60-hours*3/8*60)+hours*3/8*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -148,7 +148,7 @@ public class Generator {
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(hours*11/12*60);
+            int timeS = rand.nextInt(hours*10/12*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);

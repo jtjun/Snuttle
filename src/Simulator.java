@@ -4,13 +4,13 @@ import java.io.*;
 
 public class Simulator {
     public static int MAX_TIME = 540;
-    public static int MAX_STATION = 10;
+    public static int MAX_STATION = 23;
     public static double K_RATIO = 0.5;
     public static int shutn = 5;
     public static int ratio = 2;
     public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
-    public static int maxPeople = 5;
+    public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
     public static Map map;
     public static int totalD=77;
@@ -23,7 +23,7 @@ public class Simulator {
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-        String type = "LR";
+        String type = "EX";
         quickStart(type);
         // Interface();
     }
