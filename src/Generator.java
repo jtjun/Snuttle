@@ -115,7 +115,7 @@ public class Generator {
         guests = new ArrayList<Guest>();
 
         ArrayList<Station> lecture_building = new ArrayList<>();
-        int lecture_num = 5;
+        int lecture_num = 4;
         for(int i = 0; i < m; i++){
             lecture_building.add(map.getStation(i));
         }
