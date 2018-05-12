@@ -5,6 +5,7 @@ public class Generator {
     private ArrayList<Guest> guests;
     private static int kr=2;
     public static int[] staOrd = {0, 2, 3, 4, 20, 6, 7, 8, 9, 10, 22, 19, 18, 17, 21, 16, 15, 13, 12, 11, 14, 5, 1};
+    public int hours = Simulator.MAX_TIME/60;
 
     public Generator(int n, Map map, String type) {
         if(type.equals("HS")) GeneratorHS(n, map);
@@ -123,11 +124,7 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
-<<<<<<< HEAD
-            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
-=======
-            int timeS = (rand.nextInt(19-8)+8)*60;
->>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
+            int timeS = (rand.nextInt(hours*19/24-hours*1/3)+hours*1/3)*60;
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
@@ -139,7 +136,7 @@ public class Generator {
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(22*60-9*60)+9*60;
+            int timeS = rand.nextInt(hours*11/12*60-hours*3/8*60)+hours*3/8*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -151,7 +148,7 @@ public class Generator {
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(22*60);
+            int timeS = rand.nextInt(hours*11/12*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -179,7 +176,7 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
-            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
+            int timeS = ((rand.nextInt(hours*10/12-hours*3/8)+hours*3/8)*60);
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
@@ -224,7 +221,7 @@ public class Generator {
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(23*60-9*60)+9*60;
+            int timeS = rand.nextInt(hours*23/24*60-hours*3/8*60)+hours*3/8*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -268,7 +265,7 @@ public class Generator {
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(23*60);
+            int timeS = rand.nextInt(hours*23/24*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -319,17 +316,11 @@ public class Generator {
         int staN = Simulator.staN;
 
         for(int i=0; i<n/3; i++){
-<<<<<<< HEAD
-            int timeS = rand.nextInt(Simulator.MAX_TIME);
+            int timeS = rand.nextInt(Simulator.MAX_TIME*(hours-1)/hours);
             int sp = rand.nextInt(staN);
             int dp = (sp+4+rand.nextInt(staN-4))%staN;
-            while(sp==dp) dp = (sp+4+rand.nextInt(staN-4))%staN;
-=======
-            int timeS = rand.nextInt(Simulator.MAX_TIME*4/5);
-            int sp = rand.nextInt(23);
-            int dp = (sp+4+rand.nextInt(19))%23;
-            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
->>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%staN;
+
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -340,11 +331,8 @@ public class Generator {
                     , map.getStation(d), requestT));
         }
         for(int i=n/3; i< n; i++){ // explosion
-<<<<<<< HEAD
-            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
-=======
-            int timeS = (rand.nextInt(7-2)+2)*60;
->>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
+
+            int timeS = (rand.nextInt(hours*10/12-hours*3/8)+hours*3/8)*60;
             String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
             int ord = rand.nextInt(farS.length);
             String[] SD = farS[ord];
@@ -359,14 +347,15 @@ public class Generator {
     public void GeneratorCM(int n,Map map){ //Cammel
         Random rand = new Random();
         guests = new ArrayList<Guest>();
+        int staN = Simulator.staN;
 
         for(int i=0; i< n/3; i++){
             double randGaussian =  rand.nextGaussian();
             int timeS = ((int) (360 + randGaussian));
             timeS = cutT(timeS);
-            int sp = rand.nextInt(23);
-            int dp = (sp+4+rand.nextInt(19))%23;
-            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
+            int sp = rand.nextInt(staN);
+            int dp = (sp+4+rand.nextInt(staN-4))%staN;
+            while(sp==dp) dp = (sp+4+rand.nextInt(staN))%staN;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -380,9 +369,9 @@ public class Generator {
             double randGaussian =  rand.nextGaussian();
             int timeS = ((int) (1080 + randGaussian));
             timeS = cutT(timeS);
-            int sp = rand.nextInt(23);
-            int dp = (sp+4+rand.nextInt(19))%23;
-            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
+            int sp = rand.nextInt(staN);
+            int dp = (sp+4+rand.nextInt(staN-4))%staN;
+            while(sp==dp) dp = (sp+4+rand.nextInt(staN-4))%staN;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -413,15 +402,16 @@ public class Generator {
         System.out.println("IT HAS SOME PROBLEM!!! : EX");
         Random rand = new Random();
         guests = new ArrayList<Guest>();
+        int staN = Simulator.staN;
 
 
         for(int i=0; i< n/rk; i++){
             //double randGaussian =  rand.nextGaussian();
             int timeS = rand.nextInt(Simulator.MAX_TIME);
             timeS = cutT(timeS);
-            int sp = rand.nextInt(23);
-            int dp = (sp+4+rand.nextInt(19))%23;
-            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
+            int sp = rand.nextInt(staN);
+            int dp = (sp+4+rand.nextInt(staN-4))%staN;
+            while(sp==dp) dp = (sp+4+rand.nextInt(staN-4))%staN;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
