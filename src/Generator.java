@@ -114,7 +114,7 @@ public class Generator {
         guests = new ArrayList<Guest>();
 
         ArrayList<Station> lecture_building = new ArrayList<>();
-        int lecture_num = 12;
+        int lecture_num = 5;
         for(int i = 0; i < m; i++){
             lecture_building.add(map.getStation(i));
         }
@@ -123,36 +123,40 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
+<<<<<<< HEAD
             int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
+=======
+            int timeS = (rand.nextInt(19-8)+8)*60;
+>>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
 
-            int requestT = Math.max(timeS-rand.nextInt(1),0);
+            int requestT = 0;//Math.max(timeS-rand.nextInt(1),0);
             guests.add(new Guest(timeS, lecture_building.get(s),
                     timeS + map.getDistance(lecture_building.get(s), lecture_building.get(d)) + Simulator.totalD/kr ,
                     lecture_building.get(d) , requestT));
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(23*60-9*60)+9*60;
+            int timeS = rand.nextInt(22*60-9*60)+9*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
 
-            int requestT = Math.max(timeS-rand.nextInt(1),0);
+            int requestT = 0;//Math.max(timeS-rand.nextInt(1),0);
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(23*60);
+            int timeS = rand.nextInt(22*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
 
-            int requestT = Math.max(timeS-rand.nextInt(30),0);
+            int requestT = 0;//Math.max(timeS-rand.nextInt(30),0);
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
@@ -315,10 +319,17 @@ public class Generator {
         int staN = Simulator.staN;
 
         for(int i=0; i<n/3; i++){
+<<<<<<< HEAD
             int timeS = rand.nextInt(Simulator.MAX_TIME);
             int sp = rand.nextInt(staN);
             int dp = (sp+4+rand.nextInt(staN-4))%staN;
             while(sp==dp) dp = (sp+4+rand.nextInt(staN-4))%staN;
+=======
+            int timeS = rand.nextInt(Simulator.MAX_TIME*4/5);
+            int sp = rand.nextInt(23);
+            int dp = (sp+4+rand.nextInt(19))%23;
+            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
+>>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -329,7 +340,11 @@ public class Generator {
                     , map.getStation(d), requestT));
         }
         for(int i=n/3; i< n; i++){ // explosion
+<<<<<<< HEAD
             int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
+=======
+            int timeS = (rand.nextInt(7-2)+2)*60;
+>>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
             String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
             int ord = rand.nextInt(farS.length);
             String[] SD = farS[ord];

@@ -15,7 +15,7 @@ public class TrampSteamerGreedy{
 
             // Make new schedule
             Schedule schedule = new Schedule();
-            int startStation = n/shuttles.length * i; // Start at different positions
+            int startStation = (n/fixedshuttle * i)%n; // Start at different positions
             schedule.addSchedule(t,map.getStation(stationorder[startStation]), 0);
             if(Simulator.Wait) {
                 t+=1;
@@ -57,6 +57,19 @@ public class TrampSteamerGreedy{
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        if(shuttlenum<Simulator.fixedshuttle) return;
+        // if(time%200==0){
+        //     for(int i = 0; i < n; i++){
+        //         for(int j = 0; j < n; j++){
+        //             System.out.print(requests[i][j]+"\t");
+        //         }
+        //         System.out.println();
+        //     }
+        //     System.out.println();
+        // }
+>>>>>>> 69402c9229f7c726a2bdc798cb84df06267fdd4c
         // for(Guest guest : Simulator.guests){
         //     if(guest.getRequestT()>time/* || guest.getTimeD()<time*/) continue;
         //     // if(time<31) System.out.println("HI");
@@ -131,6 +144,16 @@ public class TrampSteamerGreedy{
             i++;
             t+=Simulator.map.getDistance(p,cycle.get(1));
         }else{
+            int v = cycle.get(0);
+            for(Integer x : cycle){
+                if(Simulator.map.getDistance(p, x)<Simulator.map.getDistance(p, v)){
+                    v = x;
+                }
+            }
+            while(cycle.get(0)!=v){
+                cycle.add(cycle.get(0));
+                cycle.remove(0);
+            }
             t+= Simulator.map.getDistance(p, cycle.get(0));
         }
         // System.out.println(cycle.size());
@@ -171,7 +194,7 @@ public class TrampSteamerGreedy{
         int v = 0;
         for(int j = 0; j < n; j++){
             for(int k = 0; k < n; k++){
-                if(nx[j] > p[k] + d[k][j]){
+                if(j!=k && nx[j] > p[k] + d[k][j]){
                     l = true;
                     v = j;
                 }
@@ -217,9 +240,8 @@ public class TrampSteamerGreedy{
             }
         }
         for(int j = 0; j < n; j++){
-            nx[j] = p[j];
             for(int k = 0; k < n; k++){
-                if(nx[j] > p[k] + d[k][j]){
+                if(j!=k && nx[j] > p[k] + d[k][j]){
                     return false;
                 }
             }
