@@ -1,3 +1,4 @@
+import javax.xml.crypto.dsig.SignatureMethod;
 import java.util.*;
 
 public class Generator {
@@ -122,7 +123,7 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
-            int timeS = (rand.nextInt(20-9)+9)*60;
+            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
@@ -174,7 +175,7 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
-            int timeS = (rand.nextInt(20-9)+9)*60;
+            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
@@ -311,12 +312,13 @@ public class Generator {
         Random rand = new Random();
         int m = map.getNumStations();
         guests = new ArrayList<Guest>();
+        int staN = Simulator.staN;
 
         for(int i=0; i<n/3; i++){
-            int timeS = rand.nextInt(1440);
-            int sp = rand.nextInt(23);
-            int dp = (sp+4+rand.nextInt(19))%23;
-            while(sp==dp) dp = (sp+4+rand.nextInt(19))%23;
+            int timeS = rand.nextInt(Simulator.MAX_TIME);
+            int sp = rand.nextInt(staN);
+            int dp = (sp+4+rand.nextInt(staN-4))%staN;
+            while(sp==dp) dp = (sp+4+rand.nextInt(staN-4))%staN;
 
             int s = staOrd[sp];
             int d = staOrd[dp];
@@ -327,7 +329,7 @@ public class Generator {
                     , map.getStation(d), requestT));
         }
         for(int i=n/3; i< n; i++){ // explosion
-            int timeS = (rand.nextInt(20-9)+9)*60;
+            int timeS = ((rand.nextInt(20-9)+9)*60)%Simulator.MAX_TIME;
             String[][] farS = {{"C","B"},{"C","N"},{"G","N"},{"H","P"}};
             int ord = rand.nextInt(farS.length);
             String[] SD = farS[ord];
@@ -399,8 +401,8 @@ public class Generator {
 
 
         for(int i=0; i< n/rk; i++){
-            double randGaussian =  rand.nextGaussian();
-            int timeS = ((int) (Simulator.MAX_TIME/2 + randGaussian));
+            //double randGaussian =  rand.nextGaussian();
+            int timeS = rand.nextInt(Simulator.MAX_TIME);
             timeS = cutT(timeS);
             int sp = rand.nextInt(23);
             int dp = (sp+4+rand.nextInt(19))%23;

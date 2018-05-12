@@ -57,15 +57,6 @@ public class TrampSteamerGreedy{
                 }
             }
         }
-        if(time%200==0){
-            for(int i = 0; i < n; i++){
-                for(int j = 0; j < n; j++){
-                    System.out.print(requests[i][j]+"\t");
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
         // for(Guest guest : Simulator.guests){
         //     if(guest.getRequestT()>time/* || guest.getTimeD()<time*/) continue;
         //     // if(time<31) System.out.println("HI");

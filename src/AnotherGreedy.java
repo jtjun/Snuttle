@@ -45,7 +45,7 @@ public class AnotherGreedy {
             IGredShuts[i] = shuttles[i];
         }
         for (int i = 0; i < greedyshuttle; i++) {
-            IGredShuts[i] = setAGreedyEach(i, greedyshuttle-1, map);
+            IGredShuts[i] = setAGreedyEach(i, greedyshuttle, map);
         }
         Shuttle[] CircShuts = new Shuttle[fixedshuttle];
         for (int i = greedyshuttle; i < shuttles.length; i++) {
