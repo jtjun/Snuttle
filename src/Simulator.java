@@ -10,7 +10,7 @@ public class Simulator {
     public static int ratio = 2;
     public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
-    public static int maxPeople = 45;
+    public static int maxPeople = 5;
     public static ArrayList<Guest> guests;
     public static Map map;
     public static int totalD=77;
