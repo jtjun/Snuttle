@@ -36,8 +36,8 @@ public class TrampSteamerGreedy{
                                      0, schedule, i, map);
         }
     }
-    public static void setIGreedyEach(Shuttle[] shuttles, int shuttlenum, int time){
-        int n = Simulator.guests.size();
+    public static void setIGreedyEach(Shuttle[] shuttles, int shuttlenum, int time, Request R){
+        int n = Simulator.map.getNumStations();
         int[][] requests = new int[n][n];
         int mx = 0;
         for(int i = 0; i < n; i++){
@@ -45,16 +45,50 @@ public class TrampSteamerGreedy{
                 requests[i][j] = 0;
             }
         }
-        for(Guest guest : Simulator.guests){
-            if(guest.getRequestT()>time || guest.getTimeD()<time) continue;
-            requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()]++;
-            if(mx < requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()]){
-                mx = requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()];
+        for(int i = time; i < Math.min(time+50,Simulator.MAX_TIME); i++){
+            for(int j = 0; j < n; j++){
+                Schedule people = R.scheduleTS(i, Simulator.map.getStation(j));
+                int l = people.getNumSched();
+                for(int a = 0; a < l; a++){
+                    sched person = people.whatIthSched(a);
+                    if(person.getRequestT()>time) continue;
+                    int Didx = person.getStation().getIdx();
+                    requests[j][Didx]++;
+                }
             }
         }
-        int l = -mx, r = mx;
+        // for(Guest guest : Simulator.guests){
+        //     if(guest.getRequestT()>time/* || guest.getTimeD()<time*/) continue;
+        //     // if(time<31) System.out.println("HI");
+        //     requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()]++;
+        //     if(mx < requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()]){
+        //         mx = requests[guest.getPlaceS().getIdx()][guest.getPlcaeD().getIdx()];
+        //     }
+        // }
+        // if(time<32){
+        //     System.out.println("EARLY");
+        //     for(int i = 0; i < n; i++){
+        //         for(int j = 0; j < n; j++){
+        //             System.out.print(requests[i][j]+"\t");
+        //         }
+        //         System.out.println();
+        //     }
+        //     System.out.println();
+        // }
+        // if(time>Simulator.MAX_TIME-33){
+        //     System.out.println("LATE");
+        //     for(int i = 0; i < n; i++){
+        //         for(int j = 0; j < n; j++){
+        //             System.out.print(requests[i][j]+"\t");
+        //         }
+        //         System.out.println();
+        //     }
+        //     System.out.println();
+        // }
+        // System.out.println(mx);
+        int l = -mx-100, r = mx+100;
         while(l<r){
-            int u = (l+r) / 2;
+            int u = (l+r+mx*2+200) / 2 -mx-100;
             int[][] d = new int[n][n];
             for(int i = 0; i < n; i++){
                 for(int j = 0; j < n; j++){
@@ -73,7 +107,33 @@ public class TrampSteamerGreedy{
         int t = time;
         int i = 0;
         Schedule schedule = new Schedule();
-        
+        Station pp = shuttles[shuttlenum].whereTo(time).getStation();
+        int p = pp.getIdx();
+        schedule.addSchedule(time, pp, 0);
+        // if(time<32){
+        //     System.out.println(p);
+        //     for(Integer x : cycle){
+        //         System.out.println(x);
+        //     }
+        // }
+        boolean has = false;
+        for(Integer x : cycle){
+            if(x==p){
+                has = true;
+                break;
+            }
+        }
+        if(has){
+            while(cycle.get(0)!=p){
+                cycle.add(cycle.get(0));
+                cycle.remove(0);
+            }
+            i++;
+            t+=Simulator.map.getDistance(p,cycle.get(1));
+        }else{
+            t+= Simulator.map.getDistance(p, cycle.get(0));
+        }
+        // System.out.println(cycle.size());
         while(t<=Simulator.MAX_TIME){
             schedule.addSchedule(t, Simulator.map.getStation(cycle.get(i%cycle.size())), 0);
             t += Simulator.map.getDistance(cycle.get(i%cycle.size()),cycle.get((i+1)%cycle.size()));
@@ -93,9 +153,9 @@ public class TrampSteamerGreedy{
         }
         for(int i = 0; i < n-1; i++){
             for(int j = 0; j < n; j++){
-                nx[j] = p[j];
+                nx[j] = Integer.MAX_VALUE;
                 for(int k = 0; k < n; k++){
-                    if(nx[j] > p[k] + d[k][j]){
+                    if(j!=k && nx[j] > p[k] + d[k][j]){
                         nx[j] = p[k] + d[k][j];
                         pp[j] = k;
                     }
@@ -128,6 +188,7 @@ public class TrampSteamerGreedy{
             stk[tp++] = v;
         }
         int k = pp[v];
+        cycle = new ArrayList<>();
         cycle.add(k);
         while(stk[--tp]!=k){
             cycle.add(stk[tp]);
@@ -142,12 +203,15 @@ public class TrampSteamerGreedy{
         for(int i = 0; i < n; i++) p[i] = 0;
         for(int i = 0; i < n-1; i++){
             for(int j = 0; j < n; j++){
-                nx[j] = p[j];
+                nx[j] = Integer.MAX_VALUE;
                 for(int k = 0; k < n; k++){
-                    if(nx[j] > p[k] + d[k][j]){
+                    if(j!=k && nx[j] > p[k] + d[k][j]){
                         nx[j] = p[k] + d[k][j];
                     }
                 }
+            }
+            for(int j = 0; j < n; j++){
+                p[j] = nx[j];
             }
         }
         for(int j = 0; j < n; j++){
