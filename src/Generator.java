@@ -393,6 +393,7 @@ public class Generator {
     }
 
     public void GeneratorEX(int n,Map map, int rk){ //Explosion
+        System.out.println("IT HAS SOME PROBLEM!!! : EX");
         Random rand = new Random();
         guests = new ArrayList<Guest>();
 

@@ -70,22 +70,19 @@ public class AnotherGreedy {
 
         while(t < Simulator.MAX_TIME) {
             int[] visited = {};
-            //System.out.println("loop "+th);
-            int idxr = indxReader[rank%l+th];
+            int idxr = indxReader[rank%l+th%5];
             int staSidx = idxr/Simulator.staN;
             int staDidx = idxr%Simulator.staN;
             t += map.getDistance(staPrev, staSidx);
             visited= arrayAdd(visited, staSidx);
             visited= arrayAdd(visited, staDidx);
 
-            //System.out.println(staSidx + " "+ staDidx);
             schedule.addSchedule(t, map.getStation(staSidx), 0);
             t += map.getDistance(staSidx, staDidx);
             schedule.addSchedule(t, map.getStation(staDidx), 0);
 
             while (t < Simulator.MAX_TIME) {
                 staSidx = searchDIdx(staDidx, th);
-                //System.out.println(staDidx + " "+ staSidx);
                 t += map.getDistance(staDidx, staSidx);
                 schedule.addSchedule(t, map.getStation(staSidx), 0);
 
@@ -97,7 +94,6 @@ public class AnotherGreedy {
                 visited= arrayAdd(visited, staSidx);
 
                 staDidx = searchDIdx(staSidx, th);
-                //System.out.println(staSidx + " "+ staDidx);
                 t += map.getDistance(staSidx, staDidx);
                 schedule.addSchedule(t, map.getStation(staDidx), 0);
 
