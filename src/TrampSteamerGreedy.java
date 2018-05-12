@@ -148,7 +148,9 @@ public class TrampSteamerGreedy{
             t += Simulator.map.getDistance(cycle.get(i%cycle.size()),cycle.get((i+1)%cycle.size()));
             i++;
         }
+        double[] pastTperD = shuttles[shuttlenum].getTperD();
         shuttles[shuttlenum] = new Shuttle(Simulator.map.getStation(cycle.get(0)).getX(), Simulator.map.getStation(cycle.get(0)).getY(), time, schedule, shuttlenum, Simulator.map);
+        shuttles[shuttlenum].setTperD(pastTperD);
     }
 
     public static boolean hasNegCycle(int[][] d){

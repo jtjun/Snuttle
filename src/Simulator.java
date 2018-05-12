@@ -23,11 +23,7 @@ public class Simulator {
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        String type = "CM";
-=======
         String type = "HS";
->>>>>>> 717b340d6bca66c53ef827ab92872ea2d54be03e
         quickStart(type);
         //Interface();
     }
