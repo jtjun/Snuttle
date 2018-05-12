@@ -91,8 +91,9 @@ public class Simulator {
         //StartE(type, monit);
         StartP(type, monit);
         //StartG(type,refresh, monit);
-        StartAG(type, monit);
+        //StartAG(type, monit);
         StartTS(type, -30, monit);
+        StartPTS(type, 30, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
@@ -149,7 +150,6 @@ public class Simulator {
         ActualDrive IGrd = new ActualDrive(shuttleIG, RIG, map, ("IGreedy "+type), 0);
         int Igrd = IGrd.Simulate(monit);
         System.out.println("IGreedy done : "+Igrd+"/"+userN);
-        //PrintShutSched(shuttleG, "Greedy "+gred);
     }
     public void StartTS(String type, int gred, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleTS = new Shuttle[shutn]; // Greedy
@@ -157,10 +157,19 @@ public class Simulator {
         // type : Greedy TS
         System.out.println("\ntype : TS Greedy, time period "+gred);
         Request RTS = new Request(guests, map); // gredi is equal to time period of refresh
-        ActualDrive GTS = new ActualDrive(shuttleTS, RTS, map, ("Greedy "+gred+" "+type), gred);
-        int grd = GTS.Simulate(monit);
-        System.out.println("TS Greedy done : "+grd+"/"+userN);
-        //PrintShutSched(shuttleG, "Greedy "+gred);
+        ActualDrive GTS = new ActualDrive(shuttleTS, RTS, map, ("TS Greedy "+gred+" "+type), gred);
+        int TSgrd = GTS.Simulate(monit);
+        System.out.println("TS Greedy done : "+TSgrd+"/"+userN);
+    }
+    public void StartPTS(String type, int gred, boolean monit) throws FileNotFoundException {
+        Shuttle[] shuttlePTS = new Shuttle[shutn]; // Greedy
+        PredictionTSGreedy.setPTSGreedySchedule(shuttlePTS, map, guests, shutn/ratio);
+        // type : Greedy PTS
+        System.out.println("\ntype : PTS Greedy, time period "+gred);
+        Request RPTS = new Request(guests, map); // gredi is equal to time period of refresh
+        ActualDrive PTS = new ActualDrive(shuttlePTS, RPTS, map, ("PTS Greedy "+gred+" "+type), gred);
+        int Pgrd = PTS.Simulate(monit);
+        System.out.println("PTS Greedy done : "+Pgrd+"/"+userN);
     }
     public void StartAG(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleAG = new Shuttle[shutn]; // Greedy

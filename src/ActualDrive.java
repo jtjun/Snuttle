@@ -106,7 +106,7 @@ public class ActualDrive {
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
                 if(gred<0)TrampSteamerGreedy.setIGreedyEach(shuttles, i, t, R);
-                if(gred>0)GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                if(gred>0)PredictionTSGreedy.setPTSGreedyEach(shuttles, i, t, R); // Refresh Schedule
                 shuti = shuttles[i];
                 shuti.setRefresh(t);
                 if(monit) System.out.println("Schedule refreshed!\n");
