@@ -8,7 +8,7 @@ public class Simulator {
     public static double K_RATIO = 0.5;
     public static int shutn = 5;
     public static int ratio = 2;
-    public static int userN = 2500;
+    public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
@@ -23,7 +23,7 @@ public class Simulator {
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-        String type = "PG";
+        String type = "LR";
         quickStart(type);
         // Interface();
     }

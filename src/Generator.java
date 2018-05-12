@@ -113,7 +113,7 @@ public class Generator {
         guests = new ArrayList<Guest>();
 
         ArrayList<Station> lecture_building = new ArrayList<>();
-        int lecture_num = 5;
+        int lecture_num = 4;
         for(int i = 0; i < m; i++){
             lecture_building.add(map.getStation(i));
         }
@@ -122,7 +122,7 @@ public class Generator {
         while(lecture_building.size()>lecture_num) lecture_building.remove(lecture_building.size()-1);
         
         for(int i = 0 ; i < n*8/10; i++){
-            int timeS = (rand.nextInt(19-8)+8)*60;
+            int timeS = (rand.nextInt(6-2)+2)*60;
             int s = rand.nextInt(lecture_num);
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
@@ -134,7 +134,7 @@ public class Generator {
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(22*60-9*60)+9*60;
+            int timeS = rand.nextInt(7*60-2*60)+2*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
@@ -146,7 +146,7 @@ public class Generator {
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(22*60);
+            int timeS = rand.nextInt(7*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
