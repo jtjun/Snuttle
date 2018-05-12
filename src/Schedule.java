@@ -189,6 +189,7 @@ class sched{
     public int getTime(){ return time; }
     public Station getStation(){ return place; }
     public int getNums() { return nums; }
+    public int getRequestT() { return reqsT; }
 
     public String printing(int pr){
         if(pr>0) return ("("+place.getName()+"/"+time+"/"+nums+")");
