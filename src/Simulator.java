@@ -3,12 +3,12 @@ import java.util.*;
 import java.io.*;
 
 public class Simulator {
-    public static int MAX_TIME = 1440;
+    public static int MAX_TIME = 540;
     public static int MAX_STATION = 10;
     public static double K_RATIO = 0.5;
-    public static int shutn = 10;
+    public static int shutn = 5;
     public static int ratio = 2;
-    public static int userN = 4500;
+    public static int userN = 2500;
     public static int fixedshuttle = (shutn/ratio);
     public static int maxPeople = 45;
     public static ArrayList<Guest> guests;
@@ -23,9 +23,9 @@ public class Simulator {
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-        String type = "HS";
+        String type = "PG";
         quickStart(type);
-        //Interface();
+        // Interface();
     }
 
     public static void quickStart(String type){
