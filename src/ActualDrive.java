@@ -17,6 +17,7 @@ public class ActualDrive {
     private ArrayList<Integer> early = new ArrayList<>();
     private ArrayList<Integer> wait = new ArrayList<>();
     private int[][] shutsPN;
+    private String[] shutlocate;
 
 
     ActualDrive(Shuttle[] shuttleS, Request Ri, Map mapi, String typei, int gredi){
@@ -31,6 +32,10 @@ public class ActualDrive {
         shutsPN = new int[shutN][runT];
         type = typei;
         gred = gredi;
+        shutlocate = new String[shutN-Simulator.fixedshuttle];
+        for(int i=0; i<shutlocate.length; i++){
+            shutlocate[i] = "";
+        }
     }
 
     public int Simulate(boolean monit) throws FileNotFoundException {
@@ -51,8 +56,11 @@ public class ActualDrive {
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         }
-        shuttlemax.println("\nHow early,\t"+sumup(early)+"/"+early.size()+",\t"+ ToString(early));
-        shuttlemax.println("\nHow wait,\t"+sumup(wait)+"/"+wait.size()+",\t"+ ToString(wait));
+        shuttlemax.println("\nHow early,\t"+sumup(early)+"/"+early.size()+"("+(sumup(early)/early.size())+"),\t"+ ToString(early));
+        shuttlemax.println("\nHow wait,\t"+sumup(wait)+"/"+wait.size()+"("+(sumup(wait)/wait.size())+"),\t"+ ToString(wait));
+        for(int a=0; a<shutlocate.length; a++){
+            shuttlemax.print("\n"+(a+Simulator.fixedshuttle)+" "+shutlocate[a]);
+        }
         shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
@@ -87,7 +95,9 @@ public class ActualDrive {
             if(monit) System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at " +t
                     +" "+schedTo.printing(1)+"\nGuest number "+shuti.getNums());
             shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
-
+            if((gred!=0) && (i>=Simulator.fixedshuttle)) {
+                shutlocate[i-Simulator.fixedshuttle] += "(shut "+i+", "+schedTo.getStation().getName()+",at "+t+") ";
+            }
             if((gred!=0) && ((t-shuti.getRefresh()) >= Math.abs(gred))){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
                 Schedule Peopl = shuti.getPeople();

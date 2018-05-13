@@ -80,7 +80,7 @@ public class Simulator {
         guests = new ArrayList<>();
         guests = generator.getGuests();
         ratio = ratioi;
-        Simulator.fixedshuttle = (shutn/ratio);
+        fixedshuttle = (shutn/ratio);
     }
 
     public void Start(String type) throws FileNotFoundException {
