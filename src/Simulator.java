@@ -23,7 +23,7 @@ public class Simulator {
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 
     public static void main(String[] args) {
-        String type = "EX";
+        String type = "LR";
         quickStart(type);
         // Interface();
     }
@@ -92,8 +92,8 @@ public class Simulator {
         StartP(type, monit);
         //StartG(type,refresh, monit);
         //StartAG(type, monit);
-        StartTS(type, -30, monit);
-        StartPTS(type, 30, monit);
+        StartTS(type, -10, monit);
+        StartPTS(type, 10, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
