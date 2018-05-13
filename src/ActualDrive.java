@@ -47,7 +47,7 @@ public class ActualDrive {
             R.makeUp(time+1);
         }
 
-        //Printing the result!
+        // Printing the result!
         PrintStream shuttlemax = new PrintStream(new File("Shuttle Max "+type +".csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
