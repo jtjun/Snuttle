@@ -78,6 +78,7 @@ public class Simulator {
         shutn = shutni;
         userN = userNi;
         guest_printer = new PrintStream(new File("guest requests.csv"));
+        guest_printer.println("req,tmS,S,tmD,D");
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
         guests = new ArrayList<>();
         guests = generator.getGuests();
@@ -86,6 +87,7 @@ public class Simulator {
     }
 
     public void Start(String type) throws FileNotFoundException {
+
         System.out.print("\nUser number: " + userN + " Shuttle number: " + shutn + " Station number: " + staN);
         System.out.println("\nGuest Type : " + type + " ____________________________");
 
@@ -96,6 +98,7 @@ public class Simulator {
         //StartAG(type, monit);
         StartTS(type, -10, monit);
         StartPTS(type, 10, monit);
+        guest_printer.close();
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular
