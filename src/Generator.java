@@ -129,6 +129,7 @@ public class Generator {
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
 
+
             int requestT = Math.max(timeS-rand.nextInt(5),0);
             guests.add(new Guest(timeS, lecture_building.get(s),
                     timeS + map.getDistance(lecture_building.get(s), lecture_building.get(d)) + Simulator.totalD/kr ,
@@ -142,6 +143,7 @@ public class Generator {
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
 
+
             int requestT = Math.max(timeS-rand.nextInt(5),0);
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
@@ -154,6 +156,7 @@ public class Generator {
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
+
 
             int requestT = Math.max(timeS-rand.nextInt(5),0);
             guests.add(new Guest(timeS, map.getStation(s),
