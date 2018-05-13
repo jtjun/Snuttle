@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Simulator {
     public static int MAX_TIME = 540;
-    public static int MAX_STATION = 10;
+    public static int MAX_STATION = 23;
     public static double K_RATIO = 0.5;
     public static int shutn = 5;
     public static int ratio = 2;
@@ -92,8 +92,8 @@ public class Simulator {
         StartP(type, monit);
         //StartG(type,refresh, monit);
         //StartAG(type, monit);
-        StartTS(type, -30, monit);
-        StartPTS(type, 30, monit);
+        StartTS(type, -10, monit);
+        StartPTS(type, 10, monit);
     }
     public void StartC(String type, boolean monit) throws FileNotFoundException {
         Shuttle[] shuttleC = new Shuttle[shutn]; // Circular

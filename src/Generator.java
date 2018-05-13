@@ -129,31 +129,43 @@ public class Generator {
             int d = rand.nextInt(lecture_num);
             while( s == d ) d = rand.nextInt(lecture_num);
 
+<<<<<<< HEAD
             int requestT = Math.max(timeS-rand.nextInt(4),0);
+=======
+            int requestT = Math.max(timeS-rand.nextInt(5),0);
+>>>>>>> cf30f47aaf3c233c5495e28093f499879c737225
             guests.add(new Guest(timeS, lecture_building.get(s),
                     timeS + map.getDistance(lecture_building.get(s), lecture_building.get(d)) + Simulator.totalD/kr ,
                     lecture_building.get(d) , requestT));
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
-            int timeS = rand.nextInt(hours*11/12*60-hours*3/8*60)+hours*3/8*60;
+            int timeS = rand.nextInt(hours*10/12*60-hours*3/8*60)+hours*3/8*60;
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
 
+<<<<<<< HEAD
             int requestT = Math.max(timeS-rand.nextInt(4),0);
+=======
+            int requestT = Math.max(timeS-rand.nextInt(5),0);
+>>>>>>> cf30f47aaf3c233c5495e28093f499879c737225
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
         }
 
         for(int i = n*9/10; i < n; i++){
-            int timeS = rand.nextInt(hours*11/12*60);
+            int timeS = rand.nextInt(hours*10/12*60);
             int s = rand.nextInt(m);
             int d = rand.nextInt(m);
             while( s == d ) d = rand.nextInt(m);
 
+<<<<<<< HEAD
             int requestT = Math.max(timeS-rand.nextInt(4),0);
+=======
+            int requestT = Math.max(timeS-rand.nextInt(5),0);
+>>>>>>> cf30f47aaf3c233c5495e28093f499879c737225
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
@@ -214,7 +226,7 @@ public class Generator {
                 }
             }
 
-            int requestT = Math.max(timeS-rand.nextInt(1),0);
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
             guests.add(new Guest(timeS, map.getStation(lecture_building.get(s)),
                     timeS + map.getDistance(lecture_building.get(s), lecture_building.get(d)) + Simulator.totalD/kr
                     , map.getStation(lecture_building.get(d)), requestT));
@@ -258,7 +270,7 @@ public class Generator {
                     continue;
                 }
             }
-            int requestT = Math.max(timeS-rand.nextInt(1),0);
+            int requestT = Math.max(timeS-rand.nextInt(30),0);
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));

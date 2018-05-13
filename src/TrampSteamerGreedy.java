@@ -51,7 +51,9 @@ public class TrampSteamerGreedy{
                 int l = people.getNumSched();
                 for(int a = 0; a < l; a++){
                     sched person = people.whatIthSched(a);
-                    if(person.getRequestT()>time) continue;
+                    if(person.getRequestT()>time){
+                        continue;
+                    }
                     int Didx = person.getStation().getIdx();
                     requests[j][Didx]++;
                 }
