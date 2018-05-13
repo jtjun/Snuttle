@@ -15,6 +15,7 @@ public class Simulator {
     public static Map map;
     public static int totalD=77;
     public static int refresh=1;
+    public static PrintStream guest_printer;
 
     public static int staN;
     public static boolean monit=false;
@@ -76,6 +77,7 @@ public class Simulator {
         staN = map.getNumStations();
         shutn = shutni;
         userN = userNi;
+        guest_printer = new PrintStream(new File("guest requests.csv"));
         Generator generator = new Generator(userN, map, type); // Generate userN guests for this map
         guests = new ArrayList<>();
         guests = generator.getGuests();

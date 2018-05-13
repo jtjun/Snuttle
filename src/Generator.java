@@ -133,6 +133,7 @@ public class Generator {
             guests.add(new Guest(timeS, lecture_building.get(s),
                     timeS + map.getDistance(lecture_building.get(s), lecture_building.get(d)) + Simulator.totalD/kr ,
                     lecture_building.get(d) , requestT));
+            Simulator.guest_printer.println(guests.get(guests.size()-1));
         }
 
         for(int i = n*8/10; i < n*9/10; i++){
@@ -145,6 +146,7 @@ public class Generator {
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
+            Simulator.guest_printer.println(guests.get(guests.size()-1));
         }
 
         for(int i = n*9/10; i < n; i++){
@@ -157,6 +159,7 @@ public class Generator {
             guests.add(new Guest(timeS, map.getStation(s),
                     timeS + map.getDistance(map.getStation(s), map.getStation(d)) + Simulator.totalD/kr
                     , map.getStation(d), requestT));
+            Simulator.guest_printer.println(guests.get(guests.size()-1));
         }
     }
 

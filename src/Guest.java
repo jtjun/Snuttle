@@ -27,6 +27,10 @@ public class Guest {
     public int getRequestT(){ return requestT; }
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
+
+    public String toString(){
+        return requestT+","+timeS+","+placeS.getName()+","+timeD+","+placeD.getName();
+    }
 }
 
 class Request{
