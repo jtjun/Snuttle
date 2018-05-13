@@ -58,10 +58,10 @@ public class ActualDrive {
         }
         shuttlemax.println("\nHow early,\t"+sumup(early)+"/"+early.size()+"("+(sumup(early)/early.size())+"),\t"+ ToString(early));
         shuttlemax.println("\nHow wait,\t"+sumup(wait)+"/"+wait.size()+"("+(sumup(wait)/wait.size())+"),\t"+ ToString(wait));
+        shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         for(int a=0; a<shutlocate.length; a++){
             shuttlemax.print("\n"+(a+Simulator.fixedshuttle)+" "+shutlocate[a]);
         }
-        shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
         shuttlemax.close();
 
         PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".csv"));
@@ -96,7 +96,7 @@ public class ActualDrive {
                     +" "+schedTo.printing(1)+"\nGuest number "+shuti.getNums());
             shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
             if((gred!=0) && (i>=Simulator.fixedshuttle)) {
-                shutlocate[i-Simulator.fixedshuttle] += "(shut "+i+", "+schedTo.getStation().getName()+",at "+t+") ";
+                shutlocate[i-Simulator.fixedshuttle] += "("+schedTo.getStation().getName()+",at "+t+") ";
             }
             if((gred!=0) && ((t-shuti.getRefresh()) >= Math.abs(gred))){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
