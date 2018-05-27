@@ -6,7 +6,7 @@ public class Simulator {
     public static int MAX_TIME = 540;
     public static int MAX_STATION = 23;
     public static double K_RATIO = 0.5;
-    public static int shutn = 5;
+    public static int shutn = 10;
     public static int ratio = 2;
     public static int userN = 1000;
     public static int fixedshuttle = (shutn/ratio);
@@ -19,7 +19,7 @@ public class Simulator {
 
     public static int staN;
     public static boolean monit=false;
-    public static boolean goThereS = true;
+    public static boolean goThereS = false; // time window
     public static boolean Wait=false;
     public static String[] types = {"AR", "HS", "LR", "GG", "CM", "PG", "EX"};
 

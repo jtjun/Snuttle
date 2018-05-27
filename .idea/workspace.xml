@@ -2,28 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd672-1aa2-4b96-b36e-e04852aec94b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max PTS Greedy 10 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max PTS Greedy 30 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max PTS Greedy 30 PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max TS Greedy -10 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max TS Greedy -30 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shuttle Max TS Greedy -30 PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance PTS Greedy 10 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance PTS Greedy 30 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance PTS Greedy 30 PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed PG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance TS Greedy -10 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance TS Greedy -30 LR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time Per Distance TS Greedy -30 PG.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Circular LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Circular LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max PTS Greedy 10 LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max PTS Greedy 10 LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max Proposed LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max Proposed LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shuttle Max TS Greedy -10 LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Shuttle Max TS Greedy -10 LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Circular LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Circular LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance PTS Greedy 10 LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance PTS Greedy 10 LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance Proposed LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance Proposed LR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time Per Distance TS Greedy -10 LR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Time Per Distance TS Greedy -10 LR.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guest requests.csv" beforeDir="false" afterPath="$PROJECT_DIR$/guest requests.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActualDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActualDrive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,30 +27,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ActualDrive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="1410">
               <caret line="95" column="74" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shuttle Max TS Greedy -10 LR.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shuttle Max TS Greedy -10 LR.csv">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="guest requests.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/guest requests.csv">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+            <state relative-caret-position="285">
+              <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -130,8 +109,8 @@
         <option value="$PROJECT_DIR$/src/TrampSteamerGreedy.java" />
         <option value="$PROJECT_DIR$/src/PredictionTSGreedy.java" />
         <option value="$PROJECT_DIR$/src/Generator.java" />
-        <option value="$PROJECT_DIR$/src/Simulator.java" />
         <option value="$PROJECT_DIR$/src/ActualDrive.java" />
+        <option value="$PROJECT_DIR$/src/Simulator.java" />
       </list>
     </option>
   </component>
@@ -155,9 +134,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -174,11 +150,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -277,12 +257,18 @@
       <workItem from="1526100700798" duration="3298000" />
       <workItem from="1526128835748" duration="558000" />
       <workItem from="1526192322956" duration="1765000" />
-      <workItem from="1526215760265" duration="518000" />
+      <workItem from="1526215760265" duration="1370000" />
+      <workItem from="1526648623493" duration="108000" />
+      <workItem from="1526648972119" duration="1721000" />
+      <workItem from="1526652520676" duration="4000" />
+      <workItem from="1526652527478" duration="23000" />
+      <workItem from="1526809578721" duration="598000" />
+      <workItem from="1527428969919" duration="164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205828000" />
+    <option name="totallyTimeSpent" value="209298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -298,11 +284,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3723077" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3723077" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33394384" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23565324" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -367,12 +353,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shuttle Max Circular PG.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shuttle Max PTS Greedy 30 LR.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Shuttle Max Circular PG.csv" />
+    <entry file="file://$PROJECT_DIR$/Shuttle Max PTS Greedy 30 LR.csv" />
     <entry file="file://$PROJECT_DIR$/src/ExpressSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -391,9 +373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
           <caret line="97" column="68" selection-start-line="97" selection-start-column="68" selection-end-line="97" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -415,17 +394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="25" selection-end-column="36" />
-          <folding>
-            <element signature="e#211#212#0" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -443,34 +411,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Schedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="127" column="6" selection-start-line="127" selection-start-column="6" selection-end-line="127" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shuttle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Station.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TimeGreedy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -485,32 +429,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Time Per Distance TS Greedy -30 PG.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Time Per Distance TS Greedy -30 PG.csv" />
     <entry file="file://$PROJECT_DIR$/guest requests.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Shuttle Max TS Greedy -10 LR.csv">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="379" selection-start-line="1" selection-start-column="383" selection-end-line="2" selection-end-column="379" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shuttle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Station.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ActualDrive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="1410">
           <caret line="95" column="74" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
         </state>
       </provider>
     </entry>
