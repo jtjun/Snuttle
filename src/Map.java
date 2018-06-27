@@ -9,11 +9,13 @@ public class Map {
         // Load stations from file
         stations = new ArrayList<>();
         Scanner scanner = new Scanner(new File(stationfile));
+        int idxx = 0;
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] parsed = line.split(",");
             if (parsed.length != 3) continue;
-            stations.add(new Station(parsed[0], Integer.parseInt(parsed[1]), Integer.parseInt(parsed[2])));
+            stations.add(new Station(parsed[0], Integer.parseInt(parsed[1]), Integer.parseInt(parsed[2]),idxx));
+            idxx++;
         }
         scanner.close();
         int n = stations.size();

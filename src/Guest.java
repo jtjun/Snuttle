@@ -27,6 +27,10 @@ public class Guest {
     public int getRequestT(){ return requestT; }
     public Station getPlaceS(){ return placeS; }
     public Station getPlcaeD(){ return placeD; }
+
+    public String toString(){
+        return requestT+","+timeS+","+placeS.getName()+","+timeD+","+placeD.getName();
+    }
 }
 
 class Request{
@@ -62,13 +66,10 @@ class Request{
             R[after][i].mergeWith(beforeS);
         }
     }
-    public Schedule scheduleTS(int ti, Station sta){
-        return R[ti][map.getIndex(sta.getName())];
-    } // ti, sta's schedule
-
-    public Schedule[] scheduleT(int ti){
-        return R[ti];
-    } // ti's whole sta's guest
+    // ti, sta's schedule
+    public Schedule scheduleTS(int ti, Station sta){ return R[ti][map.getIndex(sta.getName())]; }
+    // ti's whole sta's guest
+    public Schedule[] scheduleT(int ti){ return R[ti]; }
     public Schedule[] scheduleS(Station sta){
         Schedule[] timel = new Schedule[runT];
         for(int i=0; i< runT; i++){

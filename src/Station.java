@@ -2,13 +2,15 @@ public class Station {
     private String name;
     private int x, y;
     private int nums = 0;
+    private int idx;
 
     public Station(){}
 
-    public Station(String namei, int xi, int yi){
+    public Station(String namei, int xi, int yi, int idxi){
         name = namei;
         x = xi;
         y = yi;
+        idx = idxi;
     }
 
     public boolean equals(Station sta){
@@ -28,5 +30,6 @@ public class Station {
     public int getX(){ return x; }
     public int getY(){ return y; }
     public int getNums(){ return nums; }
+    public int getIdx(){ return idx; }
     //public Station nearestStation(int x, int y){}
 }

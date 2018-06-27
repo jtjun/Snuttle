@@ -17,6 +17,7 @@ public class ActualDrive {
     private ArrayList<Integer> early = new ArrayList<>();
     private ArrayList<Integer> wait = new ArrayList<>();
     private int[][] shutsPN;
+    private String[] shutlocate;
 
 
     ActualDrive(Shuttle[] shuttleS, Request Ri, Map mapi, String typei, int gredi){
@@ -31,6 +32,10 @@ public class ActualDrive {
         shutsPN = new int[shutN][runT];
         type = typei;
         gred = gredi;
+        shutlocate = new String[shutN-Simulator.fixedshuttle];
+        for(int i=0; i<shutlocate.length; i++){
+            shutlocate[i] = "";
+        }
     }
 
     public int Simulate(boolean monit) throws FileNotFoundException {
@@ -42,7 +47,7 @@ public class ActualDrive {
             R.makeUp(time+1);
         }
 
-        //Printing the result!
+        // Printing the result!
         PrintStream shuttlemax = new PrintStream(new File("Shuttle Max "+type +".csv"));
         shuttlemax.println(type+"\tServiced: "+serviced+", Unfair: "+R.checkUnfair(runT-1)+", UserN :"+userN);
         for(int i=0; i<shutN; i++){
@@ -51,9 +56,12 @@ public class ActualDrive {
                 shuttlemax.print(","+shutsPN[i][j]);
             } shuttlemax.println();
         }
-        shuttlemax.println("How early,\t"+sumup(early)+"/"+early.size()+",\t"+ ToString(early));
-        shuttlemax.println("How wait,\t"+sumup(wait)+"/"+wait.size()+",\t"+ ToString(wait));
+        shuttlemax.println("\nHow early,\t"+sumup(early)+"/"+early.size()+"("+(sumup(early)/early.size())+"),\t"+ ToString(early));
+        shuttlemax.println("\nHow wait,\t"+sumup(wait)+"/"+wait.size()+"("+(sumup(wait)/wait.size())+"),\t"+ ToString(wait));
         shuttlemax.print("\n"+R.printingAtT(runT-1, 1)); // sched> W= With<
+        for(int a=0; a<shutlocate.length; a++){
+            shuttlemax.print("\n"+(a+Simulator.fixedshuttle)+" "+shutlocate[a]);
+        }
         shuttlemax.close();
 
         PrintStream pTperD = new PrintStream(new File("Time Per Distance "+type+".csv"));
@@ -87,8 +95,10 @@ public class ActualDrive {
             if(monit) System.out.println("Shuttle arrived at station "+schedTo.getStation().getName()+", at " +t
                     +" "+schedTo.printing(1)+"\nGuest number "+shuti.getNums());
             shuti.dropS(t, idxt, goThere, monit); // first, drop the people who want get down here
-
-            if((gred>0) && ((t-shuti.getRefresh()) >= gred)){ // if it's shuttle is greedy
+            if((gred!=0) && (i>=Simulator.fixedshuttle)) {
+                shutlocate[i-Simulator.fixedshuttle] += "("+schedTo.getStation().getName()+",at "+t+") ";
+            }
+            if((gred!=0) && ((t-shuti.getRefresh()) >= Math.abs(gred))){ // if it's shuttle is greedy
                 shuti.setRefresh(t); // it's time to refresh schedule
                 Schedule Peopl = shuti.getPeople();
                 Peopl.outTransfer(t);
@@ -105,8 +115,10 @@ public class ActualDrive {
                     early.remove(rem); // early and wait 's information are modified
                     wait.remove(wat);
                 } shuti.getOutAll();  // After all passengers are get out,
-                GreedySchedule.setGreedyScheduleForEach(shuttles, i, t); // Refresh Schedule
+                if(gred<0)TrampSteamerGreedy.setIGreedyEach(shuttles, i, t, R);
+                if(gred>0)PredictionTSGreedy.setPTSGreedyEach(shuttles, i, t, R); // Refresh Schedule
                 shuti = shuttles[i];
+                shuti.setRefresh(t);
                 if(monit) System.out.println("Schedule refreshed!\n");
             }
             if(shuti.getEmpty()==0) return shuti.getNums();
@@ -149,6 +161,10 @@ public class ActualDrive {
     }
     public int getPeopleN(Shuttle[] shuts){
         int l = shuts.length;
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (getPeopleN");
+            return 0;
+        }
         int num=0;
         for(int i=0; i<l; i++){
             num += shuts[i].getPeople().getNumSched();
@@ -158,12 +174,20 @@ public class ActualDrive {
     public int sumup(ArrayList<Integer> ar){
         int sum = 0;
         int l = ar.size();
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (sumup)");
+            return 0;
+        }
         for(int i=0; i<l; i++) sum += ar.get(i);
         return sum;
     }
     public String ToString(ArrayList<Integer> ar){
         String str="";
         int l = ar.size();
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (ToString)");
+            return "";
+        }
         str = ""+ar.get(0);
         for(int i=1; i<l; i++) str+=","+ar.get(i);
         return str;
@@ -171,6 +195,10 @@ public class ActualDrive {
     public String ToString(double[] ar){
         String str="";
         int l = ar.length;
+        if(l<1) {
+            System.out.println("ERROR : There are no serviced person. (ToString)");
+            return "";
+        }
         str = ""+ar[0];
         for(int i=1; i<l; i++) str+=","+ar[i];
         return str;
